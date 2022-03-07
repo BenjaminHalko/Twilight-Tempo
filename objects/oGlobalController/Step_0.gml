@@ -10,3 +10,5 @@ for(var i = 0; i < gamepad_get_device_count(); i++) {
 	}
 }
 lastTime = current_time;
+
+if(!instance_exists(oEnemy)) instance_create_layer(random(room_width),random(room_height),"Enemy",oEnemy);

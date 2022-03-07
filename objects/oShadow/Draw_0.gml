@@ -1,4 +1,7 @@
+darkness = Approach(darkness,dark,0.1);
+
 if(darkness == 0) exit;
+
 if(!surface_exists(darkSurface)) {
 	darkSurface = surface_create(room_width,room_height);
 	surface_set_target(darkSurface);
