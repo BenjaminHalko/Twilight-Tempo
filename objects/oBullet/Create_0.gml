@@ -1,2 +1,4 @@
-speed = 8;
-image = [];
+spd = 8;
+range = 10;
+
+bulletList = ds_list_create();

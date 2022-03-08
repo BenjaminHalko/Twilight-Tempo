@@ -13,6 +13,7 @@
     {"id":{"name":"GMLive_token","path":"scripts/GMLive_token/GMLive_token.yy",},"order":7,},
     {"id":{"name":"GMLive","path":"scripts/GMLive/GMLive.yy",},"order":4,},
     {"id":{"name":"GMLive_seekEval","path":"scripts/GMLive_seekEval/GMLive_seekEval.yy",},"order":5,},
+    {"id":{"name":"oGifMaker","path":"objects/oGifMaker/oGifMaker.yy",},"order":18,},
     {"id":{"name":"GMLive_thread","path":"scripts/GMLive_thread/GMLive_thread.yy",},"order":4,},
     {"id":{"name":"GMLive_tools","path":"scripts/GMLive_tools/GMLive_tools.yy",},"order":1,},
     {"id":{"name":"GMLive_builder","path":"scripts/GMLive_builder/GMLive_builder.yy",},"order":0,},

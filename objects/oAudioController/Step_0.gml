@@ -2,6 +2,8 @@
 enableLive;
 
 if(instance_exists(oEnemy)) {
-	audio_emitter_position(test,oEnemy.x,oEnemy.y,0);
-	audio_emitter_gain(test,abs(angle_difference(point_direction(oEnemy.x,oEnemy.y,room_width/2,room_height/2),oPlayer.dir))/180);
+	
+	var _dir = angle_difference(point_direction(room_width/2,room_height/2,oEnemy.x,oEnemy.y),oPlayer.dir);
+	audio_emitter_position(test,median(1,-1,_dir/100),0,0);
+	audio_emitter_gain(test,1-abs(_dir/180));
 }

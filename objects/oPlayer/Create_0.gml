@@ -10,5 +10,7 @@ bulletLength = 10;
 _x = 0;
 _y = 0;
 
-charge = -0.1;
+charge = 0;
+chargeLow = -2;
+allowCharge = true;
 chargeDraw = 0;

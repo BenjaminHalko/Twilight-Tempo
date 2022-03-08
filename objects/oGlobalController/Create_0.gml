@@ -1,6 +1,7 @@
 surface_resize(application_surface,256,224);
 
 global.joystickPressed = ds_map_create();
+global.score = 0;
 
 window_set_size(1024/2,896/2);
 
