@@ -7,4 +7,6 @@ window_set_size(1024/2,896/2);
 for(var i = 0; i < gamepad_get_device_count(); i++) gamepad_set_axis_deadzone(i, 0.5);
 lastTime = 0;
 
+start = false;
+
 room_goto_next();

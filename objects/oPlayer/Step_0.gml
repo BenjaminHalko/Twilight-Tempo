@@ -7,9 +7,13 @@ Input();
 //Direction
 dir += (key_left-key_right) * 3.5;
 
+dir = Wrap(dir,0,360);
+
+audio_listener_orientation(sin(lengthdir_x(1,dir)), sin(lengthdir_y(1,dir)), 0, 0, 0, -1);
+
 //Shooting
 if(key_shoot_pressed) or (!key_shoot and charge > 0) {
-	var _size = 0.1+max(0,charge)*10;
+	var _size = 10;
 	var _amount = _size*3;
 	for(var i = 0; i < _amount; i++) {
 		with(instance_create_layer(x+lengthdir_x(bulletLength,dir),y+lengthdir_y(bulletLength,dir),"Bullet",oBullet)) {
