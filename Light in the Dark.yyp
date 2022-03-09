@@ -1,6 +1,5 @@
 {
   "resources": [
-    {"id":{"name":"Sprite6","path":"sprites/Sprite6/Sprite6.yy",},"order":19,},
     {"id":{"name":"rInit","path":"rooms/rInit/rInit.yy",},"order":0,},
     {"id":{"name":"sStar","path":"sprites/sStar/sStar.yy",},"order":1,},
     {"id":{"name":"oShadow","path":"objects/oShadow/oShadow.yy",},"order":2,},
@@ -27,7 +26,6 @@
     {"id":{"name":"GMLive_seekSetOp","path":"scripts/GMLive_seekSetOp/GMLive_seekSetOp.yy",},"order":6,},
     {"id":{"name":"sCannon","path":"sprites/sCannon/sCannon.yy",},"order":2,},
     {"id":{"name":"GMLive_exec","path":"scripts/GMLive_exec/GMLive_exec.yy",},"order":1,},
-    {"id":{"name":"oAudioController","path":"objects/oAudioController/oAudioController.yy",},"order":16,},
     {"id":{"name":"oBullet","path":"objects/oBullet/oBullet.yy",},"order":4,},
     {"id":{"name":"GMLive_program","path":"scripts/GMLive_program/GMLive_program.yy",},"order":3,},
     {"id":{"name":"obj_gmlive","path":"objects/obj_gmlive/obj_gmlive.yy",},"order":3,},
@@ -38,11 +36,11 @@
     {"id":{"name":"Helper","path":"scripts/Helper/Helper.yy",},"order":10,},
     {"id":{"name":"sPlayerBig","path":"sprites/sPlayerBig/sPlayerBig.yy",},"order":6,},
     {"id":{"name":"GMLive_nodeTools","path":"scripts/GMLive_nodeTools/GMLive_nodeTools.yy",},"order":3,},
-    {"id":{"name":"Sound1","path":"sounds/Sound1/Sound1.yy",},"order":17,},
     {"id":{"name":"sPlayer","path":"sprites/sPlayer/sPlayer.yy",},"order":5,},
     {"id":{"name":"GMLive_http","path":"scripts/GMLive_http/GMLive_http.yy",},"order":0,},
     {"id":{"name":"GMLiveAPI","path":"scripts/GMLiveAPI/GMLiveAPI.yy",},"order":3,},
     {"id":{"name":"GMLive_call","path":"scripts/GMLive_call/GMLive_call.yy",},"order":0,},
+    {"id":{"name":"CannonShootCurve","path":"animcurves/CannonShootCurve/CannonShootCurve.yy",},"order":21,},
     {"id":{"name":"oEnemy","path":"objects/oEnemy/oEnemy.yy",},"order":1,},
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},"order":0,},
     {"id":{"name":"rGame","path":"rooms/rGame/rGame.yy",},"order":1,},
@@ -102,7 +100,7 @@
     {"CopyToMask":-1,"filePath":"datafiles/GMLive","resourceVersion":"1.0","name":"std.ndll","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
-    "IDEVersion": "2022.2.0.614",
+    "IDEVersion": "2022.2.1.618",
   },
   "resourceVersion": "1.5",
   "name": "Light in the Dark",

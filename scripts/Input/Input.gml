@@ -7,21 +7,17 @@ function Input() {
 	key_shoot = keyboard_check(ord("X"));
 	key_shoot_pressed = keyboard_check_pressed(ord("X"));
 	
-	for(var i = 0; i < gamepad_get_device_count(); i++) {
-		key_left = key_left || gamepad_button_check(i,gp_padl);
-		key_right = key_right || gamepad_button_check(i,gp_padr);
-		key_up_pressed = key_up || gamepad_button_check(i,gp_padu);
-		key_down = key_down || gamepad_button_check(i,gp_padd);
-	}
-}
-
-function InputPressedDirection() {
 	key_left_pressed = keyboard_check_pressed(vk_left) || keyboard_check_pressed(ord("A"));
 	key_right_pressed = keyboard_check_pressed(vk_right) || keyboard_check_pressed(ord("D"));
 	key_up_pressed = keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord("W"));
 	key_down_pressed = keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord("S"));
 	
 	for(var i = 0; i < gamepad_get_device_count(); i++) {
+		key_left = key_left || gamepad_button_check(i,gp_padl);
+		key_right = key_right || gamepad_button_check(i,gp_padr);
+		key_up = key_up || gamepad_button_check(i,gp_padu);
+		key_down = key_down || gamepad_button_check(i,gp_padd);
+		
 		key_left_pressed = key_left_pressed || gamepad_button_check_pressed(i,gp_padl);
 		key_right_pressed = key_right_pressed || gamepad_button_check_pressed(i,gp_padr);
 		key_up_pressed = key_up_pressed || gamepad_button_check_pressed(i,gp_padu);
