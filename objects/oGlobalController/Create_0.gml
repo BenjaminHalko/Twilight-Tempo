@@ -10,6 +10,6 @@ lastTime = 0;
 
 start = false;
 
-global.bpm = 120;
+global.bpm = 130;
 
 room_goto_next();

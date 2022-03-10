@@ -1,5 +1,6 @@
 enableLive;
-speed = 8;
+spd = 24;
+dead = false;
 image = [];
 draw = true;
 time = 0;

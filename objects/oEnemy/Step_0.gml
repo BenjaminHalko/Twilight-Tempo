@@ -1,10 +1,7 @@
 enableLive;
 
 if(dead) {
+	speed = 0;
 	deadPercent = Approach(deadPercent,1,0.1);
 	if(deadPercent == 1) instance_destroy();
-} else {
-	var _dir = point_direction(x,y,room_width/2,room_height/2);
-	x = Approach(x,room_width/2,abs(lengthdir_x(1,_dir)));
-	y = Approach(y,room_height/2,abs(lengthdir_y(1,_dir)));
 }
