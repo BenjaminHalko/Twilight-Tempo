@@ -21,13 +21,16 @@ if(key_left_pressed or key_right_pressed or key_down_pressed or key_up_pressed) 
 		startdir = other.dir;
 	}
 	
-	if((dir div 90) % 2 == 0) image_xscale = 0.5;
-	else image_yscale = 0.5;
+	if((dir div 90) % 2 == 0) image_xscale = 0.3;
+	else image_yscale = 0.3;
 	
 	shootPercent = 0;
 }
 
 drawDir = ApproachCircleEase(drawDir,dir,50,0.6);
 shootPercent = ApproachFade(shootPercent,1,0.1,0.6);
-image_xscale = ApproachFade(image_xscale,1,0.05,0.3);
-image_yscale = ApproachFade(image_yscale,1,0.05,0.3);
+image_xscale = ApproachFade(image_xscale,1+cannonMove/3*(image_xscale > 0.75),0.05,0.3);
+image_yscale = ApproachFade(image_yscale,1+cannonMove/3*(image_yscale > 0.75),0.05,0.3);
+for(var i = 0; i < 4; i++) shake[i] = Approach(shake[i],0,0.06);
+generalShake = Approach(generalShake,0,0.06);
+cannonMove = ApproachFade(cannonMove,0,0.3,0.6);
