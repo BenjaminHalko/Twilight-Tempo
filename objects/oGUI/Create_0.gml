@@ -1,0 +1,1 @@
+scale = array_create(3,1);

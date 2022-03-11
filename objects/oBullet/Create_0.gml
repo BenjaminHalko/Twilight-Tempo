@@ -1,9 +1,11 @@
 enableLive;
-spd = 24;
+spd = 8;
 dead = false;
 image = [];
-draw = true;
-time = 0;
+time = random(60);
 startdir = -1;
-range = 20;
 length = 0;
+lastX = x;
+lastY = y;
+waveX = x;
+waveY = y;

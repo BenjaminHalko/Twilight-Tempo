@@ -16,6 +16,5 @@ live_init(1, "http://localhost:5100", "");
 
 #macro enableLive if (live_call()) return live_result
 
-sprite_set_live(sPlayer,true);
-sprite_set_live(sCannon,true);
-sprite_set_live(sBullet,true);
+
+sprite_set_live(sLife,true);

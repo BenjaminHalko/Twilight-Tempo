@@ -4,11 +4,12 @@ drawDir = 0;
 dir = 0;
 
 shootPercent = 1;
-cannonLength = [10,9];
-bulletLength = 13;
+cannonLength = 10;
+bulletLength = 11;
 
 shake = array_create(4,0);
 generalShake = 0;
 
 cannonMove = 0;
-cannonMovePercent = 0;
+
+deathSpd = 30;

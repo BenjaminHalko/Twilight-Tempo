@@ -105,3 +105,13 @@ function DropShadowText(_x,_y,_text,_borderSize,_colour,_borderColour)
 	draw_set_colour(_colour);
 	draw_text(_x,_y,_text);
 }
+
+function drawCircle(_x,_y,_radius,_alpha) {
+	for(var i = 0; i < 6; i++) {
+		draw_set_alpha((0.8-i*0.1)*_alpha);
+		draw_circle(_x-1,_y-1,_radius+i*3,false);
+	}
+	draw_set_alpha(_alpha);
+	draw_circle(_x-1,_y-1,16,false);
+	if(_alpha != 1) draw_set_alpha(1);
+}
