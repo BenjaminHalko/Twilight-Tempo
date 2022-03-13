@@ -25,8 +25,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Enemy",
-    "path": "folders/Enemy.yy",
+    "name": "Score",
+    "path": "folders/Enemy/Score.yy",
   },
   "resourceVersion": "1.0",
   "name": "oScore",

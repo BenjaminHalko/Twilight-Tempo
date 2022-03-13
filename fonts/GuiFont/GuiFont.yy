@@ -128,8 +128,8 @@
   "canGenerateBitmap": true,
   "maintainGms1Font": false,
   "parent": {
-    "name": "Global",
-    "path": "folders/Global.yy",
+    "name": "GUI",
+    "path": "folders/GUI.yy",
   },
   "resourceVersion": "1.0",
   "name": "GuiFont",

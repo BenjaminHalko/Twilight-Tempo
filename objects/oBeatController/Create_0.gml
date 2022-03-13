@@ -1,8 +1,7 @@
-enableLive;
-
-song = audio_play_sound(TestSong,1,true);
+song = noone;
 
 numberOfBeats = 4;
-global.beats = array_create(numberOfBeats,0);
+beats = array_create(numberOfBeats,0);
 lastTime = 100;
 aheadLastTime = 100;
+bpm = 130;

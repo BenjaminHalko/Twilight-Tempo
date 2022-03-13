@@ -3,17 +3,32 @@ enableLive;
 draw_set_font(GuiFont);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
-
-var _scoreText = "Score: "+string(global.score);
-
-draw_set_color(c_black);
-draw_set_alpha(0.5);
-draw_text(4,4,_scoreText);
-draw_set_alpha(1);
 draw_set_color(c_white);
-draw_text(2,2,_scoreText);
+		
+draw_text(6,6,"SCORE\n  "+string_replace_all(string_format(global.score,4,0)," ","0"));
+		
+draw_text(room_width/2-40,6,"HIGH SCORE\n  "+string_replace_all(string_format(global.hiScore,4,0)," ","0"));
 
 for(var i = 0; i < 3; i++) {
-	draw_sprite_ext(sLife,median(0,global.lives-i*4,4),room_width-8-i*14,8,scale[i],scale[i],0,c_white,1);
+	draw_sprite_ext(sLife,median(0,global.lives-i*4,4),room_width-10-i*14,10,scale[i],scale[i],0,c_white,1);
 	scale[i] = Approach(scale[i],1,0.05);
 }
+
+if(gameoverNum > 0) {
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_middle);
+	draw_text_transformed(room_width/2,room_height/2-35,"GAME OVER",2,2,0);
+	
+	draw_text(room_width/2,room_height/2+10,"CONTINUE?\n\n"+string(10-gameoverNum));
+	
+	draw_set_halign(fa_right);
+	var _text = "YES";
+	if(gameoverChoice == 0) _text = ">YES";
+	draw_text(room_width/2-20,room_height/2+40,_text);
+	
+	_text = "NO";
+	if(gameoverChoice == 1) _text = ">NO";
+	draw_text(room_width/2+40,room_height/2+40,_text);
+}
+
+if(!instance_exists(oPlayer) and alarm[0] <= 0) alarm[0] = 60;

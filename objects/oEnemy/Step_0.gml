@@ -10,11 +10,16 @@ if(dead) {
 
 if(hit or global.alive != 1) {
 	if(hit) {
+		image_index = 1;
 		image_xscale += 0.05;
 		image_yscale += 0.05;
-		speed *= 0.8;
-	} else speed = -4*global.alive;
+		speed *= 0.7;
+		image_alpha -= 0.2;
+		image_angle -= 20;
+	} else {
+		speed = -4*global.alive;
+		image_alpha -= 0.05;
+	}
 	
-	image_alpha -= 0.2;
 	if(image_alpha <= 0) instance_destroy();
 }

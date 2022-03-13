@@ -2,8 +2,8 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Light in the Dark",
-    "path": "Light in the Dark.yyp",
+    "name": "Global",
+    "path": "folders/Global.yy",
   },
   "resourceVersion": "1.0",
   "name": "Helper",

@@ -1,6 +1,6 @@
 {
   "conversionMode": 0,
-  "compression": 3,
+  "compression": 0,
   "volume": 1.0,
   "preload": false,
   "bitRate": 128,
@@ -14,8 +14,8 @@
   "soundFile": "TestSong.mp3",
   "duration": 193.384491,
   "parent": {
-    "name": "Light in the Dark",
-    "path": "Light in the Dark.yyp",
+    "name": "Music",
+    "path": "folders/Music.yy",
   },
   "resourceVersion": "1.0",
   "name": "TestSong",

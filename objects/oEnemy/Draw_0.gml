@@ -7,7 +7,7 @@ for(var i = 0; i < 4; i++) {
 }
 
 if(!dead) draw_self();
-else {
+else if(oShadow.darkness != 0) {
 	//Remove Dark
 	if(!surface_exists(oShadow.darkSurface)) oShadow.darkSurface = surface_create(room_width,room_height);
 	surface_set_target(oShadow.darkSurface);

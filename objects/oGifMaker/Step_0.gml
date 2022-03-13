@@ -1,1 +1,0 @@
-if(gif) gif_add_surface(gifFile,application_surface,2);

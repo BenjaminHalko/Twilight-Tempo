@@ -9,3 +9,4 @@ lastX = x;
 lastY = y;
 waveX = x;
 waveY = y;
+amountOfPoints = 0;

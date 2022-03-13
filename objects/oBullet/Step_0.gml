@@ -3,12 +3,14 @@ enableLive;
 function HitEnemy(_x,_y) {
 	var _enemy = instance_position(_x,_y,oEnemy);
 	if(_enemy != noone) {
-		_enemy.dead = true;
-		spd = 0;
-		
-		var _score = 100-round(sin((abs(lengthdir_x(abs(abs(_enemy.x-room_width/2)-room_width/4)/room_width*4,direction))+abs(lengthdir_y(abs(abs(_enemy.y-room_height/2)-room_height/4)/room_height*4,direction)))*(pi/2))*100);
-		with(instance_create_layer(_enemy.x,_enemy.y,"GUI",oScore)) amount = string(_score);
-		global.score += _score;
+		if(!_enemy.dead) {
+			_enemy.dead = true;
+			spd = 0;
+			
+			with(instance_create_layer(_enemy.x,_enemy.y,"GUI",oScore)) amount = string(other.amountOfPoints);
+			global.score += amountOfPoints;
+			if(global.score > global.hiScore) global.hiScore = global.score;
+		}
 	}
 }	
 

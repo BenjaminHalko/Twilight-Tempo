@@ -45,8 +45,8 @@
   "canGenerateBitmap": true,
   "maintainGms1Font": false,
   "parent": {
-    "name": "Fonts",
-    "path": "folders/Fonts.yy",
+    "name": "Score",
+    "path": "folders/Enemy/Score.yy",
   },
   "resourceVersion": "1.0",
   "name": "ScoreFont",

@@ -13,3 +13,6 @@ generalShake = 0;
 cannonMove = 0;
 
 deathSpd = 30;
+
+startScale = 0;
+curve = animcurve_get_channel(PlayerStartCurve,0);

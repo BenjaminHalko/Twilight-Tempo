@@ -4,7 +4,7 @@ for(var i = 0; i < array_length(image); i++) {
 	draw_sprite_ext(sprite_index,image_index,image[i][0],image[i][1],1,1,image[i][3],image_blend,image[i][2]);
 	
 	//Remove Dark
-	if(image[i][3] == direction) {
+	if(image[i][3] == direction and oShadow.darkness != 0) {
 		if(!surface_exists(oShadow.darkSurface)) oShadow.darkSurface = surface_create(room_width,room_height);
 		surface_set_target(oShadow.darkSurface);
 		gpu_set_blendmode(bm_subtract);
