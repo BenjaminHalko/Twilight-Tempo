@@ -6,11 +6,13 @@ draw_set_valign(fa_top);
 draw_set_color(c_white);
 		
 draw_text(6,6,"SCORE\n  "+string_replace_all(string_format(global.score,4,0)," ","0"));
-		
-draw_text(room_width/2-40,6,"HIGH SCORE\n  "+string_replace_all(string_format(global.hiScore,4,0)," ","0"));
+
+var _hiScoreText = string_replace_all(string_format(global.hiScore,4,0)," ","0");
+if(global.start) _hiScoreText = "N/A";
+draw_text(room_width/2-40,6,"HIGH SCORE\n  "+_hiScoreText);
 
 for(var i = 0; i < 3; i++) {
-	draw_sprite_ext(sLife,median(0,global.lives-i*4,4),room_width-10-i*14,10,scale[i],scale[i],0,c_white,1);
+	draw_sprite_ext(sLife,median(0,global.lives-i*4,4)*2,room_width-10-i*14,10,scale[i],scale[i],0,c_white,1);
 	scale[i] = Approach(scale[i],1,0.05);
 }
 
@@ -32,3 +34,6 @@ if(gameoverNum > 0) {
 }
 
 if(!instance_exists(oPlayer) and alarm[0] <= 0) alarm[0] = 60;
+
+if(heartAlpha != 0)
+draw_sprite_ext(sLife,heartAmount,lerp(room_width/2+30,room_width-10-(global.lives div 4)*14,heartMovement),lerp(room_height/2-30,10,heartMovement),max(oPlayer.image_xscale,oPlayer.image_yscale),max(oPlayer.image_xscale,oPlayer.image_yscale),0,c_white,heartAlpha);

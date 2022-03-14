@@ -14,8 +14,8 @@
   "soundFile": "snPlayerDie.wav",
   "duration": 2.52415,
   "parent": {
-    "name": "Player",
-    "path": "folders/Player.yy",
+    "name": "Sounds",
+    "path": "folders/Player/Sounds.yy",
   },
   "resourceVersion": "1.0",
   "name": "snPlayerDie",

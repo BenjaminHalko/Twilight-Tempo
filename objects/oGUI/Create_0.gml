@@ -3,11 +3,10 @@ gameoverNum = 0;
 
 gameoverChoice = 0;
 
-if(os_type == os_operagx) {
-	gxc_challenge_get_global_scores(undefined,{challengeId: global.challengeID[global.hardMode],pageSize: 1});
-}
-else {
-	ini_open("save.ini");
-	global.hiScore = ini_read_real("scores",global.modeName[global.hardMode],0);
-	ini_close();
-}
+heartAppear = 0;
+heartAlpha = 0;
+heartAmount = 0;
+
+heartMovement = 0;
+
+GetHighscore();

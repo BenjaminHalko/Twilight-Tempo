@@ -14,8 +14,8 @@
   "soundFile": "snPlayerExplode.wav",
   "duration": 3.819388,
   "parent": {
-    "name": "Player",
-    "path": "folders/Player.yy",
+    "name": "Sounds",
+    "path": "folders/Player/Sounds.yy",
   },
   "resourceVersion": "1.0",
   "name": "snPlayerExplode",

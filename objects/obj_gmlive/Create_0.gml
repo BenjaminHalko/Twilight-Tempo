@@ -14,4 +14,4 @@ if (asset_get_index("live_init") == -1) show_error("live_init is missing!\nEithe
 // (e.g. when running on mobile platforms):
 live_init(1, "http://localhost:5100", "");
 
-#macro enableLive if (live_call()) return live_result
+#macro enableLive if(live_call()) return live_result

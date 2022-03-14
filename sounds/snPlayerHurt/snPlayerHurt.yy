@@ -14,8 +14,8 @@
   "soundFile": "snPlayerHurt.wav",
   "duration": 0.524943,
   "parent": {
-    "name": "Player",
-    "path": "folders/Player.yy",
+    "name": "Sounds",
+    "path": "folders/Player/Sounds.yy",
   },
   "resourceVersion": "1.0",
   "name": "snPlayerHurt",

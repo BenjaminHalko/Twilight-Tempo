@@ -1,2 +1,2 @@
 /// @desc
-game_end();
+if(os_type != os_operagx) game_end();

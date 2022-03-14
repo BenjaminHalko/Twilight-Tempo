@@ -115,3 +115,14 @@ function drawCircle(_x,_y,_radius,_alpha) {
 	draw_circle(_x-1,_y-1,16,false);
 	if(_alpha != 1) draw_set_alpha(1);
 }
+
+function GetHighscore() {
+	if(os_type == os_operagx) {
+		gxc_challenge_get_global_scores(undefined,{challengeId: global.challengeID[global.hardMode],pageSize: 1});
+	}
+	else {
+		ini_open("save.ini");
+		global.hiScore = ini_read_real("scores",global.modeName[global.hardMode],0);
+		ini_close();
+	}
+}

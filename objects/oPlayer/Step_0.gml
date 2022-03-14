@@ -11,6 +11,8 @@ if(global.alive == 1) {
 
 	//Shooting
 	if(key_left_pressed or key_right_pressed or key_down_pressed or key_up_pressed) {
+		audio_sound_pitch(audio_play_sound(snPlayerShoot,2,false),random_range(0.5,1.3));
+		
 		with(instance_create_layer(x+lengthdir_x(bulletLength,dir),y+lengthdir_y(bulletLength,dir),"Bullet",oBullet)) {
 			direction = other.dir;
 			image_angle = other.dir;
@@ -50,3 +52,4 @@ if(startScale == 1.6) {
 	if(startScale == 1.6) oBeatController.song = audio_play_sound(TestSong,1,true);
 }
 for(var i = 0; i < 4; i++) shake[i] = Approach(shake[i],0,0.06);
+
