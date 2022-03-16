@@ -4,7 +4,7 @@ function Input() {
 	key_up_pressed = keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord("W"));
 	key_down_pressed = keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord("S"));
 	
-	key_select = keyboard_check_pressed(vk_anykey) && !key_left_pressed && !key_right_pressed && !key_up_pressed && !key_down_pressed;
+	key_select = keyboard_check_pressed(vk_anykey) && !keyboard_check_pressed(vk_f4) && !key_left_pressed && !key_right_pressed && !key_up_pressed && !key_down_pressed;
 	
 	for(var i = 0; i < gamepad_get_device_count(); i++) {
 		key_left_pressed = key_left_pressed || gamepad_button_check_pressed(i,gp_padl);

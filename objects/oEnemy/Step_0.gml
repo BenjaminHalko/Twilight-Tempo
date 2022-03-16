@@ -1,5 +1,3 @@
-enableLive;
-
 if(dead) {
 	speed = 0;
 	deadPercent = Approach(deadPercent,1,0.1);
@@ -8,7 +6,7 @@ if(dead) {
 	if(circlePercent == 1) instance_destroy();
 }
 
-if(hit or global.alive != 1) {
+if(hit or global.lives <= 0) {
 	if(hit) {
 		image_index = 1;
 		image_xscale += 0.05;
@@ -17,7 +15,7 @@ if(hit or global.alive != 1) {
 		image_alpha -= 0.2;
 		image_angle -= 20;
 	} else {
-		speed = -4*global.alive;
+		speed = ApproachFade(speed,0,0.1,0.6);
 		image_alpha -= 0.05;
 	}
 	

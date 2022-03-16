@@ -1,4 +1,3 @@
-enableLive;
 spd = 8;
 dead = false;
 image = [];

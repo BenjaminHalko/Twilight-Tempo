@@ -3,6 +3,7 @@ for(var i = 0; i < gamepad_get_device_count(); i++) {
 	_xAxis = sign(gamepad_axis_value(i,gp_axislh));
 	_yAxis = sign(gamepad_axis_value(i,gp_axislv));
 	if(_xAxis != 0 or _yAxis != 0) {
+		global.lastUsedGamepad = i;
 		if(ds_map_exists(global.joystickPressed,i)) {
 			if(global.joystickPressed[? i][2] == lastTime) global.joystickPressed[? i] = [0,0,current_time];
 			else global.joystickPressed[? i] = [_xAxis,_yAxis,current_time];
@@ -11,4 +12,4 @@ for(var i = 0; i < gamepad_get_device_count(); i++) {
 }
 lastTime = current_time;
 
-if(global.lives <= 0) global.alive = ApproachFade(global.alive,0,0.025,0.6);
+if(keyboard_check_pressed(vk_anykey)) global.lastUsedGamepad = noone;

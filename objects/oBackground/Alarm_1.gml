@@ -1,2 +1,2 @@
 /// @desc
-audio_resume_sound(oBeatController.song);
+oBeatController.song = audio_play_sound(mSong,1,true);

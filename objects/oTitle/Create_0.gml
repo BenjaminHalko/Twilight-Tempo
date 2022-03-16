@@ -1,10 +1,10 @@
 /// @desc
 
-enableLive;
-
 choice = 0;
 
 show = false;
+
+selected = 0;
 
 logoY = 0;
 logoX = 0;

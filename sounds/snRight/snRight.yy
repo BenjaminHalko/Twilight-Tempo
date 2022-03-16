@@ -1,7 +1,7 @@
 {
   "conversionMode": 0,
   "compression": 0,
-  "volume": 0.5,
+  "volume": 0.6,
   "preload": false,
   "bitRate": 128,
   "sampleRate": 44100,
@@ -12,7 +12,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snRight.ogg",
-  "duration": 0.72,
+  "duration": 0.620816,
   "parent": {
     "name": "Sound Effects",
     "path": "folders/Music/Sound Effects.yy",

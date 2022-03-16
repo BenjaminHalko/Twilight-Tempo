@@ -1,5 +1,3 @@
-enableLive;
-
 for(var i = 0; i < array_length(image); i++) {
 	draw_sprite_ext(sprite_index,image_index,image[i][0],image[i][1],1,1,image[i][3],image_blend,image[i][2]);
 	

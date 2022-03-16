@@ -2,10 +2,13 @@ randomize();
 
 surface_resize(application_surface,256,224);
 
+audio_group_set_gain(audiogroup_default,0.5,0);
+
 global.joystickPressed = ds_map_create();
+global.lastUsedGamepad = noone;
+
 global.score = 0;
 global.lives = 12;
-global.alive = 1;
 global.time = 0;
 global.hardMode = false;
 
@@ -19,9 +22,8 @@ global.modeName = ["normal","hard"];
 
 global.dirSounds = [snRight,snUp,snLeft,snDown];
 
-global.index = 0;
-
 global.stars = [];
+global.frontStars = [];
 
 repeat(120) array_push(global.stars,{
 	x: random(room_width),
@@ -33,7 +35,16 @@ repeat(120) array_push(global.stars,{
 	alphaOffset: random(1)
 });
 
-window_set_size(1024/2,896/2);
+var _starAmount = 20;
+for(var i = 0; i < _starAmount; i++) array_push(global.frontStars,{
+	x: random(room_width),
+    y: random(room_height),
+	col: choose(#d2de8e,#60205a),
+	alpha: random(2),
+	alphaSpeed: random_range(0.005,0.01),
+});
+
+window_set_size(1024,896);
 
 for(var i = 0; i < gamepad_get_device_count(); i++) gamepad_set_axis_deadzone(i, 0.5);
 lastTime = 0;

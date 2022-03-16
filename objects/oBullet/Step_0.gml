@@ -1,5 +1,3 @@
-enableLive;
-
 function HitEnemy(_x,_y) {
 	var _enemyList = ds_list_create();
 	
@@ -18,7 +16,7 @@ function HitEnemy(_x,_y) {
 		if(!_enemy.dead) {
 			_enemy.dead = true;
 			spd = 0;
-			audio_play_sound(snEnemyDestroy,2,false);
+			//audio_play_sound(snEnemyDestroy,2,false);
 			
 			if(_enemy.sprite_index = sEnemy) {
 				with(instance_create_layer(_enemy.x,_enemy.y,"GUI",oScore)) amount = string(other.amountOfPoints);

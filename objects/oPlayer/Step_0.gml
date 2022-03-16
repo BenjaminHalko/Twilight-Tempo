@@ -1,7 +1,5 @@
 /// @desc Shoot
-enableLive;
-
-if(global.alive == 1) {
+if(global.lives > 0) {
 	//Input
 	Input();
 
@@ -11,7 +9,17 @@ if(global.alive == 1) {
 
 	//Shooting
 	if(key_left_pressed or key_right_pressed or key_down_pressed or key_up_pressed) {
-		audio_sound_pitch(audio_play_sound(snPlayerShoot,2,false),random_range(0.5,1.3));
+		
+		
+		if(collision_line(x,y,x+lengthdir_x(150,dir),y+lengthdir_y(150,dir),oEnemy,false,false) == noone) {
+			with(instance_create_layer(x,y-10,"GUI",oScore)) amount = string("-100");
+			global.score = max(0,global.score-100);
+			audio_stop_sound(snPlayerShootFail);
+			audio_sound_pitch(audio_play_sound(snPlayerShootFail,2,false),random_range(0.4,0.5));
+		} else {
+			audio_sound_pitch(audio_play_sound(snPlayerShoot,2,false),random_range(0.5,1.3));
+			audio_play_sound(snEnemyDestroy,2,false);
+		}
 		
 		with(instance_create_layer(x+lengthdir_x(bulletLength,dir),y+lengthdir_y(bulletLength,dir),"Bullet",oBullet)) {
 			direction = other.dir;
@@ -29,9 +37,9 @@ if(global.alive == 1) {
 	generalShake = Approach(generalShake,0,0.06);
 }
 else {
-	if(global.alive == 0) deathSpd = ApproachFade(deathSpd,0,0.3,0.5);
-	drawDir -= deathSpd*1.5;
-	generalShake = Approach(generalShake,deathSpd/15,0.06);
+	deathSpd = ApproachFade(deathSpd,0,0.3,0.5);
+	drawDir -= min(30,deathSpd)*1.5;
+	generalShake = Approach(generalShake,min(30,deathSpd)/15,0.06);
 	if(deathSpd == 0) {
 		instance_create_depth(x,y,layer_get_depth(layer_get_id("Shadow"))-1,oPlayerExplode);
 		audio_play_sound(snPlayerExplode,2,false);
@@ -43,13 +51,19 @@ else {
 cannonMove = ApproachFade(cannonMove,0,0.3,0.6);
 shootPercent = ApproachFade(shootPercent,1,0.1,0.6);
 if(startScale == 1.6) {
-	image_xscale = ApproachFade(image_xscale,1+cannonMove/3*(image_xscale > 0.75)+(1-deathSpd/30),0.05,0.3);
-	image_yscale = ApproachFade(image_yscale,1+cannonMove/3*(image_yscale > 0.75)+(1-deathSpd/30),0.05,0.3);
+	image_xscale = ApproachFade(image_xscale,1+cannonMove/3*(image_xscale > 0.75)+(1-min(30,deathSpd)/30),0.05,0.3);
+	image_yscale = ApproachFade(image_yscale,1+cannonMove/3*(image_yscale > 0.75)+(1-min(30,deathSpd)/30),0.05,0.3);
 } else {
 	startScale = Approach(startScale,1.6,0.05);
 	image_xscale = animcurve_channel_evaluate(curve,min(1,startScale));
 	image_yscale = animcurve_channel_evaluate(curve,min(1,startScale));
-	if(startScale == 1.6) oBeatController.song = audio_play_sound(TestSong,1,true);
+	if(startScale == 1.6) {
+		if(global.start) oBeatController.song = audio_play_sound(mTutorial,1,false);
+		else {
+			oBeatController.song = audio_play_sound(mSong,1,true);
+			audio_sound_set_track_position(oBeatController.song, choose(0,29.538,62.769));
+		}
+	}
 }
 for(var i = 0; i < 4; i++) shake[i] = Approach(shake[i],0,0.06);
 

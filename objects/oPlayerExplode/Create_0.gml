@@ -1,6 +1,4 @@
 /// @desc
-enableLive;
-
 explodeArray = array_create(1024,0);
 
 for(var i = 0; i < 32; i++) {

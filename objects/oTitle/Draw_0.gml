@@ -1,7 +1,5 @@
 /// @desc
 
-enableLive;
-
 for(var i = 0; i < array_length(stars); i++) {
 	draw_set_alpha(Wave(stars[i].alpha1,stars[i].alpha2,stars[i].alphaSpeed,stars[i].alphaOffset));
 	draw_point_color(stars[i].x,stars[i].y,stars[i].col);
@@ -11,17 +9,20 @@ for(var i = 0; i < array_length(stars); i++) {
 }
 
 if(show) {
-	
-
 	draw_set_font(GuiFont);
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_top);
 	draw_set_color(c_white);
 
-	draw_text(85,150+20*choice,">");
+	draw_text(98,130+20*choice,">");
 
-	draw_text(100,150,"NORMAL");
-	draw_text(100,170,"HARD");
+	if(choice == 1 or selected % 2 == 0) draw_text(113,130,"NORMAL");
+	if(choice == 0 or selected % 2 == 0) draw_text(113,150,"HARD");
+	
+	draw_set_halign(fa_center);
+	
+	draw_text(room_width/2,200,"© 2022 BENJAMIN HALKO");
+	draw_text(room_width/2,210,"ALL RIGHTS RESERVED");
 }
 
 draw_sprite_ext(sTwilight,0,room_width/2,lerp(100,40,logoY),lerp(1.5,1,logoY),1,0,c_white,logoY);
