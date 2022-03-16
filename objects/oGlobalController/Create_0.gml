@@ -2,10 +2,12 @@ randomize();
 
 surface_resize(application_surface,256,224);
 
-audio_group_set_gain(audiogroup_default,0.5,0);
+audio_master_gain(0.75);
 
-global.joystickPressed = ds_map_create();
+global.joystickPressedH = ds_map_create();
+global.joystickPressedV = ds_map_create();
 global.lastUsedGamepad = noone;
+global.rumble = 0;
 
 global.score = 0;
 global.lives = 12;

@@ -5,7 +5,10 @@ for(var i = 0; i < array_length(stars); i++) {
 	draw_point_color(stars[i].x,stars[i].y,stars[i].col);
 	draw_set_alpha(1);
 	stars[i].x -= stars[i].far*5*logoX;
-	while(stars[i].x < 0) stars[i].x += room_width;
+	while(stars[i].x < 0) {
+		stars[i].x += room_width;
+		stars[i].y = irandom(room_height);
+	}
 }
 
 if(show) {
@@ -25,5 +28,5 @@ if(show) {
 	draw_text(room_width/2,210,"ALL RIGHTS RESERVED");
 }
 
-draw_sprite_ext(sTwilight,0,room_width/2,lerp(100,40,logoY),lerp(1.5,1,logoY),1,0,c_white,logoY);
+draw_sprite_ext(sTwilight,0,room_width/2,lerp(100,40,logoY),lerp(1.5,1,logoY)*bounce,bounce,0,c_white,logoY);
 draw_sprite_part(sTempo,0,0,0,sprite_get_width(sTempo)*logoX,sprite_get_height(sTempo),room_width/2-10,50);

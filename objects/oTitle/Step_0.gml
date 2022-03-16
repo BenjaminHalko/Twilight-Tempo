@@ -1,5 +1,14 @@
 /// @desc
 
+if(audio_is_playing(song)) {
+	var _time = floor(audio_sound_get_track_position(song)/60*bpm);
+	if(_time != lastTime) bounce = 1.2;
+	
+	lastTime = _time;
+}
+
+bounce = ApproachFade(bounce,1,0.05,0.6)
+
 if(show && selected == 0) {
 	Input();
 
@@ -7,6 +16,7 @@ if(show && selected == 0) {
 		global.hardMode = choice;
 		selected = 1;
 		alarm[0] = 5;
+		audio_stop_sound(song);
 		audio_play_sound(snSelect,1,false);
 	}
 	
@@ -23,7 +33,10 @@ if(logoY >= 1) {
 	logoX = Approach(logoX,2,0.05);
 }
 
-if(logoX >= 2) show = true;
+if(logoX >= 2 && !show) {
+	show = true;
+	song = audio_play_sound(mTitle,1,true);
+}
 
 if(array_length(stars) < 150) array_push(stars,{
 	x: random(room_width),

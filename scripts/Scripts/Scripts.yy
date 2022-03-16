@@ -6,7 +6,7 @@
     "path": "folders/Global.yy",
   },
   "resourceVersion": "1.0",
-  "name": "Input",
+  "name": "Scripts",
   "tags": [],
   "resourceType": "GMScript",
 }

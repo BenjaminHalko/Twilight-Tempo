@@ -2,7 +2,7 @@
 if(gameoverNum > 0) {
 	Input();
 	
-	if(gameoverNum > 10) {
+	if(gameoverNum > 20) {
 		key_select = true;
 		gameoverChoice = 1;
 	}
@@ -19,3 +19,5 @@ if(gameoverNum > 0) {
 		audio_play_sound(snBlip,1,false);
 	}
 }
+
+if(!instance_exists(oPlayer) and alarm[0] <= 0) alarm[0] = 30;

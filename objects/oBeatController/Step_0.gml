@@ -5,19 +5,19 @@ if(global.lives <= 0) {
 
 if(audio_is_playing(song) or (global.start && barNumber != 9-4*global.hardMode && song != noone)) {
 	global.time = audio_sound_get_track_position(song)/60*bpm;
-	var _time = floor((global.time % numberOfBeats*2));
+	var _time = floor(global.time % numberOfBeats*2);
 	var _aheadTime = floor(((global.time+0.73) % numberOfBeats*2));
 
 	if(_time < lastTime) {
 		barNumber++;
 		
 		if(barNumber == 9-4*global.hardMode && global.start) exit;
-		else if(barNumber == 8-4*global.hardMode && global.start) beats = [0,4,3,4,2,4,1,4,2,4,3,4,0,4,1];
+		else if(barNumber == 8-4*global.hardMode && global.start) beats = [0,4,3,4,2,4,1,4,2,4,3,4,0,4,1,4];
 		else {
 			ds_list_shuffle(extraBeat);
 			for(var i = 0; i < numberOfBeats; i++) {
 				if(i % 2) {
-					if(!global.start && irandom(max(2,12-barNumber)+extraBeat[| i div 2]) == 0) beats[i] = irandom(3);
+					if(!global.start && extraBeat[| i div 2] != -1 && irandom(max(0,8-barNumber)+extraBeat[| i div 2]) == 0) beats[i] = irandom(3);
 					else beats[i] = 4;
 				} else beats[i] = irandom(3);
 			}

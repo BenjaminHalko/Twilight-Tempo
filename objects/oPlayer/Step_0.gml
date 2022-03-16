@@ -1,4 +1,5 @@
 /// @desc Shoot
+
 if(global.lives > 0) {
 	//Input
 	Input();
@@ -25,6 +26,14 @@ if(global.lives > 0) {
 			direction = other.dir;
 			image_angle = other.dir;
 			amountOfPoints = round(abs((global.time % 1) - 0.5)*200);
+			for(var i = 0; i < 3; i++) {
+				var _time = median(0,floor(global.time % oBeatController.numberOfBeats*2 + (i-1)*0.5) - oBeatController.numberOfBeats,oBeatController.numberOfBeats);
+				if(_time % 2 && oBeatController.beats[_time] != 4) {
+					amountOfPoints = round(abs((global.time % 0.5)*2 - 0.5)*200);
+					exit;
+				}
+			}
+			
 		}
 	
 		if((dir div 90) % 2 == 0) image_xscale = 0.3;
@@ -37,10 +46,12 @@ if(global.lives > 0) {
 	generalShake = Approach(generalShake,0,0.06);
 }
 else {
+	Rumble(0.7*min(15,deathSpd)/15,1);
 	deathSpd = ApproachFade(deathSpd,0,0.3,0.5);
 	drawDir -= min(30,deathSpd)*1.5;
 	generalShake = Approach(generalShake,min(30,deathSpd)/15,0.06);
 	if(deathSpd == 0) {
+		Rumble(1,40);
 		instance_create_depth(x,y,layer_get_depth(layer_get_id("Shadow"))-1,oPlayerExplode);
 		audio_play_sound(snPlayerExplode,2,false);
 		instance_destroy();

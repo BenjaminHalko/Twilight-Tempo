@@ -9,5 +9,5 @@ bpm = 130;
 barNumber = 0;
 
 extraBeat = ds_list_create();
-ds_list_add(extraBeat,2,4,6,8);
-if(global.hardMode) ds_list_add(extraBeat,10,12,14,16);
+ds_list_add(extraBeat,0,4,6,12);
+if(global.hardMode) ds_list_add(extraBeat,-1,-1,-1,-1);

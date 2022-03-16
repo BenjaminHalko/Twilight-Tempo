@@ -12,7 +12,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snPlayerExplode.wav",
-  "duration": 3.819388,
+  "duration": 3.81932,
   "parent": {
     "name": "Sounds",
     "path": "folders/Player/Sounds.yy",
