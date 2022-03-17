@@ -44,7 +44,7 @@ function GetHighscore() {
 		gxc_challenge_get_global_scores(undefined,{challengeId: global.challengeID[global.hardMode],pageSize: 1});
 	}
 	else {
-		var _default = [10000,5000];
+		var _default = [5000,2000];
 		ini_open("save.ini");
 		global.hiScore = ini_read_real("scores",global.modeName[global.hardMode],_default[global.hardMode]);
 		ini_close();

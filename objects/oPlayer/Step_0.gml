@@ -72,7 +72,8 @@ if(startScale == 1.6) {
 		if(global.start) oBeatController.song = audio_play_sound(mTutorial,1,false);
 		else {
 			oBeatController.song = audio_play_sound(mSong,1,true);
-			audio_sound_set_track_position(oBeatController.song, choose(0,29.538,62.769));
+			oBeatController.startTime = choose(0,29.538,66.461);
+			audio_sound_set_track_position(oBeatController.song, oBeatController.startTime);
 		}
 	}
 }

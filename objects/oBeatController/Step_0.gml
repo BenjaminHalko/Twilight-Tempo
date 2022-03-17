@@ -4,7 +4,9 @@ if(global.lives <= 0) {
 }
 
 if(audio_is_playing(song) or (global.start && barNumber != 9-4*global.hardMode && song != noone)) {
-	global.time = audio_sound_get_track_position(song)/60*bpm;
+	var _time = audio_sound_get_track_position(song)-startTime;
+	if(_time < 0) _time += audio_sound_length(mSong);
+	global.time = _time/60*bpm;
 	var _time = floor(global.time % numberOfBeats*2);
 	var _aheadTime = floor(((global.time+0.73) % numberOfBeats*2));
 
@@ -17,7 +19,7 @@ if(audio_is_playing(song) or (global.start && barNumber != 9-4*global.hardMode &
 			ds_list_shuffle(extraBeat);
 			for(var i = 0; i < numberOfBeats; i++) {
 				if(i % 2) {
-					if(!global.start && extraBeat[| i div 2] != -1 && irandom(max(0,8-barNumber)+extraBeat[| i div 2]) == 0) beats[i] = irandom(3);
+					if(!global.start && barNumber > 8 && extraBeat[| i div 2] != -1 && irandom(max(0,12-barNumber)+extraBeat[| i div 2]) == 0) beats[i] = irandom(3);
 					else beats[i] = 4;
 				} else beats[i] = irandom(3);
 			}
