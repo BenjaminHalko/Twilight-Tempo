@@ -3,7 +3,7 @@ if(global.lives <= 0) {
 	exit;
 }
 
-if(audio_is_playing(song) or (global.start && barNumber != 9-4*global.hardMode && song != noone)) {
+if(audio_is_playing(song) && (!global.start or barNumber < 9-4*global.hardMode)) {
 	var _time = audio_sound_get_track_position(song)-startTime;
 	if(_time < 0) _time += audio_sound_length(mSong);
 	global.time = _time/60*bpm;
@@ -31,8 +31,8 @@ if(audio_is_playing(song) or (global.start && barNumber != 9-4*global.hardMode &
 		if(_time < numberOfBeats) {
 			if(beats[_time] != 4) {
 				var _dir = beats[_time]*90;
-				if(oBackground.mode == 0) instance_create_layer(room_width/2+lengthdir_x(room_width/2-32,_dir),room_height/2+lengthdir_y(room_height/2-32,_dir),"GUI",oWarning);
-				audio_play_sound(global.dirSounds[beats[_time]],2,false);
+				if(global.start) instance_create_layer(room_width/2+lengthdir_x(room_width/2-32,_dir),room_height/2+lengthdir_y(room_height/2-32,_dir),"GUI",oWarning);
+				audio_play_sound(dirSounds[beats[_time]],3,false);
 			}
 		}
 	}

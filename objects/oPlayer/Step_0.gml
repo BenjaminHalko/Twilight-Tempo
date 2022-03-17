@@ -10,14 +10,14 @@ if(global.lives > 0) {
 
 	//Shooting
 	if(key_left_pressed or key_right_pressed or key_down_pressed or key_up_pressed) {
-		
-		
 		if(collision_line(x,y,x+lengthdir_x(150,dir),y+lengthdir_y(150,dir),oEnemy,false,false) == noone) {
-			with(instance_create_layer(x,y-10,"GUI",oScore)) amount = string("-100");
-			global.score = max(0,global.score-100);
+			penalty -= 100;
+			with(instance_create_layer(x,y-10,"GUI",oScore)) amount = string(other.penalty);
+			global.score = max(0,global.score+penalty);
 			audio_stop_sound(snPlayerShootFail);
 			audio_sound_pitch(audio_play_sound(snPlayerShootFail,2,false),random_range(0.4,0.5));
 		} else {
+			penalty = 0;
 			audio_sound_pitch(audio_play_sound(snPlayerShoot,2,false),random_range(0.5,1.3));
 			audio_play_sound(snEnemyDestroy,2,false);
 		}

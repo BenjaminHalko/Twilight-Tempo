@@ -10,6 +10,9 @@ barNumber = 0;
 
 startTime = 0;
 
+dirSounds = [snRight,snUp,snLeft,snDown];
+
 extraBeat = ds_list_create();
 ds_list_add(extraBeat,1,6,12,24);
+
 if(global.hardMode) ds_list_add(extraBeat,-1,-1,-1,-1);

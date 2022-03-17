@@ -12,5 +12,7 @@ cannonMove = 0;
 
 deathSpd = 45;
 
+penalty = 0;
+
 startScale = 0;
 curve = animcurve_get_channel(PlayerStartCurve,0);

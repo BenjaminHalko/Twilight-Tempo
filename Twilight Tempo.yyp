@@ -33,7 +33,6 @@
     {"id":{"name":"sCannon","path":"sprites/sCannon/sCannon.yy",},"order":2,},
     {"id":{"name":"snPlayerShootFail","path":"sounds/snPlayerShootFail/snPlayerShootFail.yy",},"order":6,},
     {"id":{"name":"snIntro2","path":"sounds/snIntro2/snIntro2.yy",},"order":7,},
-    {"id":{"name":"mTitle","path":"sounds/mTitle/mTitle.yy",},"order":10,},
     {"id":{"name":"oScreenshot","path":"objects/oScreenshot/oScreenshot.yy",},"order":25,},
     {"id":{"name":"oPlayerExplode","path":"objects/oPlayerExplode/oPlayerExplode.yy",},"order":8,},
     {"id":{"name":"oBullet","path":"objects/oBullet/oBullet.yy",},"order":4,},
@@ -92,7 +91,9 @@
   "TextureGroups": [
     {"isScaled":true,"autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":-1,"resourceVersion":"1.3","name":"Default","resourceType":"GMTextureGroup",},
   ],
-  "IncludedFiles": [],
+  "IncludedFiles": [
+    {"CopyToMask":0,"filePath":"datafiles","resourceVersion":"1.0","name":"GXC_Library_Documentation.pdf","resourceType":"GMIncludedFile",},
+  ],
   "MetaData": {
     "IDEVersion": "2022.2.1.618",
   },

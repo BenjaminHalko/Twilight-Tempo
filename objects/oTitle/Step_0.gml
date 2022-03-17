@@ -35,7 +35,7 @@ if(logoY >= 1) {
 
 if(logoX >= 2 && !show) {
 	show = true;
-	song = audio_play_sound(mTitle,1,true);
+	song = audio_play_sound(mSong,1,true);
 }
 
 if(array_length(stars) < 150) array_push(stars,{
