@@ -44,4 +44,4 @@ if(audio_is_playing(song) && (!global.start or barNumber < 9-4*global.hardMode))
 
 	lastTime = _time;
 	aheadLastTime = _aheadTime
-}
+} else if(global.start && !audio_is_playing(song) && song != noone) barNumber = 9-4*global.hardMode;
