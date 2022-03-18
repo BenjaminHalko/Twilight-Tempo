@@ -9,8 +9,7 @@ if(global.lives > 0) {
 		dir = point_direction(0,0,key_right_pressed-key_left_pressed,key_down_pressed-key_up_pressed);
 
 	//Shooting
-	if(key_left_pressed or key_right_pressed or key_down_pressed or key_up_pressed or shoot) {
-		shoot = 0;
+	if(key_left_pressed or key_right_pressed or key_down_pressed or key_up_pressed) {
 		if(collision_line(x,y,x+lengthdir_x(150,dir),y+lengthdir_y(150,dir),oEnemy,false,false) == noone) {
 			penalty -= 100;
 			with(instance_create_layer(x,y-10,"GUI",oScore)) amount = string(other.penalty);
@@ -79,4 +78,5 @@ if(startScale == 1.6) {
 	}
 }
 for(var i = 0; i < 4; i++) shake[i] = Approach(shake[i],0,0.06);
+
 
