@@ -11,7 +11,52 @@ if(audio_is_playing(song) && (!global.start or barNumber < 9-4*global.hardMode))
 	var _aheadTime = floor(((global.time+0.73) % numberOfBeats*2));
 
 	if(_time < lastTime) {
-		barNumber++;
+		if(global.score >= 40000) {
+			if(mode != 9) {
+				ds_list_clear(extraBeat);
+				ds_list_add(extraBeat,0,0,4,8);
+			} mode = 9;
+		} else if(global.score >= 35000) {
+			if(mode != 8) {
+				ds_list_clear(extraBeat);
+				ds_list_add(extraBeat,0,0,8,8);
+			} mode = 8;
+		} else if(global.score >= 30000) {
+			if(mode != 7) {
+				ds_list_clear(extraBeat);
+				ds_list_add(extraBeat,0,1,8,12);
+			} mode = 7;
+		} else if(global.score >= 20000) {
+			if(mode != 6) {
+				ds_list_clear(extraBeat);
+				ds_list_add(extraBeat,0,1,8,16);
+			} mode = 6;
+		} else if(global.score >= 15000) {
+			if(mode != 5) {
+				ds_list_clear(extraBeat);
+				ds_list_add(extraBeat,0,1,10,18);
+			} mode = 5;
+		} else if(global.score >= 10000) {
+			if(mode != 4) {
+				ds_list_clear(extraBeat);
+				ds_list_add(extraBeat,0,6,12,24);
+			} mode = 4;
+		} else if(global.score >= 5000) {
+			if(mode != 3) {
+				ds_list_clear(extraBeat);
+				ds_list_add(extraBeat,1,6,12,24);
+			} mode = 3;
+		} else if(global.score >= 3000) {
+			if(mode < 2) {
+				ds_list_clear(extraBeat);
+				ds_list_add(extraBeat,-6,-1,-1,-1);
+				mode = 2;
+			} 
+		} else if(global.score >= 600) mode = 1;
+		
+		if(global.hardMode and ds_list_size(extraBeat) != 8) ds_list_add(extraBeat,-1,-1,-1,-1);
+		
+		if(global.start or mode >= 3) barNumber++;
 		
 		if(barNumber == 9-4*global.hardMode && global.start) exit;
 		else if(barNumber == 8-4*global.hardMode && global.start) beats = [0,4,3,4,2,4,1,4,2,4,3,4,0,4,1,4];
@@ -19,11 +64,14 @@ if(audio_is_playing(song) && (!global.start or barNumber < 9-4*global.hardMode))
 			ds_list_shuffle(extraBeat);
 			for(var i = 0; i < numberOfBeats; i++) {
 				if(i % 2) {
-					if(!global.start && barNumber > 8 && extraBeat[| i div 2] != -1 && irandom(max(0,12-barNumber)+extraBeat[| i div 2]) == 0) beats[i] = irandom(3);
+					if(!global.start && mode > 1 && extraBeat[| i div 2] != -1 && (irandom(max(0,8-barNumber)+extraBeat[| i div 2]) == 0 or mode == 2)) beats[i] = irandom(3);
 					else beats[i] = 4;
-				} else beats[i] = irandom(3);
+				} else if(!global.start && i % 4 == 2 && mode == 0) beats[i] = 4;
+				else beats[i] = irandom(3);
 			}
 		}
+		
+		if(mode == 2) mode = 2.5;
 	}
 	
 	if(_time != lastTime) {

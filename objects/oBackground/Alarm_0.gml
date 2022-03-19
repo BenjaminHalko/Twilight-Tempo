@@ -9,6 +9,9 @@ if(index == 0) {
 	global.start = false;
 	global.score = 0;
 	global.lives = 12;
+	oBeatController.mode = 0;
 	oBeatController.barNumber = 0;
+	ds_list_clear(oBeatController.extraBeat);
+	ds_list_add(oBeatController.extraBeat,-1,-1,-1,-1);
 	alarm[1] = 30;
 }
