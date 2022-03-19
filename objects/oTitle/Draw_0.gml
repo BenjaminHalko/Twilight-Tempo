@@ -27,7 +27,7 @@ if(show) {
 	
 	draw_set_color(_col[global.challenge != undefined]);
 	var _onoff = ["OFF","ON"];
-	draw_text(113,170,"HINTS: "+_onoff[global.hintMode]);
+	draw_text(113,170,"PRACTICE: "+_onoff[global.hintMode]);
 	
 	draw_set_halign(fa_center);
 	draw_set_color(c_white);

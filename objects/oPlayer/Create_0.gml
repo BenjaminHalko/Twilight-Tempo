@@ -14,5 +14,7 @@ deathSpd = 45;
 
 penalty = 0;
 
+shoot = false;
+
 startScale = 0;
 curve = animcurve_get_channel(PlayerStartCurve,0);
