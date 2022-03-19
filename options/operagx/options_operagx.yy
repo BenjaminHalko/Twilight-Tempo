@@ -1,6 +1,6 @@
 {
-  "option_operagx_version": "0.0.0.38",
-  "option_operagx_next_version": "0.0.0.39",
+  "option_operagx_version": "0.0.0.39",
+  "option_operagx_next_version": "0.0.0.40",
   "option_operagx_game_name": "Twilight Tempo",
   "option_operagx_interpolate_pixels": false,
   "option_operagx_scale": 0,

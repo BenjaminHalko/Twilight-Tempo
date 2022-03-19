@@ -1,5 +1,5 @@
 /// @desc
-if(show && selected == 0) {
+if(show && selected == 0 && !mouse_check_button_pressed(mb_left)) {
 	if(event_data[? "posX"] >= room_width/2) {
 		if(event_data[? "posY"] >= room_height/2) {
 			choice--;
