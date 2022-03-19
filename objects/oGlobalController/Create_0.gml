@@ -14,13 +14,16 @@ global.lives = 12;
 global.time = 0;
 global.hardMode = false;
 
-global.start = true;
+global.challenge = gxc_get_query_param("challenge");
+global.start = global.challenge == undefined;
 
 global.hiScore = 0;
 
 global.challengeID = ["0e1771b3-4621-4907-b8a2-b26d7d5bbd6d","938d4b27-11dd-4b0e-a120-6faf8b9e31fe"];
 
 global.modeName = ["normal","hard"];
+
+global.hintMode = false;
 
 global.stars = [];
 global.frontStars = [];

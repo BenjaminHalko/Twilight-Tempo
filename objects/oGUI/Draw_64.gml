@@ -7,6 +7,7 @@ draw_text(6,6,"SCORE\n  "+string_replace_all(string_format(global.score,4,0)," "
 
 draw_set_halign(fa_center);
 if(global.start) draw_text(room_width/2,6,"TUTORIAL\nLEVEL");
+else if(global.hintMode) draw_text(room_width/2,6,"HINT MODE\nACTIVATED");
 else draw_text(room_width/2,6,"HIGH SCORE\n"+string_replace_all(string_format(global.hiScore,5,0)," ","0"));
 
 for(var i = 0; i < 3; i++) {

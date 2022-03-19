@@ -3,8 +3,6 @@ for(var i = 0; i < gamepad_get_device_count(); i++) {
 	_xAxis = sign(gamepad_axis_value(i,gp_axislh)+gamepad_axis_value(i,gp_axisrh));
 	_yAxis = sign(gamepad_axis_value(i,gp_axislv)+gamepad_axis_value(i,gp_axisrv));
 	
-	
-	
 	if(global.rumble <= 0) gamepad_set_vibration(i,0,0);
 	
 	if(_xAxis != 0) {

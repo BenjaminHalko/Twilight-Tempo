@@ -13,16 +13,31 @@ if(show && selected == 0) {
 	Input();
 
 	if(key_select) {
-		global.hardMode = choice;
-		selected = 1;
-		alarm[0] = 5;
-		audio_stop_sound(song);
-		audio_play_sound(snSelect,1,false);
+		if(choice == 2) {
+			global.hintMode = !global.hintMode;
+			audio_play_sound(snBlip,1,false);
+		}
+		else {
+			global.hardMode = choice;
+			selected = 1;
+			alarm[0] = 5;
+			audio_stop_sound(song);
+			audio_play_sound(snSelect,1,false);
+		}
 	}
 	
-	if(key_up_pressed or key_down_pressed or key_left_pressed or key_right_pressed) {
-		choice = !choice;
-		audio_play_sound(snBlip,1,false);
+	if(global.challenge == undefined) {
+		if(key_up_pressed or key_left_pressed) {
+			choice--;
+			if(choice < 0) choice = 2;
+			audio_play_sound(snBlip,1,false);
+		}
+	
+		if(key_down_pressed or key_right_pressed) {
+			choice++;
+			if(choice > 2) choice = 0;
+			audio_play_sound(snBlip,1,false);
+		}
 	}
 }
 

@@ -1,6 +1,6 @@
 /// @desc
 
-choice = 0;
+choice = global.challenge == global.challengeID[1];
 
 show = false;
 
