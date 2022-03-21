@@ -1,5 +1,5 @@
 {
-  "option_linux_display_name": "Twilight",
+  "option_linux_display_name": "Twilight Tempo",
   "option_linux_version": "1.0.0.0",
   "option_linux_maintainer_email": "",
   "option_linux_homepage": "http://www.yoyogames.com",
@@ -15,7 +15,7 @@
   "option_linux_sync": false,
   "option_linux_resize_window": true,
   "option_linux_scale": 0,
-  "option_linux_texture_page": "256x256",
+  "option_linux_texture_page": "512x512",
   "option_linux_enable_steam": false,
   "option_linux_disable_sandbox": false,
   "resourceVersion": "1.0",

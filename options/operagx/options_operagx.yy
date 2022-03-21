@@ -1,10 +1,10 @@
 {
-  "option_operagx_version": "0.0.0.39",
-  "option_operagx_next_version": "0.0.0.40",
+  "option_operagx_version": "0.0.0.51",
+  "option_operagx_next_version": "0.0.0.52",
   "option_operagx_game_name": "Twilight Tempo",
   "option_operagx_interpolate_pixels": false,
   "option_operagx_scale": 0,
-  "option_operagx_texture_page": "256x256",
+  "option_operagx_texture_page": "512x512",
   "option_operagx_display_cursor": false,
   "option_operagx_guid": "30258c27-17de-45b7-9f37-b7ce1c4d94d8",
   "option_operagx_team_name": "BenjaminHalko studio",

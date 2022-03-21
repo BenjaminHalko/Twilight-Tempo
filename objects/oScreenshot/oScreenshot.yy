@@ -26,8 +26,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Twilight Tempo",
-    "path": "Twilight Tempo.yyp",
+    "name": "Global",
+    "path": "folders/Global.yy",
   },
   "resourceVersion": "1.0",
   "name": "oScreenshot",

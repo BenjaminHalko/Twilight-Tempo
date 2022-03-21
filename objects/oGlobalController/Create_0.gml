@@ -2,7 +2,7 @@ randomize();
 
 surface_resize(application_surface,256,224);
 
-audio_master_gain(0.75);
+audio_master_gain(0.60);
 
 global.joystickPressedH = ds_map_create();
 global.joystickPressedV = ds_map_create();
@@ -10,7 +10,7 @@ global.lastUsedGamepad = noone;
 global.rumble = 0;
 
 global.score = 0;
-global.lives = 12;
+global.lives = 0;
 global.time = 0;
 global.hardMode = false;
 
@@ -51,5 +51,3 @@ if(os_type != os_operagx) window_set_size(1024,896);
 
 for(var i = 0; i < gamepad_get_device_count(); i++) gamepad_set_axis_deadzone(i, 0.5);
 lastTime = 0;
-
-room_goto_next();

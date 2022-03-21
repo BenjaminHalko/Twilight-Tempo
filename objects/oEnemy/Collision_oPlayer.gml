@@ -4,7 +4,7 @@ hit = true;
 oPlayer.shake[direction div 90] = 2;
 oPlayer.generalShake = 2;
 global.lives--;
-oGUI.scale[global.lives div 4] = 1.4;
+oGUI.scale[global.lives div (4*(1+global.hintMode))] = 1.4;
 
 Rumble(0.8,5);
 

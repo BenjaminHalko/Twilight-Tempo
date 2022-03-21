@@ -8,8 +8,6 @@ if(gameoverNum > 0) {
 	}
 	
 	if(key_select) {
-		global.score = 0;
-		global.lives = 12;
 		if(gameoverChoice == 0) room_restart();
 		else game_restart();
 	}
