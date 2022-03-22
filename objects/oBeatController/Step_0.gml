@@ -75,7 +75,10 @@ if(audio_is_playing(song) && (!global.start or barNumber < 9-4*global.hardMode))
 	}
 	
 	if(_time != lastTime) {
-		if(_time % 2 == 0) oPlayer.cannonMove = 2;
+		if(_time % 2 == 0) {
+			oPlayer.cannonMove = 2;
+			if(!global.start) oShadow.radius = 1;
+		}
 		if(_time < numberOfBeats) {
 			if(beats[_time] != 4) {
 				var _dir = beats[_time]*90;

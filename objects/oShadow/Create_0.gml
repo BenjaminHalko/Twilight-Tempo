@@ -11,3 +11,4 @@ surface_reset_target();
 
 stars = [];
 
+radius = 0;

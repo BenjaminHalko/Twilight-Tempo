@@ -32,10 +32,10 @@ function Wave(_from, _to, _duration, _offset) {
 function drawCircle(_x,_y,_radius,_alpha) {
 	for(var i = 0; i < 6; i++) {
 		draw_set_alpha((0.8-i*0.1)*_alpha);
-		draw_circle(_x-1,_y-1,_radius+i*3,false);
+		draw_circle(_x-(os_type != os_operagx),_y-(os_type != os_operagx),_radius+i*3,false);
 	}
 	draw_set_alpha(_alpha);
-	draw_circle(_x-1,_y-1,16,false);
+	draw_circle(_x-(os_type != os_operagx),_y-(os_type != os_operagx),16,false);
 	if(_alpha != 1) draw_set_alpha(1);
 }
 
