@@ -31,7 +31,6 @@
     {"id":{"name":"sCannon","path":"sprites/sCannon/sCannon.yy",},"order":2,},
     {"id":{"name":"snPlayerShootFail","path":"sounds/snPlayerShootFail/snPlayerShootFail.yy",},"order":6,},
     {"id":{"name":"snIntro2","path":"sounds/snIntro2/snIntro2.yy",},"order":7,},
-    {"id":{"name":"mSong17","path":"sounds/mSong17/mSong17.yy",},"order":4,},
     {"id":{"name":"oScreenshot","path":"objects/oScreenshot/oScreenshot.yy",},"order":2,},
     {"id":{"name":"oPlayerExplode","path":"objects/oPlayerExplode/oPlayerExplode.yy",},"order":8,},
     {"id":{"name":"oBullet","path":"objects/oBullet/oBullet.yy",},"order":4,},
