@@ -1,7 +1,9 @@
 /// @desc
-index -= 1-mode*2;
-oShadow.darkness = max(0,index-4)/4;
-layer_background_blend(layer_background_get_id(layer_get_id("Background")),backgroundColors[min(4,index)]);
+
+if(index < 4) layer_background_blend(layer_background_get_id(layer_get_id("Background")),backgroundColors[index]);
+else oShadow.darkness = (index-3)/4;
+index++;
+
 if(index == 8 && global.start) {
 	global.start = false;
 	global.score = 0;

@@ -6,4 +6,6 @@ if(index != 0) {
 	}
 }
 
-draw_sprite(sBackground,min(4,index),0,0);
+draw_sprite_ext(sBackgroundClouds,0,0,0,1,1,0,cloudColors[min(4,index)],1);
+
+if(index < 4) draw_sprite(sBackground,index,0,0);

@@ -14,7 +14,9 @@ global.lives = 0;
 global.time = 0;
 global.hardMode = false;
 
-global.challenge = gxc_get_query_param("challenge");
+if(os_type == os_operagx) global.challenge = gxc_get_query_param("challenge");
+else global.challenge = undefined;
+
 global.start = global.challenge == undefined;
 
 global.hiScore = 0;

@@ -30,6 +30,7 @@
     {"id":{"name":"mSong","path":"sounds/mSong/mSong.yy",},"order":0,},
     {"id":{"name":"sCannon","path":"sprites/sCannon/sCannon.yy",},"order":2,},
     {"id":{"name":"snPlayerShootFail","path":"sounds/snPlayerShootFail/snPlayerShootFail.yy",},"order":6,},
+    {"id":{"name":"sBackgroundClouds","path":"sprites/sBackgroundClouds/sBackgroundClouds.yy",},"order":4,},
     {"id":{"name":"snIntro2","path":"sounds/snIntro2/snIntro2.yy",},"order":7,},
     {"id":{"name":"oScreenshot","path":"objects/oScreenshot/oScreenshot.yy",},"order":2,},
     {"id":{"name":"oPlayerExplode","path":"objects/oPlayerExplode/oPlayerExplode.yy",},"order":8,},
