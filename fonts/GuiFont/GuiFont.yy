@@ -14,8 +14,8 @@
   "first": 0,
   "last": 0,
   "sampleText": "abcdef ABCDEF\n0123456789 .,<>\"'&!?\nthe quick brown fox jumps over the lazy dog\nTHE QUICK BROWN FOX JUMPS OVER THE LAZY DOG\nDefault character: ▯ (9647)",
-  "includeTTF": false,
-  "TTFName": "",
+  "includeTTF": true,
+  "TTFName": "${project_dir}\\fonts\\GuiFont\\PressStart2P-vaV7.ttf",
   "textureGroupId": {
     "name": "Default",
     "path": "texturegroups/Default",
