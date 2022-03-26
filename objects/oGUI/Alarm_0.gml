@@ -1,5 +1,14 @@
 /// @desc
 if(newRecord != 0) newRecord++;
+if(gameoverNum == 0 and BLIND) {
+	var _text = "Game Over! Your score was "+string(global.score)+".";
+	if(!global.hintMode and !global.start) {
+		_text += " The high score is "+string(global.hiScore)+".";
+		if(global.score > global.hiScore) _text += " You beat the high score!";
+	}
+	_text += " Press left to retry and right to exit to the main menu.";
+	Speak(_text);
+}
 if(!global.hintMode) {
 	if(gameoverNum == 0 && !global.start && global.score > global.hiScore) {
 		newRecord++;

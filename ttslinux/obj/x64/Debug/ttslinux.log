@@ -1,0 +1,12 @@
+﻿  Validating sources
+  Copying sources remotely to '192.168.0.185'
+  Validating architecture
+  Validating architecture
+  Starting remote build
+  Compiling sources:
+  main.cpp
+D:\Benjaminz\Gamemaker\Gamemaker 2.3 Games\Current Games\Twilight Tempo\ttslinux\main.cpp(34,11): warning : ISO C++ forbids converting a string constant to ‘char*’ [-Wwrite-strings]
+D:\Benjaminz\Gamemaker\Gamemaker 2.3 Games\Current Games\Twilight Tempo\ttslinux\main.cpp(34,11): warning :    34 |     Speak("Cheese is nice");
+D:\Benjaminz\Gamemaker\Gamemaker 2.3 Games\Current Games\Twilight Tempo\ttslinux\main.cpp(34,11): warning :       |           ^~~~~~~~~~~~~~~~
+  Linking objects
+  ttslinux.vcxproj -> D:\Benjaminz\Gamemaker\Gamemaker 2.3 Games\Current Games\Twilight Tempo\ttslinux\bin\x64\Debug\ttslinux.out

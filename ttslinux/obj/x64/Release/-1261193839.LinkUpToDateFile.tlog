@@ -1,0 +1,1 @@
+g++ -o "/home/benjamin/projects/ttslinux/bin/x64/Release/libtts.so" -Wl,--no-undefined -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack -shared -pthread /home/benjamin/projects/ttslinux/obj/x64/Release/main.o

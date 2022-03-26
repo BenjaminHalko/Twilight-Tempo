@@ -46,7 +46,7 @@
   "maintainGms1Font": false,
   "parent": {
     "name": "Score",
-    "path": "folders/Enemy/Score.yy",
+    "path": "folders/Score.yy",
   },
   "resourceVersion": "1.0",
   "name": "ScoreFont",

@@ -24,7 +24,10 @@ if(gameoverNum > 0) {
 	if(newRecord % 2) draw_text(room_width/2,30,"NEW RECORD");
 	draw_set_color(c_white);
 	
-	draw_text(room_width/2,room_height/2+10,"CONTINUE?\n\n"+string(20-ceil(gameoverNum)));
+	var _text = "CONTINUE?\n\n";
+	if(!BLIND) _text += string(20-ceil(gameoverNum))
+	
+	draw_text(room_width/2,room_height/2+10,_text);
 	
 	draw_set_halign(fa_right);
 	var _text = "YES";

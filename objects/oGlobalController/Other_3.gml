@@ -1,0 +1,2 @@
+/// @desc
+if(BLIND) SpeakStop();
