@@ -17,10 +17,10 @@ function HitEnemy(_x,_y) {
 			_enemy.dead = true;
 			spd = 0;
 			
-			if(_enemy.sprite_index = sEnemy) {
-				with(instance_create_layer(_enemy.x,_enemy.y,"GUI",oScore)) amount = string(other.amountOfPoints);
-				global.score += amountOfPoints;
-			} else if(oGUI.heartAppear) oGUI.heartAmount++;
+			var _score = round(max(0,1-min(abs(amountOfPoints-_enemy.timePoints),abs(amountOfPoints-_enemy.timePoints-8))/1.5)*100);
+			
+			with(instance_create_layer(_enemy.x,_enemy.y,"GUI",oScore)) amount = string(_score);
+			global.score += _score;
 		}
 	}
 }	

@@ -3,12 +3,12 @@ if(global.lives <= 0) {
 	exit;
 }
 
-if(audio_is_playing(song) && (!global.start or barNumber < 9-4*global.hardMode)) {
-	var _time = audio_sound_get_track_position(song)-startTime;
+if(audio_is_playing(song) && (!global.start or barNumber < 9)) {
+	var _time = audio_sound_get_track_position(song);
 	if(_time < 0) _time += audio_sound_length(mSong);
 	global.time = _time/60*bpm;
 	var _time = floor(global.time % numberOfBeats*2);
-	var _aheadTime = floor(((global.time+0.73) % numberOfBeats*2));
+	var _aheadTime = floor(((global.time+aheadTime) % numberOfBeats*2));
 
 	if(_time < lastTime) {
 		if(global.score >= 40000) {
@@ -54,12 +54,10 @@ if(audio_is_playing(song) && (!global.start or barNumber < 9-4*global.hardMode))
 			} 
 		} else if(global.score >= 600) mode = 1;
 		
-		if(global.hardMode and ds_list_size(extraBeat) != 8) ds_list_add(extraBeat,-1,-1,-1,-1);
-		
 		if(global.start or mode >= 3) barNumber++;
 		
-		if(barNumber == 9-4*global.hardMode && global.start) exit;
-		else if(barNumber == 8-4*global.hardMode && global.start) beats = [0,4,3,4,2,4,1,4,2,4,3,4,0,4,1,4];
+		if(barNumber == 9 && global.start) exit;
+		else if(barNumber == 8 && global.start) beats = [0,4,3,4,2,4,1,4];
 		else {
 			ds_list_shuffle(extraBeat);
 			for(var i = 0; i < numberOfBeats; i++) {
@@ -95,4 +93,4 @@ if(audio_is_playing(song) && (!global.start or barNumber < 9-4*global.hardMode))
 
 	lastTime = _time;
 	aheadLastTime = _aheadTime
-} else if(global.start && !audio_is_playing(song) && song != noone) barNumber = 9-4*global.hardMode;
+} else if(global.start && !audio_is_playing(song) && song != noone) barNumber = 9;

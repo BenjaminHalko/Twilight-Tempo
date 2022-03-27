@@ -2,10 +2,12 @@
   "resources": [
     {"id":{"name":"snEnemyDestroy","path":"sounds/snEnemyDestroy/snEnemyDestroy.yy",},"order":3,},
     {"id":{"name":"oShadow","path":"objects/oShadow/oShadow.yy",},"order":2,},
+    {"id":{"name":"mSongFast","path":"sounds/mSongFast/mSongFast.yy",},"order":5,},
     {"id":{"name":"http_utils","path":"scripts/http_utils/http_utils.yy",},"order":0,},
     {"id":{"name":"oScore","path":"objects/oScore/oScore.yy",},"order":0,},
     {"id":{"name":"gxc_api_config","path":"scripts/gxc_api_config/gxc_api_config.yy",},"order":3,},
     {"id":{"name":"sBackground","path":"sprites/sBackground/sBackground.yy",},"order":3,},
+    {"id":{"name":"mTutorialFast","path":"sounds/mTutorialFast/mTutorialFast.yy",},"order":4,},
     {"id":{"name":"mTutorial","path":"sounds/mTutorial/mTutorial.yy",},"order":3,},
     {"id":{"name":"snPlayerHurt","path":"sounds/snPlayerHurt/snPlayerHurt.yy",},"order":2,},
     {"id":{"name":"oGlobalController","path":"objects/oGlobalController/oGlobalController.yy",},"order":0,},

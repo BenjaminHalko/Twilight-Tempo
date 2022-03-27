@@ -5,7 +5,7 @@ surface_resize(application_surface,256,224);
 audio_master_gain(0.60);
 
 //Config
-#macro BLIND 1
+#macro BLIND 0
 #macro TOUCH 0
 
 //Gamepad

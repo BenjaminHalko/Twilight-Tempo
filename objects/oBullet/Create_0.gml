@@ -8,4 +8,4 @@ lastX = x;
 lastY = y;
 waveX = x;
 waveY = y;
-amountOfPoints = 0;
+amountOfPoints = (global.time*2) % oBeatController.numberOfBeats;

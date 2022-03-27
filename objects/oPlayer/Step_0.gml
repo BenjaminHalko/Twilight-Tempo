@@ -26,15 +26,6 @@ if(global.lives > 0) {
 		with(instance_create_layer(x+lengthdir_x(bulletLength,dir),y+lengthdir_y(bulletLength,dir),"Bullet",oBullet)) {
 			direction = other.dir;
 			image_angle = other.dir;
-			amountOfPoints = round(abs((global.time % 1) - 0.5)*200);
-			for(var i = 0; i < 3; i++) {
-				var _time = median(0,floor(global.time % oBeatController.numberOfBeats*2 + (i-1)*0.5) - oBeatController.numberOfBeats,oBeatController.numberOfBeats);
-				if(_time % 2 && oBeatController.beats[_time] != 4) {
-					amountOfPoints = round(abs((global.time % 0.5)*2 - 0.5)*200);
-					exit;
-				}
-			}
-			
 		}
 	
 		if((dir div 90) % 2 == 0) image_xscale = 0.3;
@@ -70,11 +61,12 @@ if(startScale == 1.6) {
 	image_xscale = animcurve_channel_evaluate(curve,min(1,startScale));
 	image_yscale = animcurve_channel_evaluate(curve,min(1,startScale));
 	if(startScale == 1.6) {
-		if(global.start) oBeatController.song = audio_play_sound(mTutorial,1,false);
+		var _tutorial = [mTutorial,mTutorialFast];
+		var _normal = [mSong,mSongFast];
+		if(global.start) oBeatController.song = audio_play_sound(_tutorial[global.hardMode],1,false);
 		else {
-			oBeatController.song = audio_play_sound(mSong,1,true);
-			oBeatController.startTime = choose(0,29.538,66.461);
-			audio_sound_set_track_position(oBeatController.song, oBeatController.startTime);
+			oBeatController.song = audio_play_sound(_normal[global.hardMode],1,true);
+			audio_sound_set_track_position(oBeatController.song, choose(0,29.538,66.461)*130/oBeatController.bpm);
 		}
 	}
 }
