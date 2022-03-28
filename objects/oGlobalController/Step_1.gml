@@ -18,5 +18,5 @@ if((global.demo or room == rTitle) && floor(global.time) > lastWaitTime) {
 
 if(global.demo && room != rTitle) {
 	Input();
-	if(key_select or key_left_pressed or key_right_pressed or key_up_pressed or key_down_pressed) game_restart();
+	if(key_select or key_left or key_right or key_up or key_down) game_restart();
 }

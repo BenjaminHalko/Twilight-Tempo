@@ -5,11 +5,11 @@ if(global.lives > 0) {
 	Input();
 
 	//Direction
-	if(abs(key_right_pressed-key_left_pressed) != abs(key_down_pressed-key_up_pressed))
-		dir = point_direction(0,0,key_right_pressed-key_left_pressed,key_down_pressed-key_up_pressed);
+	if(abs(key_right-key_left) != abs(key_down-key_up))
+		dir = point_direction(0,0,key_right-key_left,key_down-key_up);
 
 	//Shooting
-	if(key_left_pressed or key_right_pressed or key_down_pressed or key_up_pressed or shoot) {
+	if(key_left or key_right or key_down or key_up or shoot) {
 		shoot = false;
 		if(collision_line(x,y,x+lengthdir_x(150,dir),y+lengthdir_y(150,dir),oEnemy,false,false) == noone) {
 			penalty -= 100;

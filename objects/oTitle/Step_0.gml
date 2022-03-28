@@ -29,15 +29,15 @@ if(show && selected == 0) {
 		}
 	}
 	
-	if(key_up_pressed or key_left_pressed or key_down_pressed or key_right_pressed) oGlobalController.waitTimer = oGlobalController.maxWait+16-ceil(global.time % 16);
+	if(key_up or key_left or key_down or key_right) oGlobalController.waitTimer = oGlobalController.maxWait+16-ceil(global.time % 16);
 	
-	if(key_up_pressed or key_left_pressed) {
+	if(key_up or key_left) {
 		choice--;
 		if(choice < 0) choice = 2;
 		audio_play_sound(snBlip,1,false);
 	}
 	
-	if(key_down_pressed or key_right_pressed) {
+	if(key_down or key_right) {
 		choice++;
 		if(choice > 2) choice = 0;
 		audio_play_sound(snBlip,1,false);
