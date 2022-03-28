@@ -4,7 +4,7 @@ for(var i = 0; i < array_length(stars); i++) {
 	draw_set_alpha(Wave(stars[i].alpha1,stars[i].alpha2,stars[i].alphaSpeed,stars[i].alphaOffset));
 	draw_point_color(stars[i].x,stars[i].y,stars[i].col);
 	draw_set_alpha(1);
-	stars[i].x -= stars[i].far*5*logoX;
+	stars[i].x -= stars[i].far*5*max(logoX,global.demo*2);
 	while(stars[i].x < 0) {
 		stars[i].x += room_width;
 		stars[i].y = irandom(room_height);

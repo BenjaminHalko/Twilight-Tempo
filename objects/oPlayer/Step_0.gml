@@ -60,13 +60,13 @@ if(startScale == 1.6) {
 	startScale = Approach(startScale,1.6,0.05);
 	image_xscale = animcurve_channel_evaluate(curve,min(1,startScale));
 	image_yscale = animcurve_channel_evaluate(curve,min(1,startScale));
-	if(startScale == 1.6) {
+	if(startScale == 1.6 && !global.demo) {
 		var _tutorial = [mTutorial,mTutorialFast];
 		var _normal = [mSong,mSongFast];
-		if(global.start) oBeatController.song = audio_play_sound(_tutorial[global.hardMode],1,false);
+		if(global.start) global.song = audio_play_sound(_tutorial[global.hardMode],1,false);
 		else {
-			oBeatController.song = audio_play_sound(_normal[global.hardMode],1,true);
-			audio_sound_set_track_position(oBeatController.song, choose(0,29.538,66.461)*130/oBeatController.bpm);
+			global.song = audio_play_sound(_normal[global.hardMode],1,true);
+			audio_sound_set_track_position(global.song, choose(0,29.538,66.461)*130/oBeatController.bpm);
 		}
 	}
 }

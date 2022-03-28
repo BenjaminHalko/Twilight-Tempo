@@ -2,9 +2,8 @@ draw_set_font(GuiFont);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 draw_set_color(c_white);
-	
-draw_text(6,6,"SCORE\n  "+string_replace_all(string_format(global.score,4,0)," ","0"));
 
+draw_text(6,6,"SCORE\n  "+string_replace_all(string_format(global.score,4,0)," ","0"));
 draw_set_halign(fa_center);
 if(global.start) draw_text(room_width/2,6,"TUTORIAL\nLEVEL");
 else if(global.hintMode) draw_text(room_width/2,6,"PRACTICE\nMODE");
@@ -18,6 +17,8 @@ for(var i = 0; i < 3; i++) {
 if(gameoverNum > 0) {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
+	draw_set_color(c_white);
+		
 	draw_text_transformed(room_width/2,room_height/2-35,"GAME OVER",2,2,0);
 	
 	draw_set_color(c_red);
@@ -37,4 +38,11 @@ if(gameoverNum > 0) {
 	_text = "NO";
 	if(gameoverChoice == 1) _text = ">NO";
 	draw_text(room_width/2+40,room_height/2+40,_text);
+}
+
+if(global.demo && floor(global.time % 2) == 0) {
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_middle);
+	draw_set_color(c_white);
+	draw_text(room_width/2,room_height*.9,"PRESS START");
 }

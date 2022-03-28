@@ -1,12 +1,10 @@
 if(global.lives <= 0) {
-	audio_stop_sound(song);
+	audio_stop_sound(global.song);
+	global.song = noone;
 	exit;
 }
 
-if(audio_is_playing(song) && (!global.start or barNumber < 9)) {
-	var _time = audio_sound_get_track_position(song);
-	if(_time < 0) _time += audio_sound_length(mSong);
-	global.time = _time/60*bpm;
+if(audio_is_playing(global.song) && (!global.start or barNumber < 9)) {
 	var _time = floor(global.time % numberOfBeats*2);
 	var _aheadTime = floor(((global.time+aheadTime) % numberOfBeats*2));
 
@@ -70,12 +68,20 @@ if(audio_is_playing(song) && (!global.start or barNumber < 9)) {
 		}
 		
 		if(mode == 2) mode = 2.5;
+		
+		if(!started) started = true;
 	}
+	
+	if(!started) exit;	
 	
 	if(_time != lastTime) {
 		if(_time % 2 == 0) {
 			oPlayer.cannonMove = 2;
 			if(!global.start) oShadow.radius = 1;
+		}
+		if(global.demo && _time >= numberOfBeats && beats[_time-numberOfBeats] != 4) {
+			oPlayer.shoot = true;
+			oPlayer.dir = beats[_time-numberOfBeats]*90
 		}
 		if(_time < numberOfBeats) {
 			if(beats[_time] != 4) {
@@ -93,4 +99,4 @@ if(audio_is_playing(song) && (!global.start or barNumber < 9)) {
 
 	lastTime = _time;
 	aheadLastTime = _aheadTime
-} else if(global.start && !audio_is_playing(song) && song != noone) barNumber = 9;
+} else if(global.start && !audio_is_playing(global.song) && global.song != noone) barNumber = 9;

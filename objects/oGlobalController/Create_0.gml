@@ -6,7 +6,6 @@ audio_master_gain(0.60);
 
 //Config
 #macro BLIND 0
-#macro TOUCH 0
 
 //Gamepad
 global.joystickPressedH = ds_map_create();
@@ -20,6 +19,11 @@ global.hiScore = 0;
 global.lives = 0;
 global.time = 0;
 
+global.demo = false;
+global.song = noone;
+
+global.bpm = 130;
+
 //Challenge
 global.challengeID = ["0e1771b3-4621-4907-b8a2-b26d7d5bbd6d","938d4b27-11dd-4b0e-a120-6faf8b9e31fe"];
 if(os_type == os_operagx) global.challenge = gxc_get_query_param("challenge");
@@ -30,8 +34,11 @@ global.hardMode = false;
 global.modeName = ["normal","hard"];
 global.hintMode = false;
 
-global.start = global.challenge == undefined;
+global.start = false;
 
+maxWait = 32;
+waitTimer = maxWait;
+lastWaitTime = -1;
 
 //Background
 global.stars = [];
@@ -56,7 +63,9 @@ for(var i = 0; i < _starAmount; i++) array_push(global.frontStars,{
 	alphaSpeed: random_range(0.005,0.01),
 });
 
-if(os_type != os_operagx) window_set_size(1024,896);
-
 for(var i = 0; i < gamepad_get_device_count(); i++) gamepad_set_axis_deadzone(i, 0.5);
 lastTime = 0;
+
+window_set_size(1024,896);
+
+room_goto_next();
