@@ -20,7 +20,7 @@ if(show && selected == 0) {
 		else {
 			global.demo = false;
 			global.hardMode = choice;
-			global.start = true;
+			global.start = false;
 			oGlobalController.alarm[0] = -1;
 			selected = 1;
 			alarm[0] = 5;

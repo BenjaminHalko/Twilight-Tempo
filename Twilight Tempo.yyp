@@ -14,7 +14,6 @@
     {"id":{"name":"snRight","path":"sounds/snRight/snRight.yy",},"order":1,},
     {"id":{"name":"snBlip","path":"sounds/snBlip/snBlip.yy",},"order":8,},
     {"id":{"name":"PlayerStartCurve","path":"animcurves/PlayerStartCurve/PlayerStartCurve.yy",},"order":9,},
-    {"id":{"name":"rHighscore","path":"rooms/rHighscore/rHighscore.yy",},"order":3,},
     {"id":{"name":"snUp","path":"sounds/snUp/snUp.yy",},"order":2,},
     {"id":{"name":"snPlayerDie","path":"sounds/snPlayerDie/snPlayerDie.yy",},"order":4,},
     {"id":{"name":"snIntro","path":"sounds/snIntro/snIntro.yy",},"order":6,},
@@ -66,7 +65,6 @@
   },
   "RoomOrderNodes": [
     {"roomId":{"name":"rInit","path":"rooms/rInit/rInit.yy",},},
-    {"roomId":{"name":"rHighscore","path":"rooms/rHighscore/rHighscore.yy",},},
     {"roomId":{"name":"rTitle","path":"rooms/rTitle/rTitle.yy",},},
     {"roomId":{"name":"rGame","path":"rooms/rGame/rGame.yy",},},
   ],

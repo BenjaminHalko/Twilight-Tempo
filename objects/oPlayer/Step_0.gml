@@ -38,12 +38,10 @@ if(global.lives > 0) {
 	generalShake = Approach(generalShake,0,0.06);
 }
 else {
-	Rumble(0.7*min(15,deathSpd)/15,1);
 	deathSpd = ApproachFade(deathSpd,0,0.3,0.5);
 	drawDir -= min(30,deathSpd)*1.5;
 	generalShake = Approach(generalShake,min(30,deathSpd)/15,0.06);
 	if(deathSpd == 0) {
-		Rumble(1,40);
 		instance_create_depth(x,y,layer_get_depth(layer_get_id("Shadow"))-1,oPlayerExplode);
 		audio_play_sound(snPlayerExplode,2,false);
 		instance_destroy();
@@ -66,7 +64,7 @@ if(startScale == 1.6) {
 		if(global.start) global.song = audio_play_sound(_tutorial[global.hardMode],1,false);
 		else {
 			global.song = audio_play_sound(_normal[global.hardMode],1,true);
-			audio_sound_set_track_position(global.song, choose(0,29.538,66.461)*130/oBeatController.bpm);
+			audio_sound_set_track_position(global.song, choose(0,29.538,66.461)*130/global.bpm);
 		}
 	}
 }

@@ -81,12 +81,19 @@ function InputHold() {
 	}
 }
 
-function SaveScores(_name) {
+function AddScore() {
 	ds_grid_resize(global.hiScore[global.hardMode],2,11)
 	ds_grid_add(global.hiScore[global.hardMode],0,10,global.score);
-	ds_grid_add(global.hiScore[global.hardMode],1,10,_name);
+	ds_grid_add(global.hiScore[global.hardMode],1,10,"-");
 	ds_grid_sort(global.hiScore[global.hardMode],0,false);
 	ds_grid_resize(global.hiScore[global.hardMode],2,10);
+	
+	for (var i = 0; i < 10; i++) if(global.hiScore[global.hardMode][# 1,i] == "-") return i;
+	return 9;
+}
+
+function SaveScores(_name) {
+	
 	
 	ini_open("scores.ini");
 	ini_write_string(global.hardMode,"grid",ds_grid_write(global.hiScore[global.hardMode]));
