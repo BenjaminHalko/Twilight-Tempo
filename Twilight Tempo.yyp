@@ -76,7 +76,7 @@
     {"folderPath":"folders/Enemy.yy","order":2,"resourceVersion":"1.0","name":"Enemy","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Global.yy","order":3,"resourceVersion":"1.0","name":"Global","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/GUI.yy","order":7,"resourceVersion":"1.0","name":"GUI","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Score.yy","order":9,"resourceVersion":"1.0","name":"Score","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Enemy/Score.yy","order":5,"resourceVersion":"1.0","name":"Score","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Music.yy","order":4,"resourceVersion":"1.0","name":"Music","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Enemy/Warning.yy","order":4,"resourceVersion":"1.0","name":"Warning","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Music/Sound Effects.yy","order":2,"resourceVersion":"1.0","name":"Sound Effects","tags":[],"resourceType":"GMFolder",},
