@@ -40,15 +40,10 @@ function drawCircle(_x,_y,_radius,_alpha) {
 }
 
 function GetHighscore() {
-	if(os_type == os_operagx) {
-		gxc_challenge_get_global_scores(undefined,{challengeId: global.challengeID[global.hardMode],pageSize: 1});
-	}
-	else {
-		var _default = [2000,1000];
-		ini_open("save.ini");
-		global.hiScore = ini_read_real("scores",global.modeName[global.hardMode],_default[global.hardMode]);
-		ini_close();
-	}
+	var _default = [2000,1000];
+	ini_open("save.ini");
+	global.hiScore = ini_read_real("scores",global.modeName[global.hardMode],_default[global.hardMode]);
+	ini_close();
 }
 
 function Input() {

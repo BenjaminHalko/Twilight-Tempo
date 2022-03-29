@@ -1,7 +1,6 @@
 /// @desc
 if(TOUCH && show && selected == 0 && !mouse_check_button_pressed(mb_left)) {
 	if(event_data[? "posX"] >= room_width/2) {
-		if(global.challenge != undefined) exit;
 		if(event_data[? "posY"] >= room_height/2) {
 			choice--;
 			if(choice < 0) choice = 2;

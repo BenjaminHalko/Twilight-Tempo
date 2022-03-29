@@ -17,15 +17,10 @@ if(show) {
 	draw_set_valign(fa_top);
 	draw_set_color(c_white);
 	draw_text(98,120+20*choice+10*(choice == 2),">");
-	
-	var _col = [c_white,c_dkgray];
-	draw_set_color(_col[choice != 0 and global.challenge != undefined]);
+
 	if(choice == 1 or selected % 2 == 0) draw_text(113,120,"NORMAL");
-	
-	draw_set_color(_col[choice != 1 and global.challenge != undefined]);
 	if(choice == 0 or selected % 2 == 0) draw_text(113,140,"HARD");
 	
-	draw_set_color(_col[global.challenge != undefined]);
 	var _onoff = ["OFF","ON"];
 	draw_text(113,170,"PRACTICE: "+_onoff[global.hintMode]);
 	

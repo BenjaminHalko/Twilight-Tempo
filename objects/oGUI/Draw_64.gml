@@ -25,7 +25,7 @@ if(gameoverNum > 0) {
 	draw_set_color(c_white);
 	
 	var _text = "CONTINUE?\n\n";
-	if(!BLIND) _text += string(20-ceil(gameoverNum))
+	_text += string(20-ceil(gameoverNum))
 	
 	draw_text(room_width/2,room_height/2+10,_text);
 	
