@@ -7,5 +7,3 @@ newRecord = 0;
 
 global.lives = 12*(1+global.hintMode);
 global.score = 0;
-
-GetHighscore();

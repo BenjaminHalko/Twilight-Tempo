@@ -8,7 +8,7 @@ draw_text(6,6,"SCORE\n  "+string_replace_all(string_format(global.score,4,0)," "
 draw_set_halign(fa_center);
 if(global.start) draw_text(room_width/2,6,"TUTORIAL\nLEVEL");
 else if(global.hintMode) draw_text(room_width/2,6,"PRACTICE\nMODE");
-else draw_text(room_width/2,6,"HIGH SCORE\n"+string_replace_all(string_format(global.hiScore,5,0)," ","0"));
+else draw_text(room_width/2,6,"HIGH SCORE\n"+string_replace_all(string_format(global.hiScore[global.hardMode],5,0)," ","0"));
 
 for(var i = 0; i < 3; i++) {
 	draw_sprite_ext(sLife,median(0,(global.lives-i*4*(1+global.hintMode))*(2-global.hintMode),8),room_width-10-i*14,10,scale[i],scale[i],0,c_white,1);
@@ -25,7 +25,7 @@ if(gameoverNum > 0) {
 	draw_set_color(c_white);
 	
 	var _text = "CONTINUE?\n\n";
-	if(!BLIND) _text += string(20-ceil(gameoverNum))
+	_text += string(20-ceil(gameoverNum))
 	
 	draw_text(room_width/2,room_height/2+10,_text);
 	

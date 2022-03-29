@@ -39,47 +39,11 @@ function drawCircle(_x,_y,_radius,_alpha) {
 	if(_alpha != 1) draw_set_alpha(1);
 }
 
-function GetHighscore() {
-	if(os_type == os_operagx) {
-		gxc_challenge_get_global_scores(undefined,{challengeId: global.challengeID[global.hardMode],pageSize: 1});
-	}
-	else {
-		var _default = [2000,1000];
-		ini_open("save.ini");
-		global.hiScore = ini_read_real("scores",global.modeName[global.hardMode],_default[global.hardMode]);
-		ini_close();
-	}
-}
-
 function Input() {
-	key_left_pressed = keyboard_check_pressed(vk_left) || keyboard_check_pressed(ord("A"));
-	key_right_pressed = keyboard_check_pressed(vk_right) || keyboard_check_pressed(ord("D"));
-	key_up_pressed = keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord("W"));
-	key_down_pressed = keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord("S"));
+	key_left = keyboard_check_pressed(vk_left) || keyboard_check_pressed(ord("A"));
+	key_right = keyboard_check_pressed(vk_right) || keyboard_check_pressed(ord("D"));
+	key_up = keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord("W"));
+	key_down = keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord("S"));
 	
-	key_select = keyboard_check_pressed(vk_anykey) && !keyboard_check_pressed(vk_f4) && !keyboard_check_pressed(vk_f11) && !keyboard_check_pressed(vk_escape) && !key_left_pressed && !key_right_pressed && !key_up_pressed && !key_down_pressed;
-	
-	for(var i = 0; i < gamepad_get_device_count(); i++) {
-		key_left_pressed = key_left_pressed || gamepad_button_check_pressed(i,gp_padl);
-		key_right_pressed = key_right_pressed || gamepad_button_check_pressed(i,gp_padr);
-		key_up_pressed = key_up_pressed || gamepad_button_check_pressed(i,gp_padu);
-		key_down_pressed = key_down_pressed || gamepad_button_check_pressed(i,gp_padd);
-		
-		for(var j = gp_face1; j <= gp_face4; j++) key_select = key_select || gamepad_button_check_pressed(i,j);	
-	}
-	
-	for(var i = ds_map_find_first(global.joystickPressedH); !is_undefined(i); i = ds_map_find_next(global.joystickPressedH,i)) {
-		key_left_pressed = key_left_pressed || global.joystickPressedH[? i][0] == -1;
-		key_right_pressed = key_right_pressed || global.joystickPressedH[? i][0] == 1;
-	}
-	
-	for(var i = ds_map_find_first(global.joystickPressedV); !is_undefined(i); i = ds_map_find_next(global.joystickPressedV,i)) {
-		key_up_pressed = key_up_pressed || global.joystickPressedV[? i][0] == -1;
-		key_down_pressed = key_down_pressed || global.joystickPressedV[? i][0] == 1;
-	}
-}
-
-function Rumble(_amount,_time) {
-	global.rumble = _time;
-	if(global.lastUsedGamepad != noone) gamepad_set_vibration(global.lastUsedGamepad,_amount,_amount);
+	key_select = keyboard_check_pressed(vk_anykey);
 }
