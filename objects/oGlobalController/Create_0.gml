@@ -4,7 +4,7 @@ surface_resize(application_surface,256,224);
 
 audio_master_gain(0.60);
 
-#macro TOUCH 1
+#macro TOUCH 0
 
 //Gamepad
 global.joystickPressedH = ds_map_create();
