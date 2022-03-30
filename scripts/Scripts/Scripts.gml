@@ -45,7 +45,7 @@ function Input() {
 	key_up = keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord("W"));
 	key_down = keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord("S"));
 	
-	key_select = //keyboard_check_pressed(vk_anykey);
+	key_select = false//keyboard_check_pressed(vk_anykey);
 }
 
 function ResizeScreen(_newWidth,_newHeight) {
