@@ -78,3 +78,24 @@ function Rumble(_amount,_time) {
 	global.rumble = _time;
 	if(global.lastUsedGamepad != noone) gamepad_set_vibration(global.lastUsedGamepad,_amount,_amount);
 }
+
+function scale_canvas(_bw,_bh,_cw,_ch) {
+/// @function                       scale_canvas(base width, base height, current width, current height, center);
+/// @param {int}    base width      The base width for the game room
+/// @param {int}    base height     The base height for the game room
+/// @param {int}    current width   The current width of the game canvas
+/// @param {int}    current height  The current height of the game canvas
+/// @param {bool}   center          Set whether to center the game window on the canvas or not
+
+var _aspect = (_bw / _bh);
+
+if ((_cw / _aspect) > _ch)
+    {
+    window_set_size((_ch *_aspect), _ch);
+    }
+else
+    {
+    window_set_size(_cw, (_cw / _aspect));
+    }
+	window_center();
+}

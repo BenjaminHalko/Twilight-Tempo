@@ -28,3 +28,10 @@ lastTime++;
 if(keyboard_check_pressed(vk_anykey)) global.lastUsedGamepad = noone;
 
 if(global.rumble > 0) global.rumble--;
+
+if (browser_width != width || browser_height != height)
+{
+	width = browser_width;
+	height = browser_height;
+	scale_canvas(256,224,width,height);
+}

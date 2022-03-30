@@ -23,7 +23,7 @@ global.hardMode = false;
 global.modeName = ["normal","hard"];
 global.hintMode = false;
 
-global.start = false;
+global.start = true;
 
 //Background
 global.stars = [];
@@ -50,3 +50,6 @@ for(var i = 0; i < _starAmount; i++) array_push(global.frontStars,{
 
 for(var i = 0; i < gamepad_get_device_count(); i++) gamepad_set_axis_deadzone(i, 0.5);
 lastTime = 0;
+
+width = 256;
+height = 224;
