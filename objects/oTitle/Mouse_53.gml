@@ -1,7 +1,7 @@
 /// @desc
 if(show && selected == 0) {
-	if(event_data[? "posX"] >= room_width/2) {
-		if(event_data[? "posY"] >= room_height/2) {
+	if(mouse_x <= room_width/2) {
+		if(mouse_y <= room_height/2) {
 			choice--;
 			if(choice < 0) choice = 2;
 			audio_play_sound(snBlip,1,false);
