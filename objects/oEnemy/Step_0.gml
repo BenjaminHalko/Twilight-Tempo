@@ -20,4 +20,8 @@ if(hit or global.lives <= 0) {
 	}
 	
 	if(image_alpha <= 0) instance_destroy();
+} else {
+	appear = ApproachFade(appear,1,0.1,0.7);
+	image_angle = lerp(360*(1-(direction <= 90)*2),0,appear);
+	image_alpha = appear;
 }

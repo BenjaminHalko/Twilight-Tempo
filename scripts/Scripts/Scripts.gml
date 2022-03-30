@@ -47,3 +47,33 @@ function Input() {
 	
 	key_select = keyboard_check_pressed(vk_anykey);
 }
+
+function ResizeScreen(_newWidth,_newHeight) {
+	var _ratio = _newWidth/_newHeight;
+	
+	var _width = 256;
+	var _height = 224;
+	
+	_width = round(_height*_ratio);
+	_height = round(_width/_ratio);
+	
+	_width -= _width%2;
+	_height -= _height%2;
+	
+	camera_set_view_size(view_camera[0],_width,_height);
+	camera_set_view_pos(view_camera[0],128-_width/2,112-_height/2);
+	
+	view_set_wport(0,_width);
+	view_set_hport(0,_height);
+	
+	if(instance_exists(oShadow)) surface_free(oShadow.darkSurface);
+	
+	if(WIDTH == _width and HEIGHT == _height) exit;
+	
+	surface_resize(application_surface, _width, _height);
+	
+	for(var i = 0; i < array_length(global.stars); i++) {
+		global.stars[i].x = irandom(WIDTH)+GUIX;
+		global.stars[i].y = irandom(HEIGHT)+GUIY;
+	}
+}

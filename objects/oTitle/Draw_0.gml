@@ -2,12 +2,12 @@
 
 for(var i = 0; i < array_length(stars); i++) {
 	draw_set_alpha(Wave(stars[i].alpha1,stars[i].alpha2,stars[i].alphaSpeed,stars[i].alphaOffset));
-	draw_point_color(stars[i].x,stars[i].y,stars[i].col);
+	draw_point_color(stars[i].x+GUIX,stars[i].y+GUIY,stars[i].col);
 	draw_set_alpha(1);
 	stars[i].x -= stars[i].far*5*logoX;
 	while(stars[i].x < 0) {
-		stars[i].x += room_width;
-		stars[i].y = irandom(room_height);
+		stars[i].x += WIDTH;
+		stars[i].y = irandom(HEIGHT);
 	}
 }
 
@@ -28,9 +28,9 @@ if(show) {
 	draw_set_halign(fa_center);
 	draw_set_color(c_white);
 	
-	draw_text(room_width/2,200,"© 2022 BENJAMIN HALKO");
-	draw_text(room_width/2,210,"ALL RIGHTS RESERVED");
+	draw_text(room_width/2,HEIGHT-24+GUIY,"© 2022 BENJAMIN HALKO");
+	draw_text(room_width/2,HEIGHT-14+GUIY,"ALL RIGHTS RESERVED");
 }
 
-draw_sprite_ext(sTwilight,0,room_width/2,lerp(100,40,logoY),lerp(1.5,1,logoY)*bounce,bounce,0,c_white,logoY);
-draw_sprite_part(sTempo,0,0,0,sprite_get_width(sTempo)*logoX,sprite_get_height(sTempo),room_width/2-10,50);
+draw_sprite_ext(sTwilight,0,room_width/2,lerp(100,40,logoY)+GUIY,lerp(1.5,1,logoY)*bounce,bounce,0,c_white,logoY);
+draw_sprite_part(sTempo,0,0,0,sprite_get_width(sTempo)*logoX,sprite_get_height(sTempo),room_width/2-10,50+GUIY);

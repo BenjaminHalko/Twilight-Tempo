@@ -52,8 +52,8 @@ if(logoX >= 2 && !show) {
 }
 
 if(array_length(stars) < 150) array_push(stars,{
-	x: random(room_width),
-    y: random(room_height),
+	x: random(WIDTH),
+    y: random(HEIGHT),
 	col: choose(#d2de8e,#60205a),
 	alpha1: random(1),
 	alpha2: random(1),

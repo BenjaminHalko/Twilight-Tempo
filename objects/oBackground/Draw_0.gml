@@ -6,6 +6,18 @@ if(index != 0) {
 	}
 }
 
-draw_sprite_ext(sBackground,4,0,0,1,1,0,cloudColors[min(4,index)],1);
+function drawClouds(_x,_y) { draw_sprite_ext(sBackground,4,room_width/2+_x,room_height+_y,1,1,0,cloudColors[min(4,index)],1); }
 
-if(index < 4) draw_sprite(sBackground,index,0,0);
+drawClouds(0,0);
+var _width = room_width - 40;
+var _height = room_height - 20;
+if (WIDTH > 256) {
+	drawClouds(-_width*(WIDTH > 256),0);
+	drawClouds(_width*(WIDTH > 256),0);
+}
+if(HEIGHT > 224) {
+	drawClouds(0,-_height*(HEIGHT > 224));
+	drawClouds(0,_height*(HEIGHT > 224));
+}
+
+if(index < 4) draw_sprite(sBackground,index,room_width/2,HEIGHT);

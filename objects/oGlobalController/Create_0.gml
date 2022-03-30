@@ -1,6 +1,16 @@
 randomize();
 
-surface_resize(application_surface,256,224);
+#macro WIDTH display_get_gui_width()
+#macro HEIGHT display_get_gui_height()
+
+#macro GUIX (room_width-WIDTH)/2
+#macro GUIY (room_height-HEIGHT)/2
+
+//Background
+global.stars = [];
+global.frontStars = [];
+
+ResizeScreen(window_get_width(),window_get_height());
 
 audio_master_gain(0.60);
 
@@ -21,15 +31,11 @@ ini_close();
 global.hardMode = false;
 global.hintMode = false;
 
-global.start = false;
-
-//Background
-global.stars = [];
-global.frontStars = [];
+global.start = true;
 
 repeat(120) array_push(global.stars,{
-	x: random(room_width),
-    y: random(room_height),
+	x: irandom(WIDTH)+GUIX,
+    y: irandom(HEIGHT)+GUIY,
 	col: choose(#d2de8e,#60205a),
 	alpha1: random(1),
 	alpha2: random(1),
@@ -39,9 +45,12 @@ repeat(120) array_push(global.stars,{
 
 var _starAmount = 20;
 for(var i = 0; i < _starAmount; i++) array_push(global.frontStars,{
-	x: random(room_width),
-    y: random(room_height),
+	x: irandom(WIDTH)-GUIX,
+    y: irandom(HEIGHT)-GUIY,
 	col: choose(#d2de8e,#60205a),
 	alpha: random(2),
 	alphaSpeed: random_range(0.005,0.01),
 });
+
+width = window_get_width();
+height = window_get_height();
