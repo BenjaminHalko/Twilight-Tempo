@@ -20,4 +20,4 @@ if(HEIGHT > 224) {
 	drawClouds(0,_height*(HEIGHT > 224));
 }
 
-if(index < 4) draw_sprite(sBackground,index,room_width/2,HEIGHT);
+if(index < 4) draw_sprite(sBackground,index,room_width/2,HEIGHT+GUIY);
