@@ -3,6 +3,12 @@
 if(global.lives > 0) {
 	//Input
 	Input();
+	
+	for(var i = 0; i < 10; i++) {
+		if(!device_mouse_check_button_pressed(i,mb_left)) continue;
+		dir = ((point_direction(room_width/2,room_height/2,device_mouse_x(i),device_mouse_y(i))+45) div 90) * 90;
+		shoot = true;
+	}
 
 	//Direction
 	if(abs(key_right-key_left) != abs(key_down-key_up))
