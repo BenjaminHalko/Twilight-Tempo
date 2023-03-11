@@ -1,6 +1,6 @@
 {
   "conversionMode": 0,
-  "compression": 0,
+  "compression": 2,
   "volume": 1.0,
   "preload": false,
   "bitRate": 128,
@@ -12,7 +12,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "mTutorialFast.ogg",
-  "duration": 22.5882988,
+  "duration": 22.588299,
   "parent": {
     "name": "Music",
     "path": "folders/Music.yy",
