@@ -19,7 +19,7 @@ if(!instance_exists(oPlayer) and timer <= 0) {
 				ini_write_real("scores",global.hardMode,global.hiScore[global.hardMode]);
 				ini_close();
 			}
-		
+			
 			GooglePlayServices_Leaderboard_SubmitScore(global.hardMode ? HardLeaderboard : NormalLeaderboard,global.score,"");
 		}
 	}

@@ -82,7 +82,7 @@ if(audio_is_playing(song) && (!global.start or barNumber < 9)) {
 		if(_time < numberOfBeats) {
 			if(beats[_time] != 4) {
 				var _dir = beats[_time]*90;
-				instance_create_layer(room_width/2+lengthdir_x(room_width/2-32,_dir),room_height/2+lengthdir_y(room_height/2-32,_dir),"GUI",oWarning);
+				instance_create_layer(room_width/2+lengthdir_x(48,_dir),room_height/2+lengthdir_y(48,_dir),"GUI",oWarning);
 				audio_play_sound(dirSounds[beats[_time]],3,false);
 			}
 		}

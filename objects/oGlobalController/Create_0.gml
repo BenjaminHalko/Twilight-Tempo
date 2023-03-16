@@ -7,7 +7,7 @@ randomize();
 #macro GUIY (room_height-HEIGHT)/2
 
 #macro NormalLeaderboard "CgkI8N_53PcREAIQAQ"
-#macro HardLeaderboard "CgkI8N_53PcREAIQAQ"
+#macro HardLeaderboard "CgkI8N_53PcREAIQAg"
 
 //Background
 global.stars = [];
@@ -23,10 +23,9 @@ global.hiScore = [0,0];
 global.lives = 0;
 global.time = 0;
 
-var _default = [2000,1000];
 ini_open("save.ini");
 for(var i = 0; i < 2; i++) {
-	global.hiScore[i] = ini_read_real("scores",i,_default[i]);	
+	global.hiScore[i] = ini_read_real("scores",i,0);	
 }
 
 //Mode

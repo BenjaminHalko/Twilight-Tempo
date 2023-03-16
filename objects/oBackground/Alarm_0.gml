@@ -1,5 +1,10 @@
 /// @desc
 
+if !instance_exists(oEnemy) and global.lives > 0 and !finishedTutorial {
+	GooglePlayServices_Achievements_Unlock(oGUI.tutorialID[global.hardMode]);
+	finishedTutorial = true;
+}
+
 if(index < 4) layer_background_blend(layer_background_get_id(layer_get_id("Background")),backgroundColors[index]);
 else oShadow.darkness = (index-3)/4;
 index++;

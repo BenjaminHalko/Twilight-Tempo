@@ -19,6 +19,9 @@ if oGlobalController.width > oGlobalController.height {
 	start.height = start.originalHeight;
 	start.draw();
 	
+	practice.height = practice.originalHeight;
+	practice.draw();
+	
 	// Main
 	normal.x = room_width/2-normal.borderWidthHalf-10;
 	normal.y = GUIY+HEIGHT/2+38;

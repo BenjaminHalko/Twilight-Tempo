@@ -17,13 +17,13 @@ if(show and selected == 0) {
 				menuType = Menu.Normal;
 				global.hardMode = false;
 				audio_play_sound(snBlip,1,false);
-				pb.updateText("HISCORE: "+string_replace(string_format(global.hiScore[0],4,0)," ","0"));
+				pb.updateText("HISCORE: "+string_replace_all(string_format(global.hiScore[0],4,0)," ","0"));
 				event_user(0);
 			} else if hard.clicked() {
 				menuType = Menu.Hard;
 				global.hardMode = true;
 				audio_play_sound(snBlip,1,false);
-				pb.updateText("HISCORE: "+string_replace(string_format(global.hiScore[1],4,0)," ","0"));
+				pb.updateText("HISCORE: "+string_replace_all(string_format(global.hiScore[1],4,0)," ","0"));
 				event_user(0);
 			} else if achievements.clicked() {
 				GooglePlayServices_Achievements_Show();

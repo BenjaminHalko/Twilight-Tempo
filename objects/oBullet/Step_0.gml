@@ -23,6 +23,15 @@ function HitEnemy(_x,_y) {
 			
 			with(instance_create_layer(_enemy.x,_enemy.y,"GUI",oScore)) amount = string(_score);
 			global.score += _score;
+			
+			if !global.start and !global.hintMode {
+				with(oGUI) {
+					if currentLeaderboardPos != -1 and global.score >= leaderboardScores[currentLeaderboardPos] {
+						GooglePlayServices_Achievements_Unlock(leaderboardIDs[global.hardMode][currentLeaderboardPos]);
+						if ++currentLeaderboardPos >= array_length(leaderboardScores) currentLeaderboardPos = -1;
+					}
+				}
+			}
 		}
 	}
 }	

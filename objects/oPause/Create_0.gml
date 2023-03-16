@@ -3,7 +3,7 @@
 global.pause = false;
 x = GUIX+WIDTH-24;
 y = GUIY+HEIGHT-24;
-alarm[0] = 1;
+alarm[0] = 2;
 
 countdown = 0;
 

@@ -28,10 +28,10 @@ if(show) {
 	} else {
 		start.draw((selected % 2) * (!global.hintMode));
 		practice.draw((selected % 2) * global.hintMode);
-		//tutorial.draw();
-		//leaderboard.draw();
+		tutorial.draw();
+		leaderboard.draw();
 		back.draw();
-		//pb.draw();
+		pb.draw();
 	}
 }
 
