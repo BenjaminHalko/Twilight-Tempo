@@ -49,13 +49,14 @@ function Input() {
 }
 
 function ResizeScreen(_newWidth,_newHeight) {
+	if _newWidth < 1 and _newHeight < 1 return;
 	var _ratio = _newWidth/_newHeight;
 	
-	var _width = 256;
+	var _width = (_ratio >= 0.86 ? (_ratio >= 0.90 ? (_ratio >= 1 ? 320 : 280) : 256) : 230);
 	var _height = 224;
 	
-	if(_width/_ratio < _height)_width = round(224*_ratio);
-	else _height = round(256/_ratio);
+	if((_width/_ratio > _height) == (room == rGame)) _width = round(_height*_ratio);
+	else _height = round(_width/_ratio);
 	
 	camera_set_view_size(view_camera[0],_width,_height);
 	camera_set_view_pos(view_camera[0],128-_width/2,112-_height/2);

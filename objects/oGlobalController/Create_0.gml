@@ -6,6 +6,9 @@ randomize();
 #macro GUIX (room_width-WIDTH)/2
 #macro GUIY (room_height-HEIGHT)/2
 
+#macro NormalLeaderboard "CgkI8N_53PcREAIQAQ"
+#macro HardLeaderboard "CgkI8N_53PcREAIQAQ"
+
 //Background
 global.stars = [];
 global.frontStars = [];
@@ -25,13 +28,12 @@ ini_open("save.ini");
 for(var i = 0; i < 2; i++) {
 	global.hiScore[i] = ini_read_real("scores",i,_default[i]);	
 }
-ini_close();
 
 //Mode
 global.hardMode = false;
 global.hintMode = false;
 
-global.start = true;
+global.start = ini_read_real("Mode","Tutorial",true);
 
 repeat(120) array_push(global.stars,{
 	x: irandom(WIDTH)+GUIX,

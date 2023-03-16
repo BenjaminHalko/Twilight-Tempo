@@ -1,3 +1,5 @@
+if global.pause exit;
+
 var _x = x + random_range(-shake[0]-generalShake,shake[2]+generalShake);
 var _y = y + random_range(-shake[3]-generalShake,shake[1]+generalShake);
 

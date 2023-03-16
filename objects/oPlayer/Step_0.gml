@@ -1,5 +1,7 @@
 /// @desc Shoot
 
+if global.pause exit;
+
 if(global.lives > 0) {
 	//Input
 	Input();
@@ -75,5 +77,3 @@ if(startScale == 1.6) {
 	}
 }
 for(var i = 0; i < 4; i++) shake[i] = Approach(shake[i],0,0.06);
-
-

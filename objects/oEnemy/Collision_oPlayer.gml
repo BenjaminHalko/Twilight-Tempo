@@ -1,4 +1,4 @@
-if(hit or global.lives <= 0 or dead) exit;
+if(hit or global.lives <= 0 or dead or global.pause) exit;
 hit = true;
 
 oPlayer.shake[direction div 90] = 2;

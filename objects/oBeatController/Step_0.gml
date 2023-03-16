@@ -1,3 +1,5 @@
+if global.pause exit;
+
 if(global.lives <= 0) {
 	audio_stop_sound(song);
 	exit;
@@ -7,7 +9,7 @@ if(audio_is_playing(song) && (!global.start or barNumber < 9)) {
 	var _time = audio_sound_get_track_position(song);
 	if(_time < 0) _time += audio_sound_length(mSong);
 	global.time = _time/60*bpm;
-	var _time = floor(global.time % numberOfBeats*2);
+	_time = floor(global.time % numberOfBeats*2);
 	var _aheadTime = floor(((global.time+aheadTime) % numberOfBeats*2));
 
 	if(_time < lastTime) {
@@ -80,7 +82,7 @@ if(audio_is_playing(song) && (!global.start or barNumber < 9)) {
 		if(_time < numberOfBeats) {
 			if(beats[_time] != 4) {
 				var _dir = beats[_time]*90;
-				if(global.start or global.hintMode) instance_create_layer(room_width/2+lengthdir_x(room_width/2-32,_dir),room_height/2+lengthdir_y(room_height/2-32,_dir),"GUI",oWarning);
+				instance_create_layer(room_width/2+lengthdir_x(room_width/2-32,_dir),room_height/2+lengthdir_y(room_height/2-32,_dir),"GUI",oWarning);
 				audio_play_sound(dirSounds[beats[_time]],3,false);
 			}
 		}

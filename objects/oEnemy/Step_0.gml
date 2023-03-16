@@ -1,5 +1,7 @@
+if global.pause exit;
+
 if(dead) {
-	speed = 0;
+	spd = 0;
 	deadPercent = Approach(deadPercent,1,0.1);
 	circlePercent = Approach(circlePercent,1,0.05);
 
@@ -11,11 +13,11 @@ if(hit or global.lives <= 0) {
 		image_index = 1;
 		image_xscale += 0.05;
 		image_yscale += 0.05;
-		speed *= 0.7;
+		spd *= 0.7;
 		image_alpha -= 0.2;
 		image_angle -= 20;
 	} else {
-		speed = ApproachFade(speed,0,0.1,0.6);
+		spd = ApproachFade(spd,0,0.1,0.6);
 		image_alpha -= 0.05;
 	}
 	
@@ -25,3 +27,6 @@ if(hit or global.lives <= 0) {
 	image_angle = lerp(360*(1-(direction <= 90)*2),0,appear);
 	image_alpha = appear;
 }
+
+x += lengthdir_x(spd,direction);
+y += lengthdir_y(spd,direction);

@@ -1,3 +1,5 @@
+if global.pause exit;
+
 function HitEnemy(_x,_y) {
 	var _enemyList = ds_list_create();
 	
@@ -54,3 +56,11 @@ if(spd != 0) {
 		time++;
 	}
 } else if(array_length(image) == 0) instance_destroy();
+
+for(var i = 0; i < array_length(image); i++) {
+	image[i][2] -= 0.15;
+	if(image[i][2] <= 0) {
+		array_delete(image,i,1);
+		i--;	
+	}
+}
