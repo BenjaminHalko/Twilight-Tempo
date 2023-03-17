@@ -14,7 +14,7 @@ logoY = 0;
 logoX = 0;
 stars = [];
 bpm = 130;
-song = noone;
+song = -1;
 lastTime = 100;
 bounce = 1;
 

@@ -1,4 +1,4 @@
-darkSurface = noone;
+darkSurface = -1;
 
 radius = 0;
 

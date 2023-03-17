@@ -1,4 +1,4 @@
-song = noone;
+song = -1;
 
 numberOfBeats = 8;
 beats = array_create(numberOfBeats,0);

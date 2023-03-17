@@ -40,7 +40,9 @@ if(spd != 0) {
 	
 	var _from = startdir-5;
 	var _to = startdir+5;
+	var _lasti = 0;
 	for(var i = 0; i < 4; i++) {
+		_lasti = i;
 		x += lengthdir_x(spd,direction);
 		y += lengthdir_y(spd,direction);
 		array_push(image,[x,y,1,direction]);
@@ -49,7 +51,7 @@ if(spd != 0) {
 		if(spd == 0) break;
 	}
 	
-	for(var j = 0; j <= min(i+1,3); j++) {
+	for(var j = 0; j <= min(_lasti+1,3); j++) {
 		waveX += lengthdir_x(8,direction);
 		waveY += lengthdir_y(8,direction);
 		
