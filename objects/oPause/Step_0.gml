@@ -9,9 +9,11 @@ if global.pause {
 			} else if restart.clicked() {
 				audio_stop_all();
 				audio_play_sound(snBlip,1,false);
+				SaveScore();
 				room_restart();
 			} else if quit.clicked() {
 				audio_play_sound(snBlip,1,false);
+				SaveScore();
 				game_restart();
 			}
 		}

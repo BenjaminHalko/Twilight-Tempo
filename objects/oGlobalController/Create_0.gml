@@ -55,3 +55,11 @@ for(var i = 0; i < _starAmount; i++) array_push(global.frontStars,{
 
 width = window_get_width();
 height = window_get_height();
+
+// Gamepad
+global.joystickPressedH = ds_map_create();
+global.joystickPressedV = ds_map_create();
+global.lastUsedGamepad = -1;
+global.rumble = 0;
+for(var i = 0; i < gamepad_get_device_count(); i++) gamepad_set_axis_deadzone(i, 0.05);
+lastTime = 0;

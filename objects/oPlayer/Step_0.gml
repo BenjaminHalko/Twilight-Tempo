@@ -48,9 +48,11 @@ if(global.lives > 0) {
 else {
 	deathSpd = ApproachFade(deathSpd,0,0.3,0.5);
 	drawDir -= min(30,deathSpd)*1.5;
+	Rumble(0.7*min(15,deathSpd)/15,1);
 	generalShake = Approach(generalShake,min(30,deathSpd)/15,0.06);
 	if(deathSpd == 0) {
 		instance_create_depth(x,y,layer_get_depth(layer_get_id("Shadow"))-1,oPlayerExplode);
+		Rumble(0.7*min(15,deathSpd)/15,1);
 		audio_play_sound(snPlayerExplode,2,false);
 		instance_destroy();
 	}

@@ -45,7 +45,32 @@ function Input() {
 	key_up = keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord("W"));
 	key_down = keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord("S"));
 	
-	key_select = keyboard_check_pressed(vk_backspace);
+	for(var i = 0; i < gamepad_get_device_count(); i++) {
+		key_left = key_left || gamepad_button_check_pressed(i,gp_padl);
+		key_right = key_right || gamepad_button_check_pressed(i,gp_padr);
+		key_up = key_up || gamepad_button_check_pressed(i,gp_padu);
+		key_down = key_down || gamepad_button_check_pressed(i,gp_padd);
+	}
+	
+	for(var i = ds_map_find_first(global.joystickPressedH); !is_undefined(i); i = ds_map_find_next(global.joystickPressedH,i)) {
+		key_left = key_left || global.joystickPressedH[? i][0] == -1;
+		key_right = key_right || global.joystickPressedH[? i][0] == 1;
+	}
+	
+	for(var i = ds_map_find_first(global.joystickPressedV); !is_undefined(i); i = ds_map_find_next(global.joystickPressedV,i)) {
+		key_up = key_up || global.joystickPressedV[? i][0] == -1;
+		key_down = key_down || global.joystickPressedV[? i][0] == 1;
+	}
+}
+
+function InputSelect() {
+	if keyboard_check_pressed(vk_anykey) and !(keyboard_check_pressed(vk_left) || keyboard_check_pressed(ord("A")) || keyboard_check_pressed(vk_right) || keyboard_check_pressed(ord("D")) || keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord("W")) || keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord("S"))) return true;
+	
+	for(var i = 0; i < gamepad_get_device_count(); i++) {
+		for(var j = gp_face1; j <= gp_face4; j++) if gamepad_button_check_pressed(i,j) return true;
+	}
+	
+	return false;
 }
 
 function ResizeScreen(_newWidth,_newHeight) {
@@ -77,5 +102,24 @@ function ResizeScreen(_newWidth,_newHeight) {
 	for(var i = 0; i < array_length(global.stars); i++) {
 		global.stars[i].x = irandom(WIDTH)+GUIX;
 		global.stars[i].y = irandom(HEIGHT)+GUIY;
+	}
+}
+
+function Rumble(_amount,_time) {
+	global.rumble = _time;
+	if(global.lastUsedGamepad != -1) gamepad_set_vibration(global.lastUsedGamepad,_amount,_amount);
+}
+
+function SaveScore() {
+	if(!global.hintMode && !global.start) {
+		if global.score > global.hiScore[global.hardMode] {
+			oGUI.newRecord++;
+			global.hiScore[global.hardMode] = global.score;
+			ini_open("save.ini");
+			ini_write_real("scores",global.hardMode,global.hiScore[global.hardMode]);
+			ini_close();
+		}
+		
+		GooglePlayServices_Leaderboard_SubmitScore(global.hardMode ? HardLeaderboard : NormalLeaderboard,global.score,"");
 	}
 }

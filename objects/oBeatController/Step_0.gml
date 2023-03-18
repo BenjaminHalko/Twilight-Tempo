@@ -66,7 +66,7 @@ if(audio_is_playing(song) && (!global.start or barNumber < 9)) {
 				if(i % 2) {
 					if(!global.start && mode > 1 && extraBeat[| i div 2] != -1 && (irandom(max(0,8-barNumber)+extraBeat[| i div 2]) == 0 or mode == 2)) beats[i] = irandom(3);
 					else beats[i] = 4;
-				} else if(!global.start && i % 4 == 2 && mode == 0) beats[i] = 4;
+				} else if(!global.start && i % 4 == 2 && mode == 0) beats[i] = beats[i-2];
 				else beats[i] = irandom(3);
 			}
 		}
@@ -95,4 +95,4 @@ if(audio_is_playing(song) && (!global.start or barNumber < 9)) {
 
 	lastTime = _time;
 	aheadLastTime = _aheadTime
-} else if(global.start && !audio_is_playing(song) && song != noone) barNumber = 9;
+} else if(global.start && !audio_is_playing(song) && song != -1) barNumber = 9;
