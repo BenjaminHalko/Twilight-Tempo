@@ -1,7 +1,5 @@
 /// @desc
 
-window_set_size(320*2,224*2);
-
 enum Menu {
 	Main,
 	Normal,
@@ -52,6 +50,24 @@ function Button(_sprite,_name,_width=-1,_iconOverText=false,_textSize=1,_height=
 	
 	coloredBorder = c_white;
 	
+	updatePos = function() {
+		if iconOverText {
+			widthHalf = width / 2;
+			heightHalf = ceil((spriteHeight+textHeight+4)/2);
+			borderWidthHalf = widthHalf+margin;
+			borderHeightHalf = heightHalf+margin
+		} else {
+			heightHalf = max(spriteHeight/2,textHeight/2);
+			if height != -1 heightHalf = height/2;
+			if name == "" widthHalf = spriteWidth/2;
+			else if is_undefined(sprite) widthHalf = ceil(textWidth/2)+2;
+			else widthHalf = ceil((spriteWidth+textWidth+4+8*(coloredBorder != -1))/2);
+			borderWidthHalf = widthHalf+margin;
+			borderHeightHalf = heightHalf+margin;
+			if width != -1 borderWidthHalf = width/2+margin;
+		}
+	}
+	
 	updateText = function(_newText) {
 		name = _newText;
 		textWidth = string_width(_newText)*textSize;
@@ -60,10 +76,6 @@ function Button(_sprite,_name,_width=-1,_iconOverText=false,_textSize=1,_height=
 	
 	draw = function(_dontDrawText=false) {
 		if iconOverText {
-			widthHalf = width / 2;
-			heightHalf = ceil((spriteHeight+textHeight+4)/2);
-			borderWidthHalf = widthHalf+margin;
-			borderHeightHalf = heightHalf+margin;
 			draw_set_color(coloredBorder);
 			draw_set_font(GuiFont);
 			draw_set_halign(fa_center);
@@ -73,18 +85,7 @@ function Button(_sprite,_name,_width=-1,_iconOverText=false,_textSize=1,_height=
 			draw_set_color(c_white);
 			draw_text(x+1,y+heightHalf-2,name);
 		} else {
-			var _col = coloredBorder;
-			heightHalf = max(spriteHeight/2,textHeight/2);
-			if height != -1 heightHalf = height/2;
-			if name == "" {
-				widthHalf = spriteWidth/2;
-				_col = c_gray;
-			}
-			else if is_undefined(sprite) widthHalf = ceil(textWidth/2)+2;
-			else widthHalf = ceil((spriteWidth+textWidth+4+8*(coloredBorder != -1))/2);
-			borderWidthHalf = widthHalf+margin;
-			borderHeightHalf = heightHalf+margin;
-			if width != -1 borderWidthHalf = width/2+margin;
+			var _col = name == "" ? c_gray : coloredBorder;
 			draw_set_color(_col);
 			draw_set_font(GuiFont);
 			draw_set_halign(fa_right);
@@ -103,7 +104,7 @@ function Button(_sprite,_name,_width=-1,_iconOverText=false,_textSize=1,_height=
 		return point_in_rectangle(mouse_x,mouse_y,x-borderWidthHalf,y-borderHeightHalf,x+borderWidthHalf,y+borderHeightHalf);	
 	}
 	
-	draw();
+	updatePos();
 }
 
 achievements = new Button(sGooglePlay,"");
@@ -117,7 +118,7 @@ leaderboard = new Button(sGooglePlay,"LEADERBOARD",130);
 start = new Button(undefined,"START",130,false,2,50);
 practice = new Button(undefined,"PRACTICE (HPx2)",-1,false,1,18);
 tutorial = new Button(sTutorial,"SKIP TUTORIAL",130);
-pb = new Button(undefined,"HISCORE: 0000",130,false,1,leaderboard.heightHalf*2);
+pb = new Button(undefined,"HI-SCORE: 0000",-1,false,1,leaderboard.heightHalf*2);
 tutorial.index = !global.start;
 
 start.coloredBorder = -1;

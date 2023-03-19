@@ -1,26 +1,26 @@
 /// @desc Window Resize
 
-if oGlobalController.width > oGlobalController.height {
+if oGlobalController.width >= oGlobalController.height {
 	normal.iconOverText = true;
 	normal.textSize = 1;
 	normal.updateText("NORMAL");
 	normal.width = normal.originalWidth;
-	normal.draw();
+	normal.updatePos();
 	
 	hard.iconOverText = true;
 	hard.textSize = 1;
 	hard.updateText("HARD");
 	hard.width = hard.originalWidth;
-	hard.draw();
+	hard.updatePos();
 	
 	pb.height = pb.originalHeight;
-	pb.draw();
+	pb.updatePos();
 	
 	start.height = start.originalHeight;
-	start.draw();
+	start.updatePos();
 	
 	practice.height = practice.originalHeight;
-	practice.draw();
+	practice.updatePos();
 	
 	// Main
 	normal.x = room_width/2-normal.borderWidthHalf-10;
@@ -53,13 +53,13 @@ if oGlobalController.width > oGlobalController.height {
 	back.coloredBorder = c_white; 
 } else {
 	start.height = 30;
-	start.draw();
+	start.updatePos();
 	
 	pb.height = -1;
-	pb.draw();
+	pb.updatePos();
 	
 	practice.height = 10;
-	practice.draw();
+	practice.updatePos();
 	
 	normal.x = room_width/2;
 	normal.y = GUIY+HEIGHT/2-30+16;

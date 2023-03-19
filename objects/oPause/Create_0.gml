@@ -18,8 +18,9 @@ function Button(_name) constructor {
 		draw_set_font(GuiFont);
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		draw_set_color(c_white);
+		draw_set_color(global.hardMode ? #FE0054 : #00F0F0);
 		draw_roundrect(x-widthHalf,y-heightHalf,x+widthHalf,y+heightHalf,true);
+		draw_set_color(c_white);
 		draw_text(x,y,name);
 	}
 	
