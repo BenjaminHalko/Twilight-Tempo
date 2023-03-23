@@ -40,7 +40,7 @@ if(show and selected == 0) {
 			ini_write_real("Mode","Tutorial",global.start);
 			ini_close();
 		} else if leaderboard.clicked() {
-			GooglePlayServices_Leaderboard_Show(global.hardMode ? NormalLeaderboard : NormalLeaderboard);
+			GooglePlayServices_Leaderboard_Show(global.hardMode ? HardLeaderboard : NormalLeaderboard);
 			audio_play_sound(snBlip,1,false);
 		} else if start.clicked() {
 			selected = 1;

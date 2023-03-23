@@ -61,7 +61,7 @@ function Button(_sprite,_name,_width=-1,_iconOverText=false,_textSize=1,_height=
 			if height != -1 heightHalf = height/2;
 			if name == "" widthHalf = spriteWidth/2;
 			else if is_undefined(sprite) widthHalf = ceil(textWidth/2)+2;
-			else widthHalf = ceil((spriteWidth+textWidth+4+8*(coloredBorder != -1))/2);
+			else widthHalf = ceil((spriteWidth+textWidth+4)/2);
 			borderWidthHalf = widthHalf+margin;
 			borderHeightHalf = heightHalf+margin;
 			if width != -1 borderWidthHalf = width/2+margin;

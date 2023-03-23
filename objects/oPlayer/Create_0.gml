@@ -18,3 +18,6 @@ shoot = false;
 
 startScale = 0;
 curve = animcurve_get_channel(PlayerStartCurve,0);
+
+secret = [90,90,270,270,180,0,180,0];
+currentSecret = 0;

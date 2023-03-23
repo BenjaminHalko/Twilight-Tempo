@@ -16,6 +16,7 @@ if oGlobalController.width >= oGlobalController.height {
 	pb.height = pb.originalHeight;
 	pb.updatePos();
 	
+	start.width = start.originalWidth;
 	start.height = start.originalHeight;
 	start.updatePos();
 	
@@ -24,9 +25,9 @@ if oGlobalController.width >= oGlobalController.height {
 	
 	// Main
 	normal.x = room_width/2-normal.borderWidthHalf-10;
-	normal.y = GUIY+HEIGHT/2+38;
+	normal.y = GUIY+HEIGHT/2+34;
 	hard.x = room_width/2+hard.borderWidthHalf+10;
-	hard.y = GUIY+HEIGHT/2+38;
+	hard.y = GUIY+HEIGHT/2+34;
 	
 	// Not Main
 	start.y = GUIY+HEIGHT/2+34-tutorial.borderHeightHalf-6;
@@ -43,9 +44,13 @@ if oGlobalController.width >= oGlobalController.height {
 	leaderboard.x = practice.x;
 	pb.x = start.x;
 	
+	tutorial.updatePos();
+	leaderboard.updatePos();
+	
 	achievements.x = GUIX+WIDTH-17;
 	achievements.y = GUIY+HEIGHT-17;
 	achievements.updateText("");
+	achievements.updatePos();
 	
 	back.x = GUIX+WIDTH-17;
 	back.y = GUIY+HEIGHT-17;
@@ -55,17 +60,11 @@ if oGlobalController.width >= oGlobalController.height {
 	start.height = 30;
 	start.updatePos();
 	
-	pb.height = -1;
-	pb.updatePos();
-	
-	practice.height = 10;
-	practice.updatePos();
-	
 	normal.x = room_width/2;
-	normal.y = GUIY+HEIGHT/2-30+16;
+	normal.y = GUIY+HEIGHT/2-(HEIGHT/6-17)+16;
 	
 	hard.x = room_width/2;
-	hard.y = GUIY+HEIGHT/2+30+16;
+	hard.y = GUIY+HEIGHT/2+(HEIGHT/6-17)+16;
 	
 	start.x = room_width/2;
 	practice.x = start.x;
@@ -79,21 +78,21 @@ if oGlobalController.width >= oGlobalController.height {
 	normal.iconOverText = false;
 	normal.textSize = 2;
 	normal.updateText("NORMAL");
-	normal.width = WIDTH-32;
+	normal.width = WIDTH-24;
+	normal.height = HEIGHT/6;
+	normal.updatePos();
 	
 	hard.iconOverText = false;
 	hard.textSize = 2;
 	hard.updateText("HARD");
-	hard.width = WIDTH-32;
+	hard.width = WIDTH-24;
+	hard.height = HEIGHT/6;
+	hard.updatePos();
 	
 	achievements.x = room_width/2;
 	achievements.y = GUIY+HEIGHT-48;
 	achievements.updateText("ACHIEVEMENTS");
-	
-	back.x = room_width/2;
-	back.y = GUIY+HEIGHT-48;
-	back.updateText("BACK TO MAIN MENU");
-	back.coloredBorder = -1;
+	achievements.updatePos();
 	
 	start.width = WIDTH-32;
 }

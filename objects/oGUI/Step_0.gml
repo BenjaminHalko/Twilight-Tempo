@@ -14,7 +14,6 @@ for(var i = 0; i < 3; i++) {
 }
 
 if(gameoverNum > 0) {
-	if(gameoverNum >= 20 || InputSelect()) {
-		game_restart();
-	}
+	if(InputSelect()) room_restart();
+	else if(gameoverNum >= 20) game_restart();
 }

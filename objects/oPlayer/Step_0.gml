@@ -40,6 +40,17 @@ if(global.lives > 0) {
 		else image_yscale = 0.3;
 	
 		shootPercent = 0;
+		
+		//Secret
+		if currentSecret != -1 {
+			if secret[currentSecret] == dir % 360 {
+				currentSecret++;
+				if currentSecret >= array_length(secret) {
+					currentSecret = -1;
+					GooglePlayServices_Achievements_Unlock(SecretAchievement);
+				}
+			} else if dir != 90 or currentSecret != 2 currentSecret = 0;
+		}
 	}
 
 	drawDir = ApproachCircleEase(drawDir,dir,50,0.6);

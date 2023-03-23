@@ -3,14 +3,14 @@ draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 draw_set_color(c_white);
 	
-draw_text(6,6,"SCORE\n "+(oGlobalController.width >= 256 ? " " : "")+string_replace_all(string_format(global.score,4,0)," ","0"));
+draw_text(6,6,"SCORE\n "+(oGlobalController.width / oGlobalController.height > 0.55 ? " " : "")+string_replace_all(string_format(global.score,4,0)," ","0"));
 
 draw_set_halign(fa_center);
 if(global.start) draw_text(WIDTH/2,6,"TUTORIAL\nLEVEL");
 else if(global.hintMode) draw_text(WIDTH/2,6,"PRACTICE\nMODE");
 else {
 	
-	draw_text(WIDTH/2,6,(oGlobalController.width >= 256 ? "HIGH " : "HI")+"SCORE\n"+string_replace_all(string_format(global.hiScore[global.hardMode],5,0)," ","0"));
+	draw_text(WIDTH/2,6,(oGlobalController.width / oGlobalController.height > 0.55 ? "HIGH " : "HI")+"SCORE\n"+string_replace_all(string_format(global.hiScore[global.hardMode],5,0)," ","0"));
 }
 
 for(var i = 0; i < 3; i++) {

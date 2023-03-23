@@ -8,6 +8,7 @@ randomize();
 
 #macro NormalLeaderboard "CgkI8N_53PcREAIQAQ"
 #macro HardLeaderboard "CgkI8N_53PcREAIQAg"
+#macro SecretAchievement "CgkI8N_53PcREAIQEQ"
 
 //Background
 global.stars = [];

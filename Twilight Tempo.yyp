@@ -32,7 +32,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.200.0.299",
+    "IDEVersion": "2023.2.1.75",
   },
   "resources": [
     {"id":{"name":"snEnemyDestroy","path":"sounds/snEnemyDestroy/snEnemyDestroy.yy",},},
