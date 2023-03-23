@@ -57,6 +57,7 @@ if oGlobalController.width >= oGlobalController.height {
 	back.updateText("");
 	back.coloredBorder = c_white; 
 } else {
+	start.width = WIDTH-32;
 	start.height = 30;
 	start.updatePos();
 	
@@ -93,8 +94,6 @@ if oGlobalController.width >= oGlobalController.height {
 	achievements.y = GUIY+HEIGHT-48;
 	achievements.updateText("ACHIEVEMENTS");
 	achievements.updatePos();
-	
-	start.width = WIDTH-32;
 }
 
 back.x = GUIX+WIDTH-17;

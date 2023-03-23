@@ -81,7 +81,7 @@ function ResizeScreen(_newWidth,_newHeight) {
 	var _height = 224;
 	if room == rGame {
 		_width = 340;
-		_height = 340;
+		_height = _width;
 	}
 	
 	if((_width/_ratio > _height) == (room == rGame)) _width = round(_height*_ratio);
