@@ -6,6 +6,8 @@ randomize();
 #macro GUIX (room_width-WIDTH)/2
 #macro GUIY (room_height-HEIGHT)/2
 
+#macro DISPLAYRATIO (oGlobalController.width / oGlobalController.height)
+
 #macro NormalLeaderboard "CgkI8N_53PcREAIQAQ"
 #macro HardLeaderboard "CgkI8N_53PcREAIQAg"
 #macro SecretAchievement "CgkI8N_53PcREAIQEQ"
