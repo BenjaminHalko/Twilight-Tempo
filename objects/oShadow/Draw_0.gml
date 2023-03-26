@@ -23,7 +23,9 @@ radius = Approach(radius,0,0.1);
 
 for(var i = 0; i < array_length(global.frontStars); i++) {
 	draw_set_alpha((1-abs(1-global.frontStars[i].alpha))*darkness);
-	draw_point_color(global.frontStars[i].x,global.frontStars[i].y,global.frontStars[i].col);
+	var _colNumber = global.frontStars[i].col;
+	if _colNumber == 2-global.hardMode _colNumber += 2;
+	draw_point_color(global.frontStars[i].x,global.frontStars[i].y,global.starColors[_colNumber]);
 	draw_set_alpha(1);
 	
 	global.frontStars[i].alpha += global.frontStars[i].alphaSpeed;

@@ -9,6 +9,10 @@ for(var i = 0; i < array_length(stars); i++) {
 	while(stars[i].x < 0) {
 		stars[i].x += WIDTH;
 		stars[i].y = irandom(HEIGHT);
+		if menuType != Menu.Main and stars[i].colNumber == 2-global.hardMode
+			stars[i].col = global.starColors[stars[i].colNumber+2];
+		else
+			stars[i].col = global.starColors[stars[i].colNumber];
 	}
 }
 

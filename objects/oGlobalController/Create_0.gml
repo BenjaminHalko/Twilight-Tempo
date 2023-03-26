@@ -14,9 +14,8 @@ randomize();
 
 #macro MaxResolution 168
 
-#macro StarColors choose(#0078f8,#ffcd00,#f900e5)
-
 //Background
+global.starColors = [ #ffcd00,#0078f8,#8C00FF,#FE0054,#00F0F0 ];
 global.stars = [];
 global.frontStars = [];
 
@@ -54,7 +53,7 @@ global.start = ini_read_real("Mode","Tutorial",true);
 repeat(110) array_push(global.stars,{
 	x: irandom(WIDTH)+GUIX,
     y: irandom(HEIGHT)+GUIY,
-	col: StarColors,
+	col: irandom(2),
 	alpha1: random(1),
 	alpha2: random(1),
 	alphaSpeed: random_range(1,5),
@@ -64,7 +63,7 @@ repeat(110) array_push(global.stars,{
 for(var i = 0; i < 30; i++) array_push(global.frontStars,{
 	x: irandom(WIDTH)-GUIX,
     y: irandom(HEIGHT)-GUIY,
-	col: StarColors,
+	col: irandom(2),
 	alpha: random(2),
 	alphaSpeed: random_range(0.005,0.01),
 });
