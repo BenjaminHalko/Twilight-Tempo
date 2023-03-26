@@ -18,16 +18,19 @@ if(global.lives > 0) {
 
 	//Shooting
 	if(key_left or key_right or key_down or key_up or shoot) {
+		//call_later(3,time_source_units_frames,function(){screen_save(string(current_time)+".png")});
 		shoot = false;
+		audio_play_sound(snBlipLoud,1,false);
+		instance_create_depth(room_width-50,50,oShadow.depth-1000,oMarker,{image_blend: c_lime});
 		if(collision_line(x,y,x+lengthdir_x(150,dir),y+lengthdir_y(150,dir),oEnemy,false,false) == noone) {
 			penalty -= 100;
 			with(instance_create_layer(x,y-10,"GUI",oScore)) amount = string(other.penalty);
 			global.score = max(0,global.score+penalty);
 			audio_stop_sound(snPlayerShootFail);
-			audio_sound_pitch(audio_play_sound(snPlayerShootFail,2,false),random_range(0.4,0.5));
+			//audio_sound_pitch(audio_play_sound(snPlayerShootFail,2,false),random_range(0.4,0.5));
 		} else {
 			penalty = 0;
-			audio_sound_pitch(audio_play_sound(snPlayerShoot,2,false),random_range(0.5,1.3));
+			//audio_sound_pitch(audio_play_sound(snPlayerShoot,2,false),random_range(0.5,1.3));
 			audio_play_sound(snEnemyDestroy,2,false);
 		}
 		
@@ -36,10 +39,10 @@ if(global.lives > 0) {
 			image_angle = other.dir;
 		}
 	
-		if((dir div 90) % 2 == 0) image_xscale = 0.3;
-		else image_yscale = 0.3;
+		//if((dir div 90) % 2 == 0) image_xscale = 0.3;
+		//else image_yscale = 0.3;
 	
-		shootPercent = 0;
+		//	shootPercent = 0;
 		
 		//Secret
 		if currentSecret != -1 {

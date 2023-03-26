@@ -12,9 +12,23 @@ randomize();
 #macro HardLeaderboard "CgkI8N_53PcREAIQAg"
 #macro SecretAchievement "CgkI8N_53PcREAIQEQ"
 
+#macro MaxResolution 168
+
+#macro StarColors choose(#0078f8,#ffcd00,#f900e5)
+
 //Background
 global.stars = [];
 global.frontStars = [];
+
+//Notch & Screen Size
+global.notched = NOTCH_is();
+global.notchTop = 0;
+global.notchBottom = 0;
+global.notchLeftTop = 0;
+global.notchRightTop = 0;
+global.notchRightBottom = 0;
+
+window_set_size(540,960);
 
 ResizeScreen(window_get_width(),window_get_height());
 
@@ -37,21 +51,20 @@ global.hintMode = false;
 
 global.start = ini_read_real("Mode","Tutorial",true);
 
-repeat(120) array_push(global.stars,{
+repeat(110) array_push(global.stars,{
 	x: irandom(WIDTH)+GUIX,
     y: irandom(HEIGHT)+GUIY,
-	col: choose(#d2de8e,#60205a),
+	col: StarColors,
 	alpha1: random(1),
 	alpha2: random(1),
 	alphaSpeed: random_range(1,5),
 	alphaOffset: random(1)
 });
 
-var _starAmount = 20;
-for(var i = 0; i < _starAmount; i++) array_push(global.frontStars,{
+for(var i = 0; i < 30; i++) array_push(global.frontStars,{
 	x: irandom(WIDTH)-GUIX,
     y: irandom(HEIGHT)-GUIY,
-	col: choose(#d2de8e,#60205a),
+	col: StarColors,
 	alpha: random(2),
 	alphaSpeed: random_range(0.005,0.01),
 });

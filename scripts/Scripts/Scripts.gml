@@ -77,15 +77,16 @@ function ResizeScreen(_newWidth,_newHeight) {
 	if _newWidth < 1 and _newHeight < 1 return;
 	var _ratio = _newWidth/_newHeight;
 	
-	var _width = (_ratio >= 0.86 ? (_ratio >= 0.9 ? (_ratio >= 1 ? 320 : 280) : 256) : 240);
-	var _height = 224;
-	if room == rGame {
-		_width = 340;
-		_height = _width;
+	var _width = MaxResolution;
+	var _height = _width;
+	
+	if room != rGame {
+		_width = (_ratio >= 0.75 ? (_ratio >= 0.85 ? (_ratio >= 0.95 ? 320 : 280) : 256) : 224);
+		_height = 224;
 	}
 	
-	if((_width/_ratio > _height) == (room == rGame)) _width = round(_height*_ratio);
-	else _height = round(_width/_ratio);
+	if(_width/_ratio < _height) _width = round(_height*_ratio/2)*2;
+	else _height = round(_width/_ratio/2)*2;
 	
 	camera_set_view_size(view_camera[0],_width,_height);
 	camera_set_view_pos(view_camera[0],128-_width/2,112-_height/2);
@@ -102,6 +103,30 @@ function ResizeScreen(_newWidth,_newHeight) {
 	for(var i = 0; i < array_length(global.stars); i++) {
 		global.stars[i].x = irandom(WIDTH)+GUIX;
 		global.stars[i].y = irandom(HEIGHT)+GUIY;
+	}
+
+	if global.notched {
+		var _wRatio = _width/_newWidth;
+		var _hRatio = _height/_newHeight;
+		global.notchTop = 0;
+		global.notchBottom = 0;
+		global.notchLeftTop = 0;
+		global.notchRightTop = 0;
+		global.notchRightBottom = 0;
+		
+		var _dir = display_get_orientation();
+		var _leftSide = NOTCH_getLeft(_dir,"") < _newWidth / 2;
+		var _topSide = NOTCH_getTop(_dir,"") < _newHeight / 2;
+		var _portrait = _newWidth < _newHeight;
+		
+		if _topSide {
+			if _portrait global.notchTop = floor(NOTCH_getBottom(_dir,"")*_hRatio);
+			else if _leftSide global.notchLeftTop = ceil(NOTCH_getRight(_dir,"")*_wRatio);
+			else global.notchRightTop = _width-floor(NOTCH_getLeft(_dir,"")*_wRatio);
+		} else {
+			if _portrait global.notchBottom = _height-ceil(NOTCH_getTop(_dir,"")*_hRatio);
+			else if !_leftSide global.notchRightBottom = _width-floor(NOTCH_getLeft(_dir,"")*_wRatio);
+		}
 	}
 }
 

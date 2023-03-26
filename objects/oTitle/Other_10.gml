@@ -1,5 +1,12 @@
 /// @desc Window Resize
 
+// Resize with Notch
+titleY = max(40,global.notchTop+26);
+var _guiY = titleY-40+GUIY;
+var _height = HEIGHT-titleY+40-global.notchBottom;
+var _ratio = WIDTH / _height;
+
+// More Resize
 if oGlobalController.width >= oGlobalController.height {
 	normal.iconOverText = true;
 	normal.textSize = 1;
@@ -33,12 +40,12 @@ if oGlobalController.width >= oGlobalController.height {
 	
 	// Main
 	normal.x = room_width/2-normal.borderWidthHalf-10;
-	normal.y = GUIY+HEIGHT/2+34;
+	normal.y = _guiY+_height/2+34;
 	hard.x = room_width/2+hard.borderWidthHalf+10;
-	hard.y = GUIY+HEIGHT/2+34;
+	hard.y = _guiY+_height/2+34;
 	
 	// Not Main
-	start.y = GUIY+HEIGHT/2+34-tutorial.borderHeightHalf-6;
+	start.y = _guiY+_height/2+34-tutorial.borderHeightHalf-6;
 	
 	practice.y = start.y-start.borderHeightHalf+tutorial.borderHeightHalf;
 	tutorial.y = practice.y + start.borderHeightHalf*2 - tutorial.borderHeightHalf -practice.borderHeightHalf;
@@ -57,23 +64,38 @@ if oGlobalController.width >= oGlobalController.height {
 	tutorial.updatePos();
 	leaderboard.updatePos();
 	
-	if DISPLAYRATIO < 1.15 {
+	if _ratio < 1.15 {
 		achievements.x = room_width/2;
 		achievements.y = GUIY+HEIGHT-48;
 		achievements.updateText("ACHIEVEMENTS");
 		achievements.updatePos();
+		
+		back.x = room_width/2;
+		back.y = _guiY+_height-48;
+		back.updateText("BACK TO MENU");
+		back.coloredBorder = -1;
+		back.updatePos();
+		
+		normal.y -= achievements.borderHeightHalf*2-4;
+		hard.y -= achievements.borderHeightHalf*2-4;
+		
+		start.y -= back.borderHeightHalf*2-6;
+		practice.y -= back.borderHeightHalf*2-6;
+		pb.y -= back.borderHeightHalf*2-6;
+		tutorial.y -= back.borderHeightHalf*2-6;
+		leaderboard.y -= back.borderHeightHalf*2-6;
 	} else {
-		achievements.x = GUIX+WIDTH-17;
+		achievements.x = GUIX+WIDTH-17-global.notchRightBottom;
 		achievements.y = GUIY+HEIGHT-17;
 		achievements.updateText("");
 		achievements.updatePos();
+		
+		back.x = GUIX+WIDTH-17-global.notchRightBottom;
+		back.y = GUIY+HEIGHT-17;
+		back.updateText("");
+		back.coloredBorder = c_white; 
+		back.updatePos();
 	}
-	
-	back.x = GUIX+WIDTH-17;
-	back.y = GUIY+HEIGHT-17;
-	back.updateText("");
-	back.coloredBorder = c_white; 
-	back.updatePos();
 } else {
 	start.width = WIDTH-32;
 	start.updatePos();
@@ -89,19 +111,19 @@ if oGlobalController.width >= oGlobalController.height {
 	tutorial.x = start.x;
 	leaderboard.x = start.x;
 	
-	start.y = GUIY+HEIGHT/2+34-62;
+	start.y = _guiY+_height/2+34-62;
 	
 	var _space = 12;
 	
-	if DISPLAYRATIO > 0.70 {
+	if _ratio > 0.68 {
 		back.x = GUIX+WIDTH-17;
-		back.y = GUIY+HEIGHT-17;
+		back.y = _guiY+_height-17;
 		back.updateText("");
 		back.coloredBorder = c_white;
 		back.updatePos();
 	} else {
 		back.x = room_width/2;
-		back.y = GUIY+HEIGHT-48;
+		back.y = _guiY+_height-48;
 		back.updateText("BACK TO MENU");
 		back.coloredBorder = -1;
 		back.updatePos();
@@ -109,7 +131,7 @@ if oGlobalController.width >= oGlobalController.height {
 		start.y -= back.borderHeightHalf*2-6;
 	}
 	
-	if DISPLAYRATIO < 0.62  {
+	if _ratio < 0.6  {
 		_space = 18;	
 		start.height = 42;
 		start.updatePos();
@@ -152,25 +174,25 @@ if oGlobalController.width >= oGlobalController.height {
 	normal.iconOverText = false;
 	normal.textSize = 2;
 	normal.updateText("NORMAL");
-	normal.width = WIDTH-24;
-	normal.height = HEIGHT/7;
+	normal.width = WIDTH-32;
+	normal.height = _height/7;
 	normal.updatePos();
 	
 	hard.iconOverText = false;
 	hard.textSize = 2;
 	hard.updateText("HARD");
-	hard.width = WIDTH-24;
-	hard.height = HEIGHT/7;
+	hard.width = WIDTH-32;
+	hard.height = _height/7;
 	hard.updatePos();
 	
 	normal.x = room_width/2;
-	normal.y = GUIY+HEIGHT/2-(HEIGHT/6-24)+16;
+	normal.y = _guiY+_height/2-(_height/6-24)+16;
 	
 	hard.x = room_width/2;
-	hard.y = GUIY+HEIGHT/2+(HEIGHT/6-24)+16;
+	hard.y = _guiY+_height/2+(_height/6-24)+16;
 	
 	achievements.x = room_width/2;
-	achievements.y = GUIY+HEIGHT-48;
+	achievements.y = _guiY+_height-48;
 	achievements.updateText("ACHIEVEMENTS");
 	achievements.updatePos();
 }

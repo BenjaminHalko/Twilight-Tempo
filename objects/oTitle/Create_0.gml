@@ -16,6 +16,8 @@ song = -1;
 lastTime = 100;
 bounce = 1;
 
+titleY = 40;
+
 menuType = Menu.Main;
 draw_set_font(GuiFont);
 

@@ -79,7 +79,7 @@ if(logoX >= 2 && !show) {
 if(array_length(stars) < 150) array_push(stars,{
 	x: random(WIDTH),
     y: random(HEIGHT),
-	col: choose(c_yellow,c_fuchsia),
+	col: StarColors,
 	alpha1: random(1),
 	alpha2: random(1),
 	alphaSpeed: random_range(1,5),

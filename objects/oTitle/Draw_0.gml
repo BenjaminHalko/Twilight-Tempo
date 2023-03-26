@@ -1,3 +1,4 @@
+
 /// @desc
 
 for(var i = 0; i < array_length(stars); i++) {
@@ -35,5 +36,5 @@ if(show) {
 	}
 }
 
-draw_sprite_ext(sTwilight,0,room_width/2,lerp(100,40,logoY)+GUIY,lerp(1.5,1,logoY)*bounce,bounce,0,c_white,logoY);
-draw_sprite_part(sTempo,0,0,0,sprite_get_width(sTempo)*logoX,sprite_get_height(sTempo),room_width/2-10,50+GUIY);
+draw_sprite_ext(sTwilight,0,room_width/2,60*(1-logoY)+GUIY+titleY,lerp(1.5,1,logoY)*bounce,bounce,0,c_white,logoY);
+draw_sprite_part(sTempo,0,0,0,sprite_get_width(sTempo)*logoX,sprite_get_height(sTempo),room_width/2-10,titleY+10+GUIY);
