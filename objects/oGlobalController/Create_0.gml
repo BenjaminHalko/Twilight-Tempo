@@ -8,9 +8,9 @@ randomize();
 
 #macro DISPLAYRATIO (oGlobalController.width / oGlobalController.height)
 
-#macro NormalLeaderboard "CgkI8N_53PcREAIQAQ"
-#macro HardLeaderboard "CgkI8N_53PcREAIQAg"
-#macro SecretAchievement "CgkI8N_53PcREAIQEQ"
+#macro NormalLeaderboard "CgkIsZiXgOcREAIQFw"
+#macro HardLeaderboard "CgkIsZiXgOcREAIQGA"
+#macro SecretAchievement "CgkIsZiXgOcREAIQFg"
 
 #macro MaxResolution 168
 
