@@ -96,18 +96,14 @@ public class YYGooglePlayServices extends RunnerSocial
 	
 	private static Activity activity = RunnerActivity.CurrentActivity;
 	
-	int AsyncInd = 0;
+	int Ind;
 	
 	public YYGooglePlayServices()
 	{
 		PlayGamesSdk.initialize(activity);
+		
+		Ind = 1;
 		mapSnapshot = new HashMap<String, Snapshot>();
-	}
-	
-	private double getAsyncInd()
-	{
-		AsyncInd++;		
-		return(AsyncInd);
 	}
 	
 	public double GooglePlayServices_IsAvailable()
@@ -115,9 +111,8 @@ public class YYGooglePlayServices extends RunnerSocial
 		return (double) GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(activity) == ConnectionResult.SUCCESS ? 1.0 : 0.0;
 	}
 	
-	public double GooglePlayServices_SignIn()
+	public void GooglePlayServices_SignIn()
 	{
-		final double ind = getAsyncInd();
 		PlayGames.getGamesSignInClient(activity).signIn().addOnCompleteListener(new OnCompleteListener<AuthenticationResult>() 
 		{
 			@Override
@@ -125,7 +120,6 @@ public class YYGooglePlayServices extends RunnerSocial
 			{
 				int dsMapIndex = RunnerJNILib.jCreateDsMap(null, null, null);
 				RunnerJNILib.DsMapAddString( dsMapIndex, "type", "GooglePlayServices_SignIn");
-				RunnerJNILib.DsMapAddDouble( dsMapIndex, "ind", ind );
 				if(isAuthenticatedTask.isSuccessful())
 				{
 					RunnerJNILib.DsMapAddDouble(dsMapIndex,"isAuthenticated",isAuthenticatedTask.getResult().isAuthenticated()?1.0:0.0);
@@ -139,13 +133,10 @@ public class YYGooglePlayServices extends RunnerSocial
 				RunnerJNILib.CreateAsynEventWithDSMap(dsMapIndex,EVENT_OTHER_SOCIAL);
 			}
 		});
-		
-		return(ind);
 	}
 	
-	public double GooglePlayServices_IsAuthenticated()
+	public void GooglePlayServices_IsAuthenticated()
 	{
-		final double ind = getAsyncInd();
 		PlayGames.getGamesSignInClient(activity).isAuthenticated().addOnCompleteListener(new OnCompleteListener<AuthenticationResult>() 
 		{
 			@Override
@@ -153,7 +144,6 @@ public class YYGooglePlayServices extends RunnerSocial
 			{
 				int dsMapIndex = RunnerJNILib.jCreateDsMap(null, null, null);
 				RunnerJNILib.DsMapAddString( dsMapIndex, "type", "GooglePlayServices_IsAuthenticated");
-				RunnerJNILib.DsMapAddDouble( dsMapIndex, "ind", ind );
 				if(isAuthenticatedTask.isSuccessful())
 				{
 					RunnerJNILib.DsMapAddDouble(dsMapIndex,"isAuthenticated",isAuthenticatedTask.getResult().isAuthenticated()?1.0:0.0);
@@ -167,12 +157,10 @@ public class YYGooglePlayServices extends RunnerSocial
 				RunnerJNILib.CreateAsynEventWithDSMap(dsMapIndex,EVENT_OTHER_SOCIAL);
 			}
 		});
-		return(ind);
 	}
 	
-	public double GooglePlayServices_RequestServerSideAccess(String serverClientId, double forceRefreshToken)
+	public void GooglePlayServices_RequestServerSideAccess(String serverClientId, double forceRefreshToken)
 	{
-		final double ind = getAsyncInd();
 		PlayGames.getGamesSignInClient(activity).requestServerSideAccess(serverClientId,forceRefreshToken>=0.5).addOnCompleteListener(new OnCompleteListener<String>() 
 		{
 			@Override
@@ -180,7 +168,6 @@ public class YYGooglePlayServices extends RunnerSocial
 			{
 				int dsMapIndex = RunnerJNILib.jCreateDsMap(null, null, null);
 				RunnerJNILib.DsMapAddString( dsMapIndex, "type", "GooglePlayServices_RequestServerSideAccess");
-				RunnerJNILib.DsMapAddDouble( dsMapIndex, "ind", ind );
 				if (task.isSuccessful()) 
 				{
 					RunnerJNILib.DsMapAddString(dsMapIndex,"authCode",task.getResult());
@@ -194,11 +181,14 @@ public class YYGooglePlayServices extends RunnerSocial
 				RunnerJNILib.CreateAsynEventWithDSMap(dsMapIndex,EVENT_OTHER_SOCIAL);
 			}
 		});
-		return(ind);
 	}
 	
+	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) 
 	{
+		
+		super.onActivityResult(requestCode, resultCode, data);
+		
 		int dsMapIndex;
 
 		switch(requestCode)
@@ -210,7 +200,6 @@ public class YYGooglePlayServices extends RunnerSocial
 				{
 					dsMapIndex = RunnerJNILib.jCreateDsMap(null, null, null);
 					RunnerJNILib.DsMapAddString( dsMapIndex, "type", "GooglePlayServices_SavedGames_ShowSavedGamesUI_OnExit");
-					RunnerJNILib.DsMapAddDouble( dsMapIndex, "ind", ind_ShowSavedGamesUI );
 					RunnerJNILib.CreateAsynEventWithDSMap(dsMapIndex, EVENT_OTHER_SOCIAL);					
 				}
 				else
@@ -220,7 +209,6 @@ public class YYGooglePlayServices extends RunnerSocial
 						SnapshotMetadata snapshotMetadata = data.getParcelableExtra(SnapshotsClient.EXTRA_SNAPSHOT_METADATA);
 						dsMapIndex = RunnerJNILib.jCreateDsMap(null, null, null);
 						RunnerJNILib.DsMapAddString( dsMapIndex, "type", "GooglePlayServices_SavedGames_ShowSavedGamesUI_OnOpen");
-						RunnerJNILib.DsMapAddDouble( dsMapIndex, "ind", ind_ShowSavedGamesUI );
 						RunnerJNILib.DsMapAddString( dsMapIndex, "snapshotMetadata", SnapshotMetadataJSON(snapshotMetadata));
 						RunnerJNILib.CreateAsynEventWithDSMap(dsMapIndex, EVENT_OTHER_SOCIAL);
 						GooglePlayServices_SavedGames_Open(snapshotMetadata.getUniqueName());
@@ -230,7 +218,6 @@ public class YYGooglePlayServices extends RunnerSocial
 					{
 						dsMapIndex = RunnerJNILib.jCreateDsMap(null, null, null);
 						RunnerJNILib.DsMapAddString( dsMapIndex, "type", "GooglePlayServices_SavedGames_ShowSavedGamesUI_OnNew");
-						RunnerJNILib.DsMapAddDouble( dsMapIndex, "ind", ind_ShowSavedGamesUI );
 						RunnerJNILib.CreateAsynEventWithDSMap(dsMapIndex, EVENT_OTHER_SOCIAL);
 					}
 				}
@@ -252,10 +239,8 @@ public class YYGooglePlayServices extends RunnerSocial
 	}
 	
 	//////////////////////////////////////////////////////////////////Player Info
-	public double GooglePlayServices_Player_Current()
+	public void GooglePlayServices_Player_Current()
 	{
-		final double ind = getAsyncInd();
-		
 		PlayGames.getPlayersClient(activity).getCurrentPlayer().addOnCompleteListener(new OnCompleteListener<Player>() 
 		{
 			@Override
@@ -263,7 +248,6 @@ public class YYGooglePlayServices extends RunnerSocial
 			{
 				int dsMapIndex = RunnerJNILib.jCreateDsMap(null, null, null);
 				RunnerJNILib.DsMapAddString( dsMapIndex, "type", "GooglePlayServices_Player_Current" );
-				RunnerJNILib.DsMapAddDouble( dsMapIndex, "ind", ind );
 				
 				if (task.isSuccessful()) 
 				{
@@ -281,8 +265,6 @@ public class YYGooglePlayServices extends RunnerSocial
 				RunnerJNILib.CreateAsynEventWithDSMap(dsMapIndex, EVENT_OTHER_SOCIAL);
 			}
 		});
-		
-		return(ind);
 	}
 	
 	
@@ -318,27 +300,20 @@ public class YYGooglePlayServices extends RunnerSocial
 	private static final int RC_ACHIEVEMENT_UI = 9003;
 	public void GooglePlayServices_Achievements_Show() 
 	{
+	Log.i("yoyo","GooglePlayServices_Achievements_Show HERE");
 		PlayGames.getAchievementsClient(activity).getAchievementsIntent().addOnSuccessListener(new OnSuccessListener<Intent>() 
 		{
 			@Override
 			public void onSuccess(Intent intent) 
 			{
-				try
-				{
-					activity.startActivityForResult(intent, RC_ACHIEVEMENT_UI);
-				}
-				catch(Exception e)
-				{
-					Log.e("yoyo", "ERROR GooglePlayServices_Achievements_Show: " + e.getMessage(), e);
-				}
+				activity.startActivityForResult(intent,RC_ACHIEVEMENT_UI);
 			}
 		});
 		
 	}
 
-	public double GooglePlayServices_Achievements_Increment(final String arch_id,double steps) 
+	public void GooglePlayServices_Achievements_Increment(final String arch_id,double steps) 
 	{
-		final double ind = getAsyncInd();
 		PlayGames.getAchievementsClient(activity).incrementImmediate(arch_id, (int)steps).addOnCompleteListener(new OnCompleteListener<Boolean>() 
 		{
 			@Override
@@ -347,7 +322,7 @@ public class YYGooglePlayServices extends RunnerSocial
 				int dsMapIndex = RunnerJNILib.jCreateDsMap(null, null, null);
 				RunnerJNILib.DsMapAddString( dsMapIndex, "type", "GooglePlayServices_Achievements_Increment" );
 				RunnerJNILib.DsMapAddString( dsMapIndex, "achievement_id", arch_id);
-				RunnerJNILib.DsMapAddDouble( dsMapIndex, "ind", ind );
+				
 				if (task.isSuccessful()) 
 				{
 					task.getResult();
@@ -362,12 +337,10 @@ public class YYGooglePlayServices extends RunnerSocial
 				RunnerJNILib.CreateAsynEventWithDSMap(dsMapIndex, EVENT_OTHER_SOCIAL);
 			}
 		});
-		return(ind);
 	}
 	
-	public double GooglePlayServices_Achievements_Reveal(final String arch_id) 
+	public void GooglePlayServices_Achievements_Reveal(final String arch_id) 
 	{
-		final double ind = getAsyncInd();
 		PlayGames.getAchievementsClient(activity).revealImmediate(arch_id).addOnCompleteListener(new OnCompleteListener<Void>() 
 		{
 			@Override
@@ -376,7 +349,6 @@ public class YYGooglePlayServices extends RunnerSocial
 				int dsMapIndex = RunnerJNILib.jCreateDsMap(null, null, null);
 				RunnerJNILib.DsMapAddString( dsMapIndex, "type", "GooglePlayServices_Achievements_Reveal" );
 				RunnerJNILib.DsMapAddString( dsMapIndex, "achievement_id", arch_id);
-				RunnerJNILib.DsMapAddDouble( dsMapIndex, "ind", ind );
 				
 				if (task.isSuccessful()) 
 				{
@@ -392,12 +364,10 @@ public class YYGooglePlayServices extends RunnerSocial
 				RunnerJNILib.CreateAsynEventWithDSMap(dsMapIndex, EVENT_OTHER_SOCIAL);
 			}
 		});
-		return(ind);
 	}
 	
-	public double GooglePlayServices_Achievements_SetSteps(final String arch_id,double steps) 
+	public void GooglePlayServices_Achievements_SetSteps(final String arch_id,double steps) 
 	{
-		final double ind = getAsyncInd();
 		PlayGames.getAchievementsClient(activity).setStepsImmediate(arch_id, (int)steps).addOnCompleteListener(new OnCompleteListener<Boolean>() 
 		{
 			@Override
@@ -406,7 +376,6 @@ public class YYGooglePlayServices extends RunnerSocial
 				int dsMapIndex = RunnerJNILib.jCreateDsMap(null, null, null);
 				RunnerJNILib.DsMapAddString( dsMapIndex, "type", "GooglePlayServices_Achievements_SetSteps" );
 				RunnerJNILib.DsMapAddString( dsMapIndex, "achievement_id", arch_id);
-				RunnerJNILib.DsMapAddDouble( dsMapIndex, "ind", ind );
 				
 				if (task.isSuccessful()) 
 				{
@@ -422,13 +391,10 @@ public class YYGooglePlayServices extends RunnerSocial
 				RunnerJNILib.CreateAsynEventWithDSMap(dsMapIndex, EVENT_OTHER_SOCIAL);
 			}
 		});
-		return(ind);
 	}
 	
-	public double GooglePlayServices_Achievements_Unlock(final String arch_id) 
+	public void GooglePlayServices_Achievements_Unlock(final String arch_id) 
 	{
-		final double ind = getAsyncInd();
-		
 		PlayGames.getAchievementsClient(activity).unlockImmediate(arch_id).addOnCompleteListener(new OnCompleteListener<Void>() 
 		{
 			@Override
@@ -437,7 +403,6 @@ public class YYGooglePlayServices extends RunnerSocial
 				int dsMapIndex = RunnerJNILib.jCreateDsMap(null, null, null);
 				RunnerJNILib.DsMapAddString( dsMapIndex, "type", "GooglePlayServices_Achievements_Unlock" );
 				RunnerJNILib.DsMapAddString( dsMapIndex, "achievement_id", arch_id);
-				RunnerJNILib.DsMapAddDouble( dsMapIndex, "ind", ind );
 				
 				if (task.isSuccessful()) 
 				{
@@ -452,13 +417,11 @@ public class YYGooglePlayServices extends RunnerSocial
 				RunnerJNILib.CreateAsynEventWithDSMap(dsMapIndex, EVENT_OTHER_SOCIAL);
 			}
 		});
-		return(ind);
 	}
 	
 	
-	public double GooglePlayServices_Achievements_GetStatus(double force_reload)
+	public void GooglePlayServices_Achievements_GetStatus(double force_reload)
 	{
-		final double ind = getAsyncInd();
 		PlayGames.getAchievementsClient(activity).load(force_reload >= 0.5).addOnCompleteListener(new OnCompleteListener<AnnotatedData<AchievementBuffer>>() 
 		{
 			@Override
@@ -500,7 +463,6 @@ public class YYGooglePlayServices extends RunnerSocial
 					}
 					
 					int dsMapIndex = RunnerJNILib.jCreateDsMap(null, null, null);
-					RunnerJNILib.DsMapAddDouble( dsMapIndex, "ind", ind );
 					RunnerJNILib.DsMapAddString( dsMapIndex, "type", "GooglePlayServices_Achievements_GetStatus");
 					RunnerJNILib.DsMapAddDouble( dsMapIndex, "success", task.isSuccessful()? 1:0);
 					RunnerJNILib.DsMapAddString( dsMapIndex, "data", list.toString());
@@ -509,14 +471,12 @@ public class YYGooglePlayServices extends RunnerSocial
 				catch(Exception e)
 				{
 					int dsMapIndex = RunnerJNILib.jCreateDsMap(null, null, null);
-					RunnerJNILib.DsMapAddDouble( dsMapIndex, "ind", ind );
 					RunnerJNILib.DsMapAddString( dsMapIndex, "type", "GooglePlayServices_Achievements_GetStatus");
 					RunnerJNILib.DsMapAddDouble( dsMapIndex, "success",0);
 					RunnerJNILib.CreateAsynEventWithDSMap(dsMapIndex, EVENT_OTHER_SOCIAL);					
 				}
 			}
 		});
-		return(ind);
 	}
 
 	
@@ -531,14 +491,7 @@ public class YYGooglePlayServices extends RunnerSocial
 			@Override
 			public void onSuccess(Intent intent) 
 			{
-				try
-				{
-					activity.startActivityForResult(intent, RC_LEADERBOARD_UI);
-				}
-				catch(Exception e)
-				{
-					Log.e("yoyo", "ERROR GooglePlayServices_Leaderboard_ShowAll: " + e.getMessage(), e);
-				}
+				activity.startActivityForResult(intent, RC_LEADERBOARD_UI);
 			}
 		});
 	}	
@@ -550,14 +503,7 @@ public class YYGooglePlayServices extends RunnerSocial
 			@Override
 			public void onSuccess(Intent intent) 
 			{
-				try
-				{
-					activity.startActivityForResult(intent, RC_LEADERBOARD_UI);
-				}
-				catch(Exception e)
-				{
-					Log.e("yoyo", "ERROR GooglePlayServices_Leaderboard_Show: " + e.getMessage(), e);
-				}
+				activity.startActivityForResult(intent, RC_LEADERBOARD_UI);
 			}
 		});
 	}
@@ -618,10 +564,8 @@ public class YYGooglePlayServices extends RunnerSocial
 
 	}
 	
-	public double GooglePlayServices_Leaderboard_SubmitScore(final String leader_id,final double score,final String scoreTag) 
+	public void GooglePlayServices_Leaderboard_SubmitScore(final String leader_id,final double score,final String scoreTag) 
 	{
-		final double ind = getAsyncInd();
-		
 		PlayGames.getLeaderboardsClient(activity).submitScoreImmediate(leader_id,(long) score, scoreTag).addOnCompleteListener(new OnCompleteListener<ScoreSubmissionData>() 
 		{
 			@Override
@@ -629,7 +573,7 @@ public class YYGooglePlayServices extends RunnerSocial
 			{
 				int dsMapIndex = RunnerJNILib.jCreateDsMap(null, null, null);
 				RunnerJNILib.DsMapAddString(dsMapIndex, "type", "GooglePlayServices_Leaderboard_SubmitScore" );
-				RunnerJNILib.DsMapAddDouble( dsMapIndex, "ind", ind );
+				
 				RunnerJNILib.DsMapAddString(dsMapIndex,"leaderboardId",leader_id);
 				RunnerJNILib.DsMapAddDouble(dsMapIndex,"score",score);
 				RunnerJNILib.DsMapAddString(dsMapIndex,"scoreTag",scoreTag);
@@ -684,7 +628,6 @@ public class YYGooglePlayServices extends RunnerSocial
 				RunnerJNILib.CreateAsynEventWithDSMap(dsMapIndex, EVENT_OTHER_SOCIAL);
 			}
 		});
-		return(ind);
 	}
 	
 	static JSONObject LeaderboardScoreJSON(LeaderboardScore mLeaderboardScore) throws Exception
@@ -731,10 +674,8 @@ public class YYGooglePlayServices extends RunnerSocial
 		return obj.toString();
 	}
 	
-	public double GooglePlayServices_Leaderboard_LoadPlayerCenteredScores(String leaderboardId, double span, double leaderboardCollection, double maxResults, double forceReload)
+	public void GooglePlayServices_Leaderboard_LoadPlayerCenteredScores(String leaderboardId, double span, double leaderboardCollection, double maxResults, double forceReload)
 	{
-		final double ind = getAsyncInd();
-		
 		PlayGames.getLeaderboardsClient(activity)
 		.loadPlayerCenteredScores(leaderboardId, (int) span, (int) leaderboardCollection, (int) maxResults, forceReload >= 0.5)
 		.addOnCompleteListener(new OnCompleteListener<AnnotatedData<LeaderboardsClient.LeaderboardScores>>() 
@@ -759,9 +700,6 @@ public class YYGooglePlayServices extends RunnerSocial
 					int dsMapIndex = RunnerJNILib.jCreateDsMap(null, null, null);
 					RunnerJNILib.DsMapAddString(dsMapIndex, "type", "GooglePlayServices_Leaderboard_LoadPlayerCenteredScores" );
 					RunnerJNILib.DsMapAddDouble(dsMapIndex, "success", task.isSuccessful()? 1:0);
-					
-					RunnerJNILib.DsMapAddDouble( dsMapIndex, "ind", ind );
-					
 					if(task.isSuccessful())
 					{
 						RunnerJNILib.DsMapAddString( dsMapIndex, "leaderboard", LeaderboardJSON(mLeaderboardScores.getLeaderboard()));
@@ -782,13 +720,10 @@ public class YYGooglePlayServices extends RunnerSocial
 				}
 			}
 		});
-		
-		return(ind);
 	}
 	
-	public double GooglePlayServices_Leaderboard_LoadTopScores(String leaderboardId, double span, double leaderboardCollection, double maxResults, double forceReload)
+	public void GooglePlayServices_Leaderboard_LoadTopScores(String leaderboardId, double span, double leaderboardCollection, double maxResults, double forceReload)
 	{
-		final double ind = getAsyncInd();
 		PlayGames.getLeaderboardsClient(activity)
 		.loadTopScores(leaderboardId, (int) span, (int) leaderboardCollection, (int) maxResults, forceReload >= 0.5)
 		.addOnCompleteListener(new OnCompleteListener<AnnotatedData<LeaderboardsClient.LeaderboardScores>>() 
@@ -813,7 +748,6 @@ public class YYGooglePlayServices extends RunnerSocial
 					int dsMapIndex = RunnerJNILib.jCreateDsMap(null, null, null);
 					RunnerJNILib.DsMapAddString(dsMapIndex, "type", "GooglePlayServices_Leaderboard_LoadTopScores" );
 					RunnerJNILib.DsMapAddDouble(dsMapIndex, "success", task.isSuccessful()? 1:0);
-					RunnerJNILib.DsMapAddDouble( dsMapIndex, "ind", ind );
 					if(task.isSuccessful())
 					{
 						RunnerJNILib.DsMapAddString( dsMapIndex, "leaderboard", LeaderboardJSON(mLeaderboardScores.getLeaderboard()));
@@ -834,12 +768,13 @@ public class YYGooglePlayServices extends RunnerSocial
 				}
 			}
 		});
-		return(ind);
+		
 	}	
 	
 	public double GooglePlayServices_UriToPath(String uriString)
 	{
-		double ind = getAsyncInd();
+		double ind = (double) Ind;
+		Ind++;
 		
 		(new Obj_UriToPath()).UriToPath(uriString,ind);
 		
@@ -973,26 +908,28 @@ public class YYGooglePlayServices extends RunnerSocial
 	}
 	
 	private static final int RC_SAVED_GAMES = 9009;
-	private double ind_ShowSavedGamesUI;
-	public double GooglePlayServices_SavedGames_ShowSavedGamesUI(String title, double button_add, double button_delete, double max) 
+	public void GooglePlayServices_SavedGames_ShowSavedGamesUI(String title, double button_add, double button_delete, double max) 
 	{
-		ind_ShowSavedGamesUI = getAsyncInd();
-		
 		try
 		{
-			PlayGames.getSnapshotsClient(activity).getSelectSnapshotIntent(title, button_add > 0.5, button_delete > 0.5, (int)max).addOnSuccessListener(new OnSuccessListener<Intent>()
+			boolean button_add_;
+			if(button_add > 0.5)
+				button_add_ = true;
+			else
+				button_add_ = false;
+			
+			boolean button_delete_;
+			if(button_delete > 0.5)
+				button_delete_ = true;
+			else
+				button_delete_ = false;
+
+			PlayGames.getSnapshotsClient(activity).getSelectSnapshotIntent(title, button_add_, button_delete_, (int)max).addOnSuccessListener(new OnSuccessListener<Intent>()
 			{
 				@Override
 				public void onSuccess(Intent intent) 
 				{
-					try
-					{
-						activity.startActivityForResult(intent, RC_SAVED_GAMES);
-					}
-					catch(Exception e)
-					{
-						Log.e("yoyo", "ERROR GooglePlayServices_SavedGames_ShowSavedGamesUI: " + e.getMessage(), e);
-					}
+					activity.startActivityForResult(intent, RC_SAVED_GAMES);
 				}
 			});
 		}
@@ -1000,15 +937,11 @@ public class YYGooglePlayServices extends RunnerSocial
 		{
 			Log.e("yoyo", e.getMessage(), e);
 		}
-		
-		return ind_ShowSavedGamesUI;
 	}
 	
 	
-	public double GooglePlayServices_SavedGames_CommitAndClose(final String name , final String desc, final String data,final String pathConverIamge) // Snapshot snapshot,byte[] data, Bitmap coverImage
+	public void GooglePlayServices_SavedGames_CommitAndClose(String name , final String desc, final String data,final String pathConverIamge) // Snapshot snapshot,byte[] data, Bitmap coverImage
 	{
-		final double ind = getAsyncInd();
-		
 		boolean data_Ok;
 		byte[] data_;
 		try
@@ -1023,9 +956,7 @@ public class YYGooglePlayServices extends RunnerSocial
 		}
 		
 		if (data_Ok)
-		if(mapSnapshot.containsKey(name))
 		{		
-			
 			Snapshot snapshot = mapSnapshot.get(name);
 			snapshot.getSnapshotContents().writeBytes(data_);
 			  
@@ -1053,14 +984,12 @@ public class YYGooglePlayServices extends RunnerSocial
 				{
 					int dsMapIndex = RunnerJNILib.jCreateDsMap(null, null, null);
 					RunnerJNILib.DsMapAddString( dsMapIndex, "type", "GooglePlayServices_SavedGames_CommitAndClose" );
-					RunnerJNILib.DsMapAddDouble( dsMapIndex, "ind", ind );
+					
 					if (task.isSuccessful()) 
 					{
 						SnapshotMetadata snapshotMetadata = task.getResult();
 						RunnerJNILib.DsMapAddString( dsMapIndex, "snapshotMetadata", SnapshotMetadataJSON(snapshotMetadata));
 						RunnerJNILib.DsMapAddDouble( dsMapIndex, "success", 1 );
-						
-						mapSnapshot.remove(name);
 					} 
 					else 
 					{
@@ -1070,16 +999,16 @@ public class YYGooglePlayServices extends RunnerSocial
 					RunnerJNILib.CreateAsynEventWithDSMap(dsMapIndex, EVENT_OTHER_SOCIAL);
 				}
 			});
+		
 		}
-	  return(ind);
+	  
 	}
 	
-	public double GooglePlayServices_SavedGames_CommitNew(String name, final String desc, final String data,final String pathConverIamge) // Snapshot snapshot,byte[] data, Bitmap coverImage
+	public void GooglePlayServices_SavedGames_CommitNew(String name, final String desc, final String data,final String pathConverIamge) // Snapshot snapshot,byte[] data, Bitmap coverImage
 	{
 		boolean createIfNotFound = true;
 		double conflictPolicy = 1;
 		
-		final double ind = getAsyncInd();
 		
 		PlayGames.getSnapshotsClient(activity).open(name,createIfNotFound,(int)conflictPolicy).addOnCompleteListener(new OnCompleteListener <DataOrConflict<Snapshot>>()
 		{
@@ -1131,7 +1060,6 @@ public class YYGooglePlayServices extends RunnerSocial
 						{
 							int dsMapIndex = RunnerJNILib.jCreateDsMap(null, null, null);
 							RunnerJNILib.DsMapAddString( dsMapIndex, "type", "GooglePlayServices_SavedGames_CommitNew" );
-							RunnerJNILib.DsMapAddDouble( dsMapIndex, "ind", ind );
 							
 							if (task.isSuccessful()) 
 							{
@@ -1153,7 +1081,6 @@ public class YYGooglePlayServices extends RunnerSocial
 				{
 					int dsMapIndex = RunnerJNILib.jCreateDsMap(null, null, null);
 					RunnerJNILib.DsMapAddString( dsMapIndex, "type", "GooglePlayServices_SavedGames_CommitNew" );
-					RunnerJNILib.DsMapAddDouble( dsMapIndex, "ind", ind );
 					
 					Exception exception = task.getException();
 					RunnerJNILib.DsMapAddDouble( dsMapIndex, "success", 0 );
@@ -1162,14 +1089,12 @@ public class YYGooglePlayServices extends RunnerSocial
 				}
 			}
 		});
-		
-		return(ind);
 	}
 
-	public double GooglePlayServices_SavedGames_Load(final double forceReload)
+	public void GooglePlayServices_SavedGames_Load(final double forceReload)
 	{
-		final double ind = getAsyncInd();
-		PlayGames.getSnapshotsClient(activity).load(forceReload >= 0.5).addOnCompleteListener(new OnCompleteListener<AnnotatedData<SnapshotMetadataBuffer>>()
+		boolean forceReload_ = forceReload >= 0.5;
+		PlayGames.getSnapshotsClient(activity).load(forceReload_).addOnCompleteListener(new OnCompleteListener<AnnotatedData<SnapshotMetadataBuffer>>()
 		{
 			@Override
 			public void onComplete(@NonNull Task<AnnotatedData<SnapshotMetadataBuffer>> task)
@@ -1185,7 +1110,7 @@ public class YYGooglePlayServices extends RunnerSocial
 				}
 				
 				RunnerJNILib.DsMapAddDouble(dsMapIndex,"success",1.0);
-				RunnerJNILib.DsMapAddDouble( dsMapIndex, "ind", ind );
+				
 				AnnotatedData mAnnotatedData = task.getResult();
 				SnapshotMetadataBuffer mSnapshotMetadataBuffer = (SnapshotMetadataBuffer) mAnnotatedData.get();
 				
@@ -1198,23 +1123,26 @@ public class YYGooglePlayServices extends RunnerSocial
 				RunnerJNILib.CreateAsynEventWithDSMap(dsMapIndex, EVENT_OTHER_SOCIAL);
 			}
 		});
-		return(ind);
 	}
 	
-	public double GooglePlayServices_SavedGames_Open(String fileName)
+	public void GooglePlayServices_SavedGames_Open(String fileName)
 	{
-		final double ind = getAsyncInd();
-		
 		double createIfNotFound = 0;
 		double conflictPolicy = 1;
 		
-		PlayGames.getSnapshotsClient(activity).open(fileName,createIfNotFound >= 0.5,(int) conflictPolicy).addOnCompleteListener(new OnCompleteListener<DataOrConflict<Snapshot>>() 
+		boolean createIfNotFound_;
+		
+		if(createIfNotFound >= 0.5)
+			createIfNotFound_ = true;
+		else
+			createIfNotFound_ = false;
+		
+		PlayGames.getSnapshotsClient(activity).open(fileName,createIfNotFound_,(int) conflictPolicy).addOnCompleteListener(new OnCompleteListener<DataOrConflict<Snapshot>>() 
 		{
 			@Override
 			public void onComplete(@NonNull Task<DataOrConflict<Snapshot>>task)
 			{
 				int dsMapIndex = RunnerJNILib.jCreateDsMap(null, null, null);
-				RunnerJNILib.DsMapAddDouble( dsMapIndex, "ind", ind );
 				RunnerJNILib.DsMapAddString( dsMapIndex, "type", "GooglePlayServices_SavedGames_Open" );
 				
 				if(!task.isSuccessful()) 
@@ -1245,13 +1173,10 @@ public class YYGooglePlayServices extends RunnerSocial
 				RunnerJNILib.CreateAsynEventWithDSMap(dsMapIndex, EVENT_OTHER_SOCIAL);
 			}
 		});
-		return(ind);
 	}
 	
-	public double GooglePlayServices_SavedGames_Delete(String fileName)
+	public void GooglePlayServices_SavedGames_Delete(String fileName)
 	{
-		final double ind = getAsyncInd();
-		
 		Snapshot mSnapshot = (Snapshot) mapSnapshot.get(fileName);
 		SnapshotMetadata mSnapshotMetadata = mSnapshot.getMetadata();
 		
@@ -1262,7 +1187,6 @@ public class YYGooglePlayServices extends RunnerSocial
 			{
 				int dsMapIndex = RunnerJNILib.jCreateDsMap(null, null, null);
 				RunnerJNILib.DsMapAddString( dsMapIndex, "type", "GooglePlayServices_SavedGames_Delete" );
-				RunnerJNILib.DsMapAddDouble( dsMapIndex, "ind", ind );
 				
 				if (task.isSuccessful()) 
 				{
@@ -1280,15 +1204,11 @@ public class YYGooglePlayServices extends RunnerSocial
 				RunnerJNILib.CreateAsynEventWithDSMap(dsMapIndex, EVENT_OTHER_SOCIAL);	
 			}
 		});
-		
-		return(ind);
 	}
 	
 	
-	public double GooglePlayServices_SavedGames_DiscardAndClose(String fileName)
+	public void GooglePlayServices_SavedGames_DiscardAndClose(String fileName)
 	{
-		final double ind = getAsyncInd();
-		
 		Snapshot mSnapshot = (Snapshot) mapSnapshot.get(fileName);
 		PlayGames.getSnapshotsClient(activity).discardAndClose(mSnapshot).addOnCompleteListener(new OnCompleteListener<Void>()
 		{
@@ -1296,7 +1216,6 @@ public class YYGooglePlayServices extends RunnerSocial
 			public void onComplete(@NonNull Task<Void>task)
 			{
 				int dsMapIndex = RunnerJNILib.jCreateDsMap(null, null, null);
-				RunnerJNILib.DsMapAddDouble( dsMapIndex, "ind", ind );
 				RunnerJNILib.DsMapAddString( dsMapIndex, "type", "GooglePlayServices_SavedGames_DiscardAndClose" );
 				
 				if (task.isSuccessful()) 
@@ -1311,7 +1230,6 @@ public class YYGooglePlayServices extends RunnerSocial
 				RunnerJNILib.CreateAsynEventWithDSMap(dsMapIndex, EVENT_OTHER_SOCIAL);	
 			}
 		});
-		return(ind);
 	}
 	
 	static String gameJSON(Game mGame)
@@ -1351,10 +1269,8 @@ public class YYGooglePlayServices extends RunnerSocial
 	}
 	
 	////////////////////////////////Player Stats
-	public double GooglePlayServices_PlayerStats_LoadPlayerStats(double forcedLoad)
+	public void GooglePlayServices_PlayerStats_LoadPlayerStats(double forcedLoad)
 	{
-		final double ind = getAsyncInd();
-		
 		PlayGames.getPlayerStatsClient(activity).loadPlayerStats(forcedLoad>=0.5).addOnCompleteListener(new OnCompleteListener<AnnotatedData<PlayerStats>>() 
 		{
 			@Override
@@ -1362,7 +1278,6 @@ public class YYGooglePlayServices extends RunnerSocial
 			{
 				int dsMapIndex = RunnerJNILib.jCreateDsMap(null, null, null);
 				RunnerJNILib.DsMapAddString( dsMapIndex, "type", "GooglePlayServices_PlayerStats_LoadPlayerStats" );
-				RunnerJNILib.DsMapAddDouble( dsMapIndex, "ind", ind );
 				
 				if (task.isSuccessful()) 
 				{
@@ -1387,7 +1302,6 @@ public class YYGooglePlayServices extends RunnerSocial
 				RunnerJNILib.CreateAsynEventWithDSMap(dsMapIndex, EVENT_OTHER_SOCIAL);	
 			}
 		});
-		return(ind);
 	}
 }
 

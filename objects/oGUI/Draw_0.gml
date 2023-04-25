@@ -4,9 +4,9 @@ draw_set_valign(fa_top);
 draw_set_color(c_white);
 
 var _squish = oGlobalController.width / oGlobalController.height < 1.1;
-var _guiX = GUIX+global.notchLeftTop;
+var _guiX = GUIX;
 var _guiY = GUIY+global.notchTop;
-var _width = WIDTH-global.notchLeftTop-global.notchRightTop;
+var _width = WIDTH;
 var _spacing = floor((_width-MaxResolution)/5)
 	
 draw_text(_guiX+7+_spacing,_guiY+6,"SCORE\n "+(_squish ? "" : " ")+string_replace_all(string_format(global.score,4,0)," ","0"));
