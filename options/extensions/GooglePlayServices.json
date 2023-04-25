@@ -7,9 +7,6 @@
       }
     }
   },
-  "extensionId": {
-    "name": "GooglePlayServices",
-    "path": "extensions/GooglePlayServices/GooglePlayServices.yy"
-  },
+  "extensionId": null,
   "resourceVersion": "1.0"
 }
