@@ -96,15 +96,6 @@ function ResizeScreen(_newWidth,_newHeight) {
 	
 	if(instance_exists(oShadow)) surface_free(oShadow.darkSurface);
 	
-	if(WIDTH == _width and HEIGHT == _height) exit;
-	
-	surface_resize(application_surface, _width, _height);
-	
-	for(var i = 0; i < array_length(global.stars); i++) {
-		global.stars[i].x = irandom(WIDTH)+GUIX;
-		global.stars[i].y = irandom(HEIGHT)+GUIY;
-	}
-
 	if global.notched {
 		var _wRatio = _width/_newWidth;
 		var _hRatio = _height/_newHeight;
@@ -127,6 +118,15 @@ function ResizeScreen(_newWidth,_newHeight) {
 			if _portrait global.notchBottom = _height-ceil(NOTCH_getTop(_dir,"")*_hRatio);
 			else if !_leftSide global.notchRightBottom = _width-floor(NOTCH_getLeft(_dir,"")*_wRatio);
 		}
+	}
+	
+	if(WIDTH == _width and HEIGHT == _height) exit;
+	
+	surface_resize(application_surface, _width, _height);
+	
+	for(var i = 0; i < array_length(global.stars); i++) {
+		global.stars[i].x = irandom(WIDTH)+GUIX;
+		global.stars[i].y = irandom(HEIGHT)+GUIY;
 	}
 }
 

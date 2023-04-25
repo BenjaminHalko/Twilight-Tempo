@@ -38,7 +38,7 @@ if(global.lives > 0) {
 		if((dir div 90) % 2 == 0) image_xscale = 0.3;
 		else image_yscale = 0.3;
 	
-		shootPercent = 0;
+		//shootPercent = 0;
 		
 		//Secret
 		if currentSecret != -1 {
