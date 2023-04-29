@@ -22,7 +22,7 @@ if(show) {
 	draw_set_color(c_white);
 	draw_set_halign(fa_center);
 	draw_set_color(c_white);
-	draw_text(room_width/2,HEIGHT-24+GUIY,"© 2023 BENJAMIN HALKO");
+	draw_text(room_width/2,HEIGHT-24+GUIY,"© 2022 BENJAMIN HALKO");
 	draw_text(room_width/2,HEIGHT-14+GUIY,"ALL RIGHTS RESERVED");
 	
 	
