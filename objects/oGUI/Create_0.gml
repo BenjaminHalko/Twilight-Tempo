@@ -16,5 +16,3 @@ leaderboardIDs = [["CgkIsZiXgOcREAIQAQ","CgkIsZiXgOcREAIQAg","CgkIsZiXgOcREAIQAw
 ["CgkIsZiXgOcREAIQDA","CgkIsZiXgOcREAIQDQ","CgkIsZiXgOcREAIQDg","CgkIsZiXgOcREAIQDw","CgkIsZiXgOcREAIQEA","CgkIsZiXgOcREAIQEQ","CgkIsZiXgOcREAIQEg","CgkIsZiXgOcREAIQEw","CgkIsZiXgOcREAIQFA","CgkIsZiXgOcREAIQFQ"]];
 
 leaderboardScores = [1000,3000,5000,10000,15000,20000,25000,30000,40000,50000];
-
-global.hiScore[0] = 3795;

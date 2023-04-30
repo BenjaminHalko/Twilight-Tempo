@@ -27,8 +27,6 @@ global.notchLeftTop = 0;
 global.notchRightTop = 0;
 global.notchRightBottom = 0;
 
-window_set_size(540,960);
-
 ResizeScreen(window_get_width(),window_get_height());
 
 audio_master_gain(0.60);
@@ -49,6 +47,7 @@ global.hardMode = false;
 global.hintMode = false;
 
 global.start = ini_read_real("Mode","Tutorial",true);
+ini_close();
 
 repeat(110) array_push(global.stars,{
 	x: irandom(WIDTH)+GUIX,

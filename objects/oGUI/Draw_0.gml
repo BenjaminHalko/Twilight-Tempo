@@ -15,7 +15,6 @@ draw_set_halign(fa_center);
 if(global.start) draw_text(_guiX+_width/2+2*_squish,_guiY+6,"TUTORIAL\nLEVEL");
 else if(global.hintMode) draw_text(_guiX+_width/2+2*_squish,_guiY+6,"PRACTICE\nMODE");
 else {
-	
 	draw_text(_guiX+_width/2+2*_squish,_guiY+6,(_squish ? "HI" : "HIGH ")+"SCORE\n"+string_replace_all(string_format(global.hiScore[global.hardMode],5,0)," ","0"));
 }
 
