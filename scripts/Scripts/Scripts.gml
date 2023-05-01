@@ -141,7 +141,7 @@ function SaveScore() {
 			oGUI.newRecord++;
 			global.hiScore[global.hardMode] = global.score;
 			ini_open("save.ini");
-			ini_write_real("scores",global.hardMode,global.hiScore[global.hardMode]);
+			ini_write_real("scores",string(global.hardMode),global.hiScore[global.hardMode]);
 			ini_close();
 		}
 		

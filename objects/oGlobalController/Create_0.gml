@@ -39,7 +39,7 @@ global.time = 0;
 
 ini_open("save.ini");
 for(var i = 0; i < 2; i++) {
-	global.hiScore[i] = ini_read_real("scores",i,0);	
+	global.hiScore[i] = ini_read_real("scores",string(i),0);	
 }
 
 //Mode
