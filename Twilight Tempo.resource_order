@@ -1,5 +1,5 @@
 {
-  "FolderOrderSettings": [
+  "FolderOrderSettings":[
     {"name":"Enemy","order":9,"path":"folders/Enemy.yy",},
     {"name":"Global","order":2,"path":"folders/Global.yy",},
     {"name":"GUI","order":3,"path":"folders/GUI.yy",},
@@ -11,7 +11,7 @@
     {"name":"Title","order":8,"path":"folders/Title.yy",},
     {"name":"Icons","order":8,"path":"folders/Title/Icons.yy",},
   ],
-  "ResourceOrderSettings": [
+  "ResourceOrderSettings":[
     {"name":"snEnemyDestroy","order":3,"path":"sounds/snEnemyDestroy/snEnemyDestroy.yy",},
     {"name":"oShadow","order":2,"path":"objects/oShadow/oShadow.yy",},
     {"name":"mSongFast","order":5,"path":"sounds/mSongFast/mSongFast.yy",},

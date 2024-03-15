@@ -28,6 +28,7 @@ global.notchRightTop = 0;
 global.notchRightBottom = 0;
 
 ResizeScreen(window_get_width(),window_get_height());
+device_mouse_dbclick_enable(false);
 
 audio_master_gain(0.60);
 
